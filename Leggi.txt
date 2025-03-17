@@ -1,0 +1,9 @@
+implementare
+Movimento protagonista
+AD per movimento orizzantale
+SPACE per saltare
+il salto ha bisogno di coyote timer e il buffer 
+coyote timer : se il giocatore si stacca da terra ex "isnotgrounded" parte il timer di 0.15 secondi se il giocatore salt in questa situazione e il timer è attiivo il personaggio salta
+Buffer : se il giocatore preme il bottone per performare il salto e non è in grado di farlo (es. è in aria) attiva un timer di 0.20 secondi che gli permette di performare l'azione appena diventa disponibile ed è sempre dentro il timer
+salto : 2/3 volte l'altezza del personaggio
+Prendi il Buddy: tieni premuto il bottone "Prendi" per prendere il buddy e rilasciarlo per lanciarlo nella direzione in qui stai guardando quando il buddy è preso il personaggio avrà una gravità più alta
