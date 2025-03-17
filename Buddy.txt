@@ -1,0 +1,5 @@
+Buddy
+Segue il protagonista e gli sta da 0.7 a 0.5 metri di distanza con le levette di controller e EQ tastiera per farela rotazione dei poteri cambiando sprite e la funzionalita 
+il potere fa lo switch appena il tasto viene premuto
+Ledgegrab: in qualsiasi trasformazione se è lanciato contro un angolo ci si attacca e il protagonista può aggrapparsi al buddy e scavalcare l'angolo
+con il pulsante control attivi e disattivi la modalità edge.
