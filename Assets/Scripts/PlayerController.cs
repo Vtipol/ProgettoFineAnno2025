@@ -1,46 +1,28 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-public class PlayerController : MonoBehaviour, InputSystem_Actions.IPlayerActions
-{
-   InputSystem_Actions actionMap;
-   private Vector2 MoveInput;
-   [SerializeField] public float moveSpeed = 5f;
-   public void OnAttack(InputAction.CallbackContext context) { }
-   public void OnCrouch(InputAction.CallbackContext context) { }
-   public void OnInteract(InputAction.CallbackContext context) { }
-   public void OnJump(InputAction.CallbackContext context) { }
-   public void OnLook(InputAction.CallbackContext context) { }
-   public void OnNext(InputAction.CallbackContext context) { }
-   public void OnPrevious(InputAction.CallbackContext context) { }
-   public void OnSprint(InputAction.CallbackContext context) { }
-   private void Awake()
-   {
-      actionMap = new InputSystem_Actions();
-      actionMap.Player.SetCallbacks(this);
-      
-   }
-   private void OnEnable()
-   {
-      actionMap.Player.Enable();
-   }
-   private void OnDisable()
-   {
-      actionMap.Player.Disable();
-   }
 
-   public void Update()
-   {
-      Move();
-   }
-   public void Move()
-   {
-      
-      Vector3 moveDirection = new Vector3(MoveInput.x, 0, MoveInput.y);
-      transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-   }
-   public void OnMove(InputAction.CallbackContext context)
-   {
-      MoveInput = context.ReadValue<Vector2>();
-   }
+public class PlayerController : MonoBehaviour
+{
+    public float moveSpeed = 5f;
+    public float jumpForce = 10f;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    private Rigidbody2D rb;
+    private bool isGrounded;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        float moveInput = Input.GetAxis("Horizontal");
+        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
 }
