@@ -175,11 +175,11 @@ private void Awake()
         }
 
         //double jump
-        else if (_jumpBufferTimer >0 && _isJumping && _numberOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
+       /* else if (_jumpBufferTimer >0 && _isJumping && _numberOfJumpsUsed < MoveStats.NumberOfJumpsAllowed)
         {
             _isFastFalling= false;
             InitiateJump(1);
-        }
+        }*/
 
         //fall/air jump
         else if (_jumpBufferTimer > 0 && _isFalling && _numberOfJumpsUsed < MoveStats.NumberOfJumpsAllowed -1)
@@ -216,77 +216,66 @@ private void Awake()
 
     private void Jump()
     {
-        // gravity jumping
-        if (_isJumping) 
+        if (_isJumping)
         {
-            //head bump
+            // Head bump check: if the player hits their head, force fast fall
             if (_bumpedHead)
             {
                 _isFastFalling = true;
             }
 
-            //gravity up
-            if (VerticalVelocity >= 0)
+            // **Going UP (Jumping)**
+            if (VerticalVelocity > 0f)
             {
-                //apex control
+                // Apex detection
                 _apexPoint = Mathf.InverseLerp(MoveStats.InitialJumpVelocity, 0f, VerticalVelocity);
 
                 if (_apexPoint > MoveStats.ApexThreshold)
                 {
-                    if (_isPastApexThreshold)
+                    if (!_isPastApexThreshold)
                     {
-                        _isPastApexThreshold = false;
+                        _isPastApexThreshold = true;
                         _timePastApexThreshold = 0f;
                     }
 
-                    if (_isPastApexThreshold)
+                    // Slightly reduce speed near the apex for a hang effect
+                    _timePastApexThreshold += Time.fixedDeltaTime;
+                    if (_timePastApexThreshold < MoveStats.ApexHangTime)
                     {
-                        _timePastApexThreshold += Time.fixedDeltaTime;
-                        if (_timePastApexThreshold < MoveStats.ApexHangTime)
-                        {
-                            VerticalVelocity = 0f;
-                        }
-                        else
-                        {
-                            VerticalVelocity = -0.01f;
-                        }
+                        VerticalVelocity *= 0.9f; // Gradual slow down near apex
+                    }
+                    else
+                    {
+                        VerticalVelocity -= MoveStats.Gravity * Time.fixedDeltaTime; // Allow falling naturally
                     }
                 }
-
-                //gravity up not Apex
                 else
                 {
+                    // Normal upward gravity
                     VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
-                    if (_isPastApexThreshold)
-                    {
-                        _isPastApexThreshold = false ;
-                    }
+                    _isPastApexThreshold = false; // Reset if below apex threshold
                 }
             }
 
-            //gravity down
-            else if (_isFastFalling)
-            {
-                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultiplier * Time.fixedDeltaTime;
-            }
-
+            // **Falling Phase**
             else if (VerticalVelocity < 0f)
             {
-                if (_isFalling)
-                {
-                    _isFalling = true;
-                }
+                _isFalling = true;
+
+                // Apply different gravity multipliers for normal and fast fall
+                float fallMultiplier = _isFastFalling ? MoveStats.GravityOnReleaseMultiplier : MoveStats.FallGravityMultiplier;
+                VerticalVelocity += MoveStats.Gravity * fallMultiplier * Time.fixedDeltaTime;
             }
         }
 
-        //jump cut
+        // **Jump Cut (Fast Fall)**
         if (_isFastFalling)
         {
             if (_fastFallTime >= MoveStats.TimeForUpwardsCancel)
             {
                 VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultiplier * Time.fixedDeltaTime;
             }
-            else if (_fastFallTime < MoveStats.TimeForUpwardsCancel)
+            else
             {
                 VerticalVelocity = Mathf.Lerp(_fastFallReleaseSpeed, 0f, (_fastFallTime / MoveStats.TimeForUpwardsCancel));
             }
@@ -294,20 +283,17 @@ private void Awake()
             _fastFallTime += Time.fixedDeltaTime;
         }
 
-        //normal fallin gravity
+        // **Normal Falling Gravity**
         if (!_isGrounded && !_isJumping)
         {
-            if (!_isFalling)
-            {
-                _isFalling = true;
-            }
-
-            VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
+            _isFalling = true;
+            VerticalVelocity += MoveStats.Gravity * MoveStats.FallGravityMultiplier * Time.fixedDeltaTime;
         }
 
-        //clamp fall speed
+        // **Clamp Fall Speed to Avoid Unrealistic Speeds**
         VerticalVelocity = Mathf.Clamp(VerticalVelocity, -MoveStats.MaxFallSpeed, 50f);
 
+        // Apply the vertical velocity to the Rigidbody
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, VerticalVelocity);
     }
 

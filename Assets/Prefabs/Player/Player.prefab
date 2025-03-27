@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 1630446981866368323}
   - component: {fileID: 815791464884438802}
   - component: {fileID: 5304828267378380790}
-  - component: {fileID: 7994220682054804609}
-  - component: {fileID: 6061844675173396311}
   - component: {fileID: 8124245553031814339}
   - component: {fileID: 4128824098916803876}
   m_Layer: 0
@@ -114,39 +112,6 @@ MonoBehaviour:
   _feetColl: {fileID: 5246583691719135597}
   _bodyColl: {fileID: 962775260614072667}
   _animator: {fileID: 8124245553031814339}
---- !u!114 &7994220682054804609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274336502130243986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 708e0fa356ad6d54681a00d8a7ac032c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHearts: 5
-  currentHearts: 0
-  lifeUI: {fileID: 0}
-  _animator: {fileID: 8124245553031814339}
-  _playerMovement: {fileID: 5304828267378380790}
---- !u!114 &6061844675173396311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4274336502130243986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c0d06a5f5b47b46b45066f16dc4772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageAmount: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!95 &8124245553031814339
 Animator:
   serializedVersion: 7
