@@ -53,7 +53,7 @@ public class Follow : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
 
-        if (isGrounded && target.position.y > transform.position.y + 5f)
+        if (isGrounded && target.position.y > transform.position.y + 2f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
