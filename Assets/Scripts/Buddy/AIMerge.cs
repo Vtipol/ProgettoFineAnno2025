@@ -1,20 +1,15 @@
-using System;
 using UnityEngine;
 
 public class AIMerge : MonoBehaviour
 {
+    public AIFollowSettings aiSettings;
     public Transform target;
-    public float speed = 5f;
-    public float jumpForce = 10f;
-    public float stopDistance = 1f;
-    public float fieldOfViewRadius = 10f; 
-    public LayerMask groundLayer;
-    public LayerMask targetLayer; 
     public Transform groundCheck;
-    public float groundCheckRadius = 1.2f;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool targetInView;
+    private bool needJump;
 
     void Start()
     {
@@ -25,6 +20,7 @@ public class AIMerge : MonoBehaviour
     {
         DetectTarget();
         CheckGroundStatus();
+        HandleMovementLogic();
     }
 
     void FixedUpdate()
@@ -37,38 +33,56 @@ public class AIMerge : MonoBehaviour
 
     void DetectTarget()
     {
-        targetInView = Physics2D.OverlapCircle(transform.position, fieldOfViewRadius, targetLayer) != null;
+        targetInView = Physics2D.OverlapCircle(transform.position, aiSettings.fieldOfViewRadius, aiSettings.targetLayer) != null;
     }
 
     void CheckGroundStatus()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer) != null;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, aiSettings.groundLayer);
+    }
+
+    void HandleMovementLogic()
+    {
+        if (!target || !targetInView) return;
+
+        float direction = Mathf.Sign(target.position.x - transform.position.x);
+        bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
+        
+        RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
+        RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
+        RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
+        
+        if (!groundFront.collider && !gapAhead.collider)
+        {
+            needJump = true;
+        }
+        else if (isTargetAirborne && platformOverhead.collider)
+        {
+            needJump = true;
+        }
+        else
+        {
+            needJump = false;
+        }
     }
 
     void MoveTowardsTarget()
     {
         float distance = Vector2.Distance(transform.position, target.position);
-        if (distance < stopDistance) return;
+        if (distance < aiSettings.stopDistance) return;
+        if (isGrounded && target.position.y > transform.position.y + 2f)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
+        }
 
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.linearVelocity = new Vector2(direction.x * speed, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(direction.x * aiSettings.speed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
 
-        if (isGrounded && target.position.y > transform.position.y + 5f)
+        if (isGrounded && needJump)
         {
-            RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(distance, 0, 0),
-                Vector2.down, 2f, groundLayer);
-
-            if (gapAhead.collider == null)  
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            }
+            needJump = false;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
     }
-
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(groundCheck.position, groundCheckRadius);
-    }
 }
+
