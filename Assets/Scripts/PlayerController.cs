@@ -24,5 +24,16 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
+        if (Input.GetKey(KeyCode.S) || Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(DropThroughPlatform());
+        }
+    }
+    IEnumerator DropThroughPlatform()
+    {
+        Collider2D playerCollider = GetComponent<CapsuleCollider2D>();
+        playerCollider.enabled = false;
+        yield return new WaitForSeconds(1f); 
+        playerCollider.enabled = true;
     }
 }

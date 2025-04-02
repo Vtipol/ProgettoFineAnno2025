@@ -1,5 +1,6 @@
+using System.Collections;
 using UnityEngine;
-
+using System.Collections.Generic;
 public class AIMerge : MonoBehaviour
 {
     public AIFollowSettings aiSettings;
@@ -74,7 +75,6 @@ public class AIMerge : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
-
         Vector2 direction = (target.position - transform.position).normalized;
         rb.linearVelocity = new Vector2(direction.x * aiSettings.speed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
 
@@ -83,6 +83,18 @@ public class AIMerge : MonoBehaviour
             needJump = false;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
+        if (isGrounded && target.position.y > transform.position.y - 2f)
+        {
+            StartCoroutine(BuddyDropThroughPlatform());
+        }
+    }
+    IEnumerator BuddyDropThroughPlatform()
+    {
+        Collider2D buddyCollider = GetComponent<CircleCollider2D>();
+        buddyCollider.enabled = false;
+        yield return new WaitForSeconds(1f);
+        buddyCollider.enabled = true;
     }
 }
+
 
