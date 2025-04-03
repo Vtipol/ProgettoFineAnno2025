@@ -375,8 +375,9 @@ MonoBehaviour:
   jumpForce: 10
   groundCheck: {fileID: 1213836787}
   groundLayer:
-    serializedVersion: 2
     m_Bits: 128
+  rb: {fileID: 0}
+  isGrounded: 0
 --- !u!70 &322884328
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -607,8 +608,6 @@ GameObject:
   - component: {fileID: 534363362}
   - component: {fileID: 534363361}
   - component: {fileID: 534363360}
-  - component: {fileID: 534363359}
-  - component: {fileID: 534363363}
   - component: {fileID: 534363364}
   m_Layer: 6
   m_Name: Buddy
@@ -617,31 +616,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &534363359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534363358}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd4b9b8b0a7d76b5bc6da3c6d7aaf26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1379585864}
-  speed: 5.5
-  jumpForce: 15
-  stopDistance: 2
-  fieldOfViewRadius: 15
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheck: {fileID: 1560591264}
-  groundCheckRadius: 0.5
 --- !u!50 &534363360
 Rigidbody2D:
   serializedVersion: 5
@@ -723,24 +697,6 @@ Transform:
   - {fileID: 519420032}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &534363363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534363358}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9215c1515e95957893d4cc2e2264660, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1379585864}
-  speed: 5
-  jumpStrenght: 2.3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &534363364
 MonoBehaviour:
   m_ObjectHideFlags: 0
