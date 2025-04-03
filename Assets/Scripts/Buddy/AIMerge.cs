@@ -71,7 +71,7 @@ public class AIMerge : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, target.position);
         if (distance < aiSettings.stopDistance) return;
-        if (isGrounded && target.position.y > transform.position.y + 2f)
+        if (isGrounded && target.position.y > transform.position.y + 4f)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
@@ -81,7 +81,7 @@ public class AIMerge : MonoBehaviour
         if (isGrounded && needJump)
         {
             needJump = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x+15f, aiSettings.jumpForce);
         }
         if (isGrounded && target.position.y > transform.position.y - 2f)
         {
