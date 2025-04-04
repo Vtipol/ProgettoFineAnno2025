@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3520819e820d449638a560d3fa1d0ecb, type: 3}
   m_Name: AIFollowSettings
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 10
   jumpForce: 12
   stopDistance: 2
   fieldOfViewRadius: 15
