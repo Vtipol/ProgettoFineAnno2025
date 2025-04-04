@@ -299,6 +299,10 @@ private void Awake()
 
     #endregion
 
+    #region Attack
+
+    #endregion
+
     #region Collision Checks
 
     private void IsGrounded()
