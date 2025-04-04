@@ -320,34 +320,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 19285748109032977, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4d0ba731bb5794cbeb8a31f520757d92, type: 2}
     - target: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_Name
       value: Buddy
       objectReference: {fileID: 0}
-    - target: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2541835796001408121, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4055742638407163401, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+    - target: {fileID: 6842339104231607713, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 571564455}
-    - target: {fileID: 5974586784244928937, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4d0ba731bb5794cbeb8a31f520757d92, type: 2}
-    - target: {fileID: 6514645261323117235, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2

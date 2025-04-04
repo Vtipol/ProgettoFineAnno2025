@@ -1,7 +1,7 @@
-using System.Collections;
 using UnityEngine;
-using System.Collections.Generic;
-public class AIMerge : MonoBehaviour
+using System.Collections;
+
+public class FollowPlayer : MonoBehaviour
 {
     public AIFollowSettings aiSettings;
     public Transform target;
@@ -11,7 +11,31 @@ public class AIMerge : MonoBehaviour
     private bool isGrounded;
     private bool targetInView;
     private bool needJump;
-
+    private bool isTrasformed;
+    public bool IsTrasformed
+    {
+        get { return isTrasformed; }
+        set { isTrasformed = value; }
+    }
+    public void Status(bool transformed)
+    {
+        if (transformed == true)
+        {
+            Deactivate();
+        }
+        else
+        {
+            Activated();
+        }
+    }
+    public  void Deactivate()
+    {
+        this.enabled = false;
+    }
+    public void Activated()
+    {
+        this.enabled = true;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,6 +43,7 @@ public class AIMerge : MonoBehaviour
 
     void Update()
     {
+        Status(isTrasformed);
         DetectTarget();
         CheckGroundStatus();
         HandleMovementLogic();
@@ -48,11 +73,11 @@ public class AIMerge : MonoBehaviour
 
         float direction = Mathf.Sign(target.position.x - transform.position.x);
         bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
-        
+
         RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
-        
+
         if (!groundFront.collider && !gapAhead.collider)
         {
             needJump = true;
@@ -76,12 +101,12 @@ public class AIMerge : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
         Vector2 direction = (target.position - transform.position).normalized;
-        rb.linearVelocity = new Vector2(direction.x * aiSettings.speed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
+     rb.linearVelocity = new Vector2(direction.x * aiSettings.speed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime); 
 
         if (isGrounded && needJump)
         {
             needJump = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x+15f, aiSettings.jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x + 15f, aiSettings.jumpForce);
         }
         if (isGrounded && target.position.y > transform.position.y - 2f)
         {
@@ -96,5 +121,3 @@ public class AIMerge : MonoBehaviour
         buddyCollider.enabled = true;
     }
 }
-
-
