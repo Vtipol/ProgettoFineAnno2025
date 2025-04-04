@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BuddyStateMachine : MonoBehaviour
+public class BuddyStateMachine 
 {
     private BuddyState currentState;
 
@@ -29,10 +29,7 @@ public class BuddyStateMachine : MonoBehaviour
 
     public void ExitState()
     {
-        if (currentState != null)
-        {
             currentState.OnExit();
             currentState = null;
-        }
     }
 }

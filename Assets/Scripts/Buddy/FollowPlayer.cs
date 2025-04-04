@@ -19,7 +19,7 @@ public class FollowPlayer : MonoBehaviour
     }
     public void Status(bool transformed)
     {
-        if (transformed == true)
+        if (transformed)
         {
             Deactivate();
         }

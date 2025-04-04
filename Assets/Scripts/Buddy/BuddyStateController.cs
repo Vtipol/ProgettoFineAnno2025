@@ -18,7 +18,10 @@ public class BuddyStateController : MonoBehaviour
     {
         stateMachine.EnterState(neutralState);
     }
-
+    public void SwitchState(BuddyState newState)
+    {
+        stateMachine.EnterState(newState);
+    }
     private void Update()
     {
         stateMachine.UpdateState();

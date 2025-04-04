@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class TrampolineState : MonoBehaviour
+public class TrampolineState : BuddyState
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    BuddyStateController controller;
+    BuddyStateMachine machineState;
+    FollowPlayer followPlayer;
+    public override void OnEnter()
     {
-        
+        Debug.Log("Entered TrampolineState");
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void OnUpdate()
     {
-        
+        machineState.UpdateState();
+    }
+    public override void OnExit()
+    {
+        if (Input.GetKey("Space"))
+        controller.SwitchState(new SoapState());
     }
 }
