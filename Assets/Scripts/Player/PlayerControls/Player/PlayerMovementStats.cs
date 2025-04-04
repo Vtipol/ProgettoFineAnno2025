@@ -20,11 +20,11 @@ public class PlayerMovementStats : ScriptableObject
     [Range(0f, 1f)] public float HeadWidth = 0.75f;
 
     [Header("Jump")]
-    public float JumpHeight = 2.5f;
+    public float JumpHeight = 2f;
     [Range(1f, 1.1f)] public float JumpHeightCompensationFactor = 1.054f;
     public float TimeTillJumpApex = 0.35f;
     [Range(0.01f, 5f)] public float GravityOnReleaseMultiplier = 2f;
-    public float MaxFallSpeed = 26f;
+    public float MaxFallSpeed = 15f;
     [Range(1, 5)] public int NumberOfJumpsAllowed = 2;
 
     [Header("Gravity Settings")]
