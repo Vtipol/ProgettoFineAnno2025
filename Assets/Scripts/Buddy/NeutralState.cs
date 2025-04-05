@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class NeutralState : BuddyState
 {
-    BuddyStateController controller;
-    BuddyStateMachine machineState;
-    FollowPlayer followPlayer;
     public override void OnEnter()
     {
+        Debug.Log("Entered Neutral State");
         followPlayer.IsTrasformed = false;
+        followPlayer.Activated();
     }
     public override void OnUpdate()
     {
-      machineState.UpdateState();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            followPlayer.IsTrasformed = true;
+            followPlayer.Deactivate();
+            controller.SwitchState(controller.gumState);
+        }
     }
     public override void OnExit()
     {
-        if (Input.GetKey("Space"))
-        {
-            followPlayer.IsTrasformed = true;
-            controller.SwitchState(new GumState());
-        }
+       
     }
 }
