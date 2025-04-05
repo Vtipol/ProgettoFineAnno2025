@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     public static bool JumpIsHeld;
     public static bool JumpWasRelesed;
     public static bool RunIsHeld;
+    public static bool TransformationIsPressed;
 
     private InputAction _moveAction;
     private InputAction _jumpAction;
@@ -32,11 +33,12 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         Movement = _moveAction.ReadValue<Vector2>();
+        RunIsHeld = _runAction.IsPressed();
 
         JumpWasPressed = _jumpAction.WasPerformedThisFrame();
         JumpIsHeld = _jumpAction.IsPressed();
         JumpWasRelesed = _jumpAction.WasReleasedThisFrame();
 
-        RunIsHeld = _runAction.IsPressed();
+        TransformationIsPressed = _transformAction.IsPressed();
     }
 }

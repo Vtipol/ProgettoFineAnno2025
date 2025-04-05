@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
@@ -54,6 +55,7 @@ private void Awake()
         CountTimer();
         JumpChecks();
         UpdateAnimations();
+        TransformationCheck();
     }
 
     private void FixedUpdate()
@@ -336,6 +338,22 @@ private void Awake()
     {
         IsGrounded();
         BumpedHead();
+    }
+
+    private void TransformationCheck()
+    {
+        if (InputManager.TransformationIsPressed == true)
+        {
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
+            {
+                Debug.Log("ForwardTPressed");
+            }
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
+            {
+                Debug.Log("BackwardTPressed");
+            }
+        }
+            
     }
 
     #endregion
