@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     private InputAction _jumpAction;
     private InputAction _runAction;
     private InputAction _attackAction;
+    private InputAction _transformAction;
 
     private void Awake()
     {
@@ -24,7 +25,8 @@ public class InputManager : MonoBehaviour
         _moveAction = PlayerInput.actions["Move"];
         _jumpAction = PlayerInput.actions["Jump"];
         _runAction = PlayerInput.actions["Sprint"];
-        _attackAction = PlayerInput.actions["Attack"]
+        _attackAction = PlayerInput.actions["Attack"];
+        _transformAction = PlayerInput.actions["Transformation"];
     }
 
     private void Update()
