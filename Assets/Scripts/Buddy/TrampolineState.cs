@@ -8,10 +8,21 @@ public class TrampolineState : BuddyState
     }
     public override void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            controller.SwitchState(controller.neutralState);
-        }
+       
+            if (InputManager.TransformationIsPressed == true)
+            {
+                followPlayer.IsTrasformed = true;
+                followPlayer.Deactivate();
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
+                {
+                    controller.SwitchState(controller.soapState);
+                }
+                else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
+                {
+                    controller.SwitchState(controller.neutralState);
+                }
+           }
+        
     }
     public override void OnExit()
     {

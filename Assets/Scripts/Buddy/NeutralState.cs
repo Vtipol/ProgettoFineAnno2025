@@ -10,11 +10,17 @@ public class NeutralState : BuddyState
     }
     public override void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (InputManager.TransformationIsPressed == true)
         {
-            followPlayer.IsTrasformed = true;
-            followPlayer.Deactivate();
-            controller.SwitchState(controller.gumState);
+
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
+            {
+                controller.SwitchState(controller.trampolineState);
+            }
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
+            {
+                controller.SwitchState(controller.gumState);
+            }
         }
     }
     public override void OnExit()

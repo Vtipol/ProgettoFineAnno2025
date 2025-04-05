@@ -55,7 +55,7 @@ private void Awake()
         CountTimer();
         JumpChecks();
         UpdateAnimations();
-        TransformationCheck();
+      //  TransformationCheck();
     }
 
     private void FixedUpdate()

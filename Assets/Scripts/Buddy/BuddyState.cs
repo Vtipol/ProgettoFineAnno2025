@@ -16,4 +16,7 @@ public abstract class BuddyState : MonoBehaviour
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
     public virtual void OnExit() { }
+    /*
+     * states order 0:neutral 1:Trampoline 2:Soap 3:Gum
+     */
 }

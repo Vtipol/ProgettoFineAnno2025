@@ -8,9 +8,18 @@ public class SoapState : BuddyState
     }
     public override void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (InputManager.TransformationIsPressed == true)
         {
-            controller.SwitchState(controller.trampolineState);
+            followPlayer.IsTrasformed = true;
+            followPlayer.Deactivate();
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
+            {
+                controller.SwitchState(controller.gumState);
+            }
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
+            {
+                controller.SwitchState(controller.trampolineState);
+            }
         }
     }
     public override void OnExit()
