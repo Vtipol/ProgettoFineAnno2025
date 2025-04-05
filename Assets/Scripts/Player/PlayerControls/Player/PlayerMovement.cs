@@ -367,7 +367,7 @@ private void Awake()
         bool falling = !_isGrounded && _rb.linearVelocity.y < -0.1f;
         _animator.SetBool("isFalling", falling);
 
-        Debug.Log($"Running: {running}, Jumping: {_isJumping}, Falling: {falling}");
+       // Debug.Log($"Running: {running}, Jumping: {_isJumping}, Falling: {falling}");
     }
 
 
