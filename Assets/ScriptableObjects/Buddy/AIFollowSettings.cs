@@ -11,4 +11,5 @@ public class AIFollowSettings : ScriptableObject
     public LayerMask targetLayer;
     public float groundCheckRadius = 1.2f;
     public float fallingSpeed = 2f;
+    public float runSpeedBonus = 8f;
 }

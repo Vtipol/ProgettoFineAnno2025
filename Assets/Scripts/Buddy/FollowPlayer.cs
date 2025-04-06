@@ -13,6 +13,7 @@ public class FollowPlayer : MonoBehaviour
     private bool needJump;
     private bool isTrasformed;
     public bool IsTrasformed
+
     {
         get { return isTrasformed; }
         set { isTrasformed = value; }
@@ -82,8 +83,9 @@ public class FollowPlayer : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
         Vector2 direction = (target.position - transform.position).normalized;
-     rb.linearVelocity = new Vector2(direction.x * aiSettings.speed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime); 
-
+        float runBonus = InputManager.RunIsHeld ? aiSettings.runSpeedBonus : 0f;
+        float moveSpeed = aiSettings.speed + runBonus;
+        rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
         if (isGrounded && needJump)
         {
             needJump = false;
