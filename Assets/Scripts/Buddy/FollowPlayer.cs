@@ -85,6 +85,11 @@ public class FollowPlayer : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         float runBonus = InputManager.RunIsHeld ? aiSettings.runSpeedBonus : 0f;
         float moveSpeed = aiSettings.speed + runBonus;
+        if (distance < aiSettings.decelDistance)
+        {
+            float t = distance / aiSettings.decelDistance; 
+            moveSpeed = Mathf.Lerp(0, moveSpeed, t);
+        }
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
         if (isGrounded && needJump)
         {
@@ -96,6 +101,7 @@ public class FollowPlayer : MonoBehaviour
             StartCoroutine(BuddyDropThroughPlatform());
         }
     }
+
     IEnumerator BuddyDropThroughPlatform()
     {
         Collider2D buddyCollider = GetComponent<CircleCollider2D>();

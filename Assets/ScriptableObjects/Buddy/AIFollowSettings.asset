@@ -25,3 +25,4 @@ MonoBehaviour:
   groundCheckRadius: 0.1
   fallingSpeed: 18
   runSpeedBonus: 8
+  decelDistance: 4
