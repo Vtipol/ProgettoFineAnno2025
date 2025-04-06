@@ -21,6 +21,11 @@ public class SoapState : BuddyState
                 controller.SwitchState(controller.trampolineState);
             }
         }
+        if (!followPlayer.targetInView)
+        {
+            Debug.Log("Target is OOR");
+            TeleportToPlayer();
+        }
     }
     public override void OnExit()
     {

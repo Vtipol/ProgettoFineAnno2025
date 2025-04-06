@@ -31,4 +31,5 @@ public class BuddyStateController : MonoBehaviour
     {
         stateMachine.UpdateState();
     }
+
 }

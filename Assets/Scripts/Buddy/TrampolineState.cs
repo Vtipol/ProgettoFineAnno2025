@@ -22,7 +22,11 @@ public class TrampolineState : BuddyState
                     controller.SwitchState(controller.neutralState);
                 }
            }
-        
+        if (!followPlayer.targetInView)
+        {
+            Debug.Log("Target is OOR");
+            TeleportToPlayer();
+        }
     }
     public override void OnExit()
     {

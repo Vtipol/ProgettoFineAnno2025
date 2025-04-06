@@ -9,7 +9,7 @@ public class FollowPlayer : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded;
-    private bool targetInView;
+    public bool targetInView;
     private bool needJump;
     private bool isTrasformed;
     public bool IsTrasformed

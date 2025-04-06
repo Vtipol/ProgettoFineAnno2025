@@ -22,6 +22,11 @@ public class NeutralState : BuddyState
                 controller.SwitchState(controller.gumState);
             }
         }
+        if (!followPlayer.targetInView)
+        {
+            Debug.Log("Target is OOR");
+            TeleportToPlayer();
+        }
     }
     public override void OnExit()
     {

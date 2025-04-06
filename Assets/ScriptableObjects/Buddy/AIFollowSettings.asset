@@ -15,7 +15,7 @@ MonoBehaviour:
   speed: 10
   jumpForce: 12
   stopDistance: 2
-  fieldOfViewRadius: 15
+  fieldOfViewRadius: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

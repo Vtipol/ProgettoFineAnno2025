@@ -16,7 +16,17 @@ public abstract class BuddyState : MonoBehaviour
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
     public virtual void OnExit() { }
-    /*
-     * states order 0:neutral 1:Trampoline 2:Soap 3:Gum
-     */
+
+    public void TeleportToPlayer()
+    {
+        Vector3 offset = new Vector3(1f, 1f, 0f);
+        controller.transform.position = followPlayer.target.position + offset;
+
+        Rigidbody2D rb = controller.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+    }
 }

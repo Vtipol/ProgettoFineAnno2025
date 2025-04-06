@@ -337,6 +337,7 @@ MonoBehaviour:
   aiSettings: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
   target: {fileID: 571564455}
   groundCheck: {fileID: 997457076}
+  targetInView: 0
 --- !u!114 &587339681
 MonoBehaviour:
   m_ObjectHideFlags: 0

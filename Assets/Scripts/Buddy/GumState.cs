@@ -22,6 +22,11 @@ public class GumState : BuddyState
                 controller.SwitchState(controller.soapState);
             }
         }
+        if (!followPlayer.targetInView)
+        {
+            Debug.Log("Target is OOR");
+            TeleportToPlayer();
+        }
     }
     public override void OnExit()
     {
