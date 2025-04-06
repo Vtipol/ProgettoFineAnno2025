@@ -19,7 +19,7 @@ public abstract class BuddyState : MonoBehaviour
 
     public void TeleportToPlayer()
     {
-        Vector3 offset = new Vector3(1f, 1f, 0f);
+        Vector3 offset = new Vector3(0f, 0f, 0f);
         controller.transform.position = followPlayer.target.position + offset;
 
         Rigidbody2D rb = controller.GetComponent<Rigidbody2D>();
@@ -29,4 +29,13 @@ public abstract class BuddyState : MonoBehaviour
             rb.angularVelocity = 0f;
         }
     }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Buddy"))
+        {
+            collision.GetComponent<BuddyState>().TeleportToPlayer();
+        }
+    }
+    */
 }

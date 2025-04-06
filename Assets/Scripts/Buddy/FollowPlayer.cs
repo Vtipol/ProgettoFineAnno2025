@@ -17,25 +17,7 @@ public class FollowPlayer : MonoBehaviour
         get { return isTrasformed; }
         set { isTrasformed = value; }
     }
-    public void Status(bool transformed)
-    {
-        if (transformed)
-        {
-            Deactivate();
-        }
-        else
-        {
-            Activated();
-        }
-    }
-    public  void Deactivate()
-    {
-        this.enabled = false;
-    }
-    public void Activated()
-    {
-        this.enabled = true;
-    }
+   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,7 +25,6 @@ public class FollowPlayer : MonoBehaviour
 
     void Update()
     {
-        Status(isTrasformed);
         DetectTarget();
         CheckGroundStatus();
         HandleMovementLogic();
@@ -51,7 +32,7 @@ public class FollowPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetInView)
+        if (targetInView && !isTrasformed)
         {
             MoveTowardsTarget();
         }

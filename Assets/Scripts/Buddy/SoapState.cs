@@ -11,7 +11,6 @@ public class SoapState : BuddyState
         if (InputManager.TransformationIsPressed == true)
         {
             followPlayer.IsTrasformed = true;
-            followPlayer.Deactivate();
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
             {
                 controller.SwitchState(controller.gumState);

@@ -6,7 +6,6 @@ public class NeutralState : BuddyState
     {
         Debug.Log("Entered Neutral State");
         followPlayer.IsTrasformed = false;
-        followPlayer.Activated();
     }
     public override void OnUpdate()
     {
