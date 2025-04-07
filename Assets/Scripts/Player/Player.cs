@@ -2,10 +2,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [Header("References")]
-    public PlayerMovementStats MoveStats;
+    public PlayerStats Stats;
     [SerializeField] private Collider2D _feetColl;
     [SerializeField] private Collider2D _bodyColl;
     [SerializeField] private Animator _animator;
@@ -65,11 +65,11 @@ private void Awake()
 
         if (_isGrounded)
         {
-            Move(MoveStats.GroundAcceleration, MoveStats.GroundDeceleration, InputManager.Movement);
+            Move(Stats.GroundAcceleration, Stats.GroundDeceleration, InputManager.Movement);
         }
         else
         {
-            Move(MoveStats.AirAcceleration, MoveStats.AirDeceleration, InputManager.Movement);
+            Move(Stats.AirAcceleration, Stats.AirDeceleration, InputManager.Movement);
         }
     }
 
@@ -85,9 +85,9 @@ private void Awake()
             Vector2 targetVelocity = Vector2.zero;
             if (InputManager.RunIsHeld)
             {
-                targetVelocity = new Vector2(moveInput.x, 0f) * MoveStats.MaxRunSpeed;
+                targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxRunSpeed;
             }
-            else { targetVelocity = new Vector2(moveInput.x, 0f) * MoveStats.MaxWalkSpeed; }
+            else { targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxWalkSpeed; }
 
             _moveVelocity = Vector2.Lerp(_moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
             _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
@@ -136,7 +136,7 @@ private void Awake()
         //press jump
         if (InputManager.JumpWasPressed)
         {
-            _jumpBufferTimer = MoveStats.JumpBufferTime;
+            _jumpBufferTimer = Stats.JumpBufferTime;
             _jumpReleasedDuringBuffer = false;
         }
 
@@ -153,7 +153,7 @@ private void Awake()
                 {
                     _isPastApexThreshold = false;
                     _isFastFalling = true;
-                    _fastFallTime = MoveStats.TimeForUpwardsCancel;
+                    _fastFallTime = Stats.TimeForUpwardsCancel;
                     VerticalVelocity = 0f;
                 }
                 else
@@ -184,7 +184,7 @@ private void Awake()
         }*/
 
         //fall/air jump
-        else if (_jumpBufferTimer > 0 && _isFalling && _numberOfJumpsUsed < MoveStats.NumberOfJumpsAllowed -1)
+        else if (_jumpBufferTimer > 0 && _isFalling && _numberOfJumpsUsed < Stats.NumberOfJumpsAllowed -1)
         {
             InitiateJump(2); //<- means that if you fall/air jump, you CAN NOT double jump
             _isFastFalling = false;
@@ -213,7 +213,7 @@ private void Awake()
 
         _jumpBufferTimer = 0f;
         _numberOfJumpsUsed += numberOfJumpsUsed;
-        VerticalVelocity = MoveStats.InitialJumpVelocity;
+        VerticalVelocity = Stats.InitialJumpVelocity;
     }
 
     private void Jump()
@@ -230,9 +230,9 @@ private void Awake()
             if (VerticalVelocity > 0f)
             {
                 // Apex detection
-                _apexPoint = Mathf.InverseLerp(MoveStats.InitialJumpVelocity, 0f, VerticalVelocity);
+                _apexPoint = Mathf.InverseLerp(Stats.InitialJumpVelocity, 0f, VerticalVelocity);
 
-                if (_apexPoint > MoveStats.ApexThreshold)
+                if (_apexPoint > Stats.ApexThreshold)
                 {
                     if (!_isPastApexThreshold)
                     {
@@ -242,19 +242,19 @@ private void Awake()
 
                     // Slightly reduce speed near the apex for a hang effect
                     _timePastApexThreshold += Time.fixedDeltaTime;
-                    if (_timePastApexThreshold < MoveStats.ApexHangTime)
+                    if (_timePastApexThreshold < Stats.ApexHangTime)
                     {
                         VerticalVelocity *= 0.9f; // Gradual slow down near apex
                     }
                     else
                     {
-                        VerticalVelocity -= MoveStats.Gravity * Time.fixedDeltaTime; // Allow falling naturally
+                        VerticalVelocity -= Stats.Gravity * Time.fixedDeltaTime; // Allow falling naturally
                     }
                 }
                 else
                 {
                     // Normal upward gravity
-                    VerticalVelocity += MoveStats.Gravity * Time.fixedDeltaTime;
+                    VerticalVelocity += Stats.Gravity * Time.fixedDeltaTime;
                     _isPastApexThreshold = false; // Reset if below apex threshold
                 }
             }
@@ -265,21 +265,21 @@ private void Awake()
                 _isFalling = true;
 
                 // Apply different gravity multipliers for normal and fast fall
-                float fallMultiplier = _isFastFalling ? MoveStats.GravityOnReleaseMultiplier : MoveStats.FallGravityMultiplier;
-                VerticalVelocity += MoveStats.Gravity * fallMultiplier * Time.fixedDeltaTime;
+                float fallMultiplier = _isFastFalling ? Stats.GravityOnReleaseMultiplier : Stats.FallGravityMultiplier;
+                VerticalVelocity += Stats.Gravity * fallMultiplier * Time.fixedDeltaTime;
             }
         }
 
         // **Jump Cut (Fast Fall)**
         if (_isFastFalling)
         {
-            if (_fastFallTime >= MoveStats.TimeForUpwardsCancel)
+            if (_fastFallTime >= Stats.TimeForUpwardsCancel)
             {
-                VerticalVelocity += MoveStats.Gravity * MoveStats.GravityOnReleaseMultiplier * Time.fixedDeltaTime;
+                VerticalVelocity += Stats.Gravity * Stats.GravityOnReleaseMultiplier * Time.fixedDeltaTime;
             }
             else
             {
-                VerticalVelocity = Mathf.Lerp(_fastFallReleaseSpeed, 0f, (_fastFallTime / MoveStats.TimeForUpwardsCancel));
+                VerticalVelocity = Mathf.Lerp(_fastFallReleaseSpeed, 0f, (_fastFallTime / Stats.TimeForUpwardsCancel));
             }
 
             _fastFallTime += Time.fixedDeltaTime;
@@ -289,11 +289,11 @@ private void Awake()
         if (!_isGrounded && !_isJumping)
         {
             _isFalling = true;
-            VerticalVelocity += MoveStats.Gravity * MoveStats.FallGravityMultiplier * Time.fixedDeltaTime;
+            VerticalVelocity += Stats.Gravity * Stats.FallGravityMultiplier * Time.fixedDeltaTime;
         }
 
         // **Clamp Fall Speed to Avoid Unrealistic Speeds**
-        VerticalVelocity = Mathf.Clamp(VerticalVelocity, -MoveStats.MaxFallSpeed, 50f);
+        VerticalVelocity = Mathf.Clamp(VerticalVelocity, -Stats.MaxFallSpeed, 50f);
 
         // Apply the vertical velocity to the Rigidbody
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, VerticalVelocity);
@@ -310,8 +310,8 @@ private void Awake()
     private void IsGrounded()
     {
         Vector2 boxCastOrigin = new Vector2(_feetColl.bounds.center.x, _feetColl.bounds.min.y);
-        Vector2 boxCastSize = new Vector2(_feetColl.bounds.size.x, MoveStats.GroundDetectionRayLength);
-        _groundHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, MoveStats.GroundDetectionRayLength, MoveStats.GroundLayer);
+        Vector2 boxCastSize = new Vector2(_feetColl.bounds.size.x, Stats.GroundDetectionRayLength);
+        _groundHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.down, Stats.GroundDetectionRayLength, Stats.GroundLayer);
 
         if (_groundHit.collider != null)
         {
@@ -324,9 +324,9 @@ private void Awake()
     private void BumpedHead()
     {
         Vector2 boxCastOrigin = new Vector2(_feetColl.bounds.center.x, _bodyColl.bounds.max.y);
-        Vector2 boxCastSize = new Vector2(_feetColl.bounds.size.x * MoveStats.HeadWidth, MoveStats.HeadDetectionRayLength);
+        Vector2 boxCastSize = new Vector2(_feetColl.bounds.size.x * Stats.HeadWidth, Stats.HeadDetectionRayLength);
 
-        _headHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.up, MoveStats.HeadDetectionRayLength, MoveStats.GroundLayer);
+        _headHit = Physics2D.BoxCast(boxCastOrigin, boxCastSize, 0f, Vector2.up, Stats.HeadDetectionRayLength, Stats.GroundLayer);
         if (_headHit.collider != null)
         {
             _bumpedHead = true;
@@ -368,7 +368,7 @@ private void Awake()
         {
             _coyoteTimer -= Time.deltaTime;
         }
-        else { _coyoteTimer = MoveStats.JumpCoyoteTime; }
+        else { _coyoteTimer = Stats.JumpCoyoteTime; }
     }
 
     #endregion

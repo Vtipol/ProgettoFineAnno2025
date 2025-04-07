@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerMovementStats", menuName = "Scriptable Object/PlayerMovementStats")]
-public class PlayerMovementStats : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerStats", menuName = "Scriptable Object/PlayerStats")]
+public class PlayerStats : ScriptableObject
 {
     [Header("Walk")]
     [Range(1f, 100f)] public float MaxWalkSpeed = 12.5f;
@@ -28,8 +28,8 @@ public class PlayerMovementStats : ScriptableObject
     [Range(1, 5)] public int NumberOfJumpsAllowed = 2;
 
     [Header("Gravity Settings")]
-    [Range(1f, 5f)] public float GravityMultiplier = 2f; // New
-    [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f; // New
+    [Range(1f, 5f)] public float GravityMultiplier = 2f;
+    [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f;
 
     [Header("Jump Cut")]
     [Range(0.02f, 0.3f)] public float TimeForUpwardsCancel = 0.027f;
@@ -43,6 +43,10 @@ public class PlayerMovementStats : ScriptableObject
 
     [Header("Jump Coyote Time")]
     [Range(0f, 1f)] public float JumpCoyoteTime = 0.1f;
+
+    [Header("Throw")]
+    [Range(0f, 1f)] public float ThrowForce = 1f;
+    [Range(45f, 90f)] public float ThrowAngle = 45f;    
 
     [Header("Debug")]
     public bool DebugShowIsGroundedBox;
