@@ -22,14 +22,6 @@ public class PickedUp : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D groundCollision)
     {
         IsPickedUp = false;
-        if (stateController != null) stateController.enabled = true;
     }
-    //void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.P))
-    //    {
-    //        PickedUp pickup = buddy.GetComponent<PickedUp>();
-    //        pickup.IsPickedUp = true; // This will trigger DisableOtherScripts() esempio per chiamare lo script
-    //    }
-    //}
+   
 }
