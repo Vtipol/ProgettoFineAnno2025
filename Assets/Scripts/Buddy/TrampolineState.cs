@@ -8,7 +8,6 @@ public class TrampolineState : BuddyState
     }
     public override void OnUpdate()
     {
-       
             if (InputManager.TransformationIsPressed == true)
             {
                 followPlayer.IsTrasformed = true;

@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
     public AIFollowSettings aiSettings;
     public Transform target;
     public Transform groundCheck;
+    public PickedUp pickedUp;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -33,7 +34,7 @@ public class FollowPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetInView && !isTrasformed)
+        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp)
         {
             MoveTowardsTarget();
         }

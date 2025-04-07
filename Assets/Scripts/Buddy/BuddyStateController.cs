@@ -6,6 +6,7 @@ public class BuddyStateController : MonoBehaviour
     public SoapState soapState;
     public GumState gumState;
     public TrampolineState trampolineState;
+    public PickedUp pickedUp;
 
     private BuddyStateMachine stateMachine;
 
@@ -25,6 +26,11 @@ public class BuddyStateController : MonoBehaviour
     }
     public void SwitchState(BuddyState newState)
     {
+        if (pickedUp.IsPickedUp)
+        {
+            Debug.Log("Buddy is picked up");
+            return;
+        }
         stateMachine.EnterState(newState);
     }
     private void Update()

@@ -337,6 +337,7 @@ MonoBehaviour:
   aiSettings: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
   target: {fileID: 571564455}
   groundCheck: {fileID: 997457076}
+  pickedUp: {fileID: 587339682}
   targetInView: 0
 --- !u!114 &587339681
 MonoBehaviour:
@@ -354,6 +355,7 @@ MonoBehaviour:
   soapState: {fileID: 1925101224}
   gumState: {fileID: 1925101223}
   trampolineState: {fileID: 1925101221}
+  pickedUp: {fileID: 587339682}
 --- !u!114 &587339682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5268f14f78cfb455488b4a09efa49773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCollider: {fileID: 997457077}
 --- !u!1001 &610680872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,6 +447,11 @@ PrefabInstance:
 --- !u!4 &997457076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8749724908321769867, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+  m_PrefabInstance: {fileID: 610680872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &997457077 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2481468055649861812, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
   m_PrefabInstance: {fileID: 610680872}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1239938817

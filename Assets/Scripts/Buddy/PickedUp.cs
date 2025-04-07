@@ -1,40 +1,27 @@
 using UnityEngine;
-
+using System;
 public class PickedUp : MonoBehaviour
 {
     private bool isPickedUp = false;
-
+    [SerializeField] private Collider2D groundCollider;
     public bool IsPickedUp
     {
         get => isPickedUp;
         set
         {
-            if (value && !isPickedUp)
-            {
-                DisableOtherScripts();
-            }
             isPickedUp = value;
         }
     }
-
     private FollowPlayer followPlayer;
     private BuddyStateController stateController;
-
     void Awake()
     {
         followPlayer = GetComponent<FollowPlayer>();
         stateController = GetComponent<BuddyStateController>();
     }
-
-    private void DisableOtherScripts()
-    {
-        if (followPlayer != null) followPlayer.enabled = false;
-        if (stateController != null) stateController.enabled = false;
-    }
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D groundCollision)
     {
         IsPickedUp = false;
-        if (followPlayer != null) followPlayer.enabled = true;
         if (stateController != null) stateController.enabled = true;
     }
     //void Update()
