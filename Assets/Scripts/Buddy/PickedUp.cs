@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickedUp : MonoBehaviour
 {
-    private bool isPickedUp = true;
+    private bool isPickedUp = false;
     [SerializeField] private CircleCollider2D groundCollider;
 
     public bool IsPickedUp
@@ -10,10 +10,6 @@ public class PickedUp : MonoBehaviour
         get => isPickedUp;
         set
         {
-            //if (value && !isPickedUp)
-            //{
-            //    DisableOtherScripts();
-            //}
             isPickedUp = value;
         }
     }
@@ -26,15 +22,16 @@ public class PickedUp : MonoBehaviour
         followPlayer = GetComponent<FollowPlayer>();
         stateController = GetComponent<BuddyStateController>();
     }
-
+    
+/*
    public void OnCollisionEnter2D(Collision2D collision)
    {
-       if (collision.collider == groundCollider)       {
+       if (collision.collider.gameObject == groundCollider.gameObject)       {
             Debug.Log("PickedUp is false");
           IsPickedUp = false;
         }
 
-    }
+    }*/
 //    //void Update()
 //    //{
 //    //    if (Input.GetKeyDown(KeyCode.P))

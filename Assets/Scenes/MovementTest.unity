@@ -599,6 +599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buddy
       objectReference: {fileID: 0}
+    - target: {fileID: 2481468055649861812, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -938,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1630446981866368323, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.34
       objectReference: {fileID: 0}
     - target: {fileID: 1630446981866368323, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_LocalPosition.y

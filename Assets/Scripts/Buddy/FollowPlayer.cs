@@ -47,7 +47,12 @@ public class FollowPlayer : MonoBehaviour
 
     void CheckGroundStatus()
     {
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, aiSettings.groundLayer);
+        if (!wasGrounded && isGrounded && pickedUp.IsPickedUp)
+        {
+            pickedUp.IsPickedUp = false;
+        }
     }
 
     void HandleMovementLogic()
