@@ -27,10 +27,6 @@ public class PlayerStats : ScriptableObject
     public float MaxFallSpeed = 15f;
     [Range(1, 5)] public int NumberOfJumpsAllowed = 2;
 
-    [Header("Gravity Settings")]
-    [Range(1f, 5f)] public float GravityMultiplier = 2f;
-    [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f;
-
     [Header("Jump Cut")]
     [Range(0.02f, 0.3f)] public float TimeForUpwardsCancel = 0.027f;
 
@@ -43,10 +39,17 @@ public class PlayerStats : ScriptableObject
 
     [Header("Jump Coyote Time")]
     [Range(0f, 1f)] public float JumpCoyoteTime = 0.1f;
+    
+    [Header("Gravity Settings")]
+    [Range(1f, 5f)] public float GravityMultiplier = 2f;
+    [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f;
 
     [Header("Throw")]
     [Range(0f, 1f)] public float ThrowForce = 1f;
-    [Range(45f, 90f)] public float ThrowAngle = 45f;    
+    [Range(45f, 90f)] public float ThrowAngle = 45f;
+
+    [Header("Attack")]
+    public float Damage = 1f;
 
     [Header("Debug")]
     public bool DebugShowIsGroundedBox;

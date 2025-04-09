@@ -55,7 +55,6 @@ private void Awake()
         CountTimer();
         JumpChecks();
         UpdateAnimations();
-      //  TransformationCheck();
     }
 
     private void FixedUpdate()
@@ -303,9 +302,11 @@ private void Awake()
 
     #region Attack
 
+
+
     #endregion
 
-    #region Collision Checks
+    #region Checks
 
     private void IsGrounded()
     {
@@ -340,20 +341,16 @@ private void Awake()
         BumpedHead();
     }
 
-    private void TransformationCheck()
+    public void AttackCheck()
     {
-        if (InputManager.TransformationIsPressed == true)
+        if(InputManager.AttackDownExecuted == true && _isGrounded == false)
         {
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
-            {
-                Debug.Log("ForwardTPressed");
-            }
-            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
-            {
-                Debug.Log("BackwardTPressed");
-            }
+            Debug.Log("DownwaedAttack");
         }
-            
+        else if (InputManager.AttackIsPressed == true)
+        {
+            Debug.Log("NormalAttack");
+        }
     }
 
     #endregion
