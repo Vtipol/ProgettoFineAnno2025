@@ -118,6 +118,7 @@ MonoBehaviour:
   soapState: {fileID: 621205164474060465}
   gumState: {fileID: 297729594644627854}
   trampolineState: {fileID: 1035276020747867}
+  pickedUp: {fileID: 7639820405145412246}
   circleCollider: {fileID: 2986740559170639401}
   boxCollider: {fileID: 5203781075069336490}
   capsuleCollider: {fileID: 612355088285040826}
@@ -136,6 +137,7 @@ MonoBehaviour:
   aiSettings: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
   target: {fileID: 0}
   groundCheck: {fileID: 8749724908321769867}
+  pickedUp: {fileID: 7639820405145412246}
   targetInView: 0
 --- !u!114 &7639820405145412246
 MonoBehaviour:
@@ -149,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5268f14f78cfb455488b4a09efa49773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCollider: {fileID: 2481468055649861812}
 --- !u!1 &610448499012103397
 GameObject:
   m_ObjectHideFlags: 0
