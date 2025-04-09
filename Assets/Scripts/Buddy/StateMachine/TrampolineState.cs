@@ -5,6 +5,7 @@ public class TrampolineState : BuddyState
     public override void OnEnter()
     {
         Debug.Log("Entered TrampolineState");
+        controller.EnableOnlyCollider(controller.capsuleCollider);
     }
     public override void OnUpdate()
     {
@@ -29,6 +30,6 @@ public class TrampolineState : BuddyState
     }
     public override void OnExit()
     {
-        
+        controller.EnableOnlyCollider(null);
     }
 }

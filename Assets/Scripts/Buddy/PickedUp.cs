@@ -25,6 +25,7 @@ public class PickedUp : MonoBehaviour
         followPlayer = GetComponent<FollowPlayer>();
         stateController = GetComponent<BuddyStateController>();
     }
+<<<<<<< Updated upstream
 
     private void DisableOtherScripts()
     {
@@ -36,6 +37,14 @@ public class PickedUp : MonoBehaviour
         IsPickedUp = false;
         if (followPlayer != null) followPlayer.enabled = true;
         if (stateController != null) stateController.enabled = true;
+=======
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider == groundCollider)
+        {
+            IsPickedUp = false;
+        }
+>>>>>>> Stashed changes
     }
     //void Update()
     //{

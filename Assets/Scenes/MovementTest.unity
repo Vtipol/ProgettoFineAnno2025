@@ -422,9 +422,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     m_RemovedComponents:
     - {fileID: 2985448253561029955, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
     - {fileID: 6842339104231607713, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+=======
+    - target: {fileID: 9032496640084319590, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 571564455}
+    m_RemovedComponents:
+    - {fileID: 4226128157879323736, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+>>>>>>> Stashed changes
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
