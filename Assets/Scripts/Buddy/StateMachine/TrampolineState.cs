@@ -5,9 +5,11 @@ public class TrampolineState : BuddyState
     public override void OnEnter()
     {
         Debug.Log("Entered TrampolineState");
+        controller.EnableOnlyCollider(controller.capsuleCollider);
     }
     public override void OnUpdate()
     {
+       
             if (InputManager.TransformationIsPressed == true)
             {
                 followPlayer.IsTrasformed = true;
@@ -28,6 +30,6 @@ public class TrampolineState : BuddyState
     }
     public override void OnExit()
     {
-        
+        controller.EnableOnlyCollider(null);
     }
 }

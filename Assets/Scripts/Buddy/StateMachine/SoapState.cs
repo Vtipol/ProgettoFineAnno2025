@@ -5,6 +5,7 @@ public class SoapState : BuddyState
     public override void OnEnter()
     {
         Debug.Log("Entered SoapState");
+        controller.EnableOnlyCollider(controller.boxCollider);
     }
     public override void OnUpdate()
     {
@@ -28,6 +29,6 @@ public class SoapState : BuddyState
     }
     public override void OnExit()
     {
-     
+        controller.EnableOnlyCollider(null);
     }
 }

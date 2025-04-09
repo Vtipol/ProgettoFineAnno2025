@@ -1,24 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class NeutralState : BuddyState
+public class GumState : BuddyState
 {
     public override void OnEnter()
     {
-        Debug.Log("Entered Neutral State");
-        followPlayer.IsTrasformed = false;
+        Debug.Log("Entered GumState");
+        controller.EnableOnlyCollider(controller.circleCollider);
     }
     public override void OnUpdate()
     {
         if (InputManager.TransformationIsPressed == true)
         {
-
+            followPlayer.IsTrasformed = true;
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
             {
-                controller.SwitchState(controller.trampolineState);
+                controller.SwitchState(controller.neutralState);
             }
             else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
             {
-                controller.SwitchState(controller.gumState);
+                controller.SwitchState(controller.soapState);
             }
         }
         if (!followPlayer.targetInView)
@@ -29,6 +30,6 @@ public class NeutralState : BuddyState
     }
     public override void OnExit()
     {
-       
+        controller.EnableOnlyCollider(null);
     }
 }
