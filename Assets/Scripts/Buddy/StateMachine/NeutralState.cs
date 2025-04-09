@@ -10,7 +10,7 @@ public class NeutralState : BuddyState
     }
     public override void OnUpdate()
     {
-        if (InputManager.TransformationIsPressed == true)
+        if (InputManager.TransformationIsPressed == true && !pickedUp.IsPickedUp)
         {
 
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))

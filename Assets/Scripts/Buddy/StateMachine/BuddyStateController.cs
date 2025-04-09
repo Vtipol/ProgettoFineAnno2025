@@ -24,17 +24,17 @@ public class BuddyStateController : MonoBehaviour
 
     private void Start()
     {
-        neutralState.Initialize(this, stateMachine, GetComponent<FollowPlayer>());
-        gumState.Initialize(this, stateMachine, GetComponent<FollowPlayer>());
-        soapState.Initialize(this, stateMachine, GetComponent<FollowPlayer>());
-        trampolineState.Initialize(this, stateMachine, GetComponent<FollowPlayer>());
+        neutralState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>());
+        gumState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>());
+        soapState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>());
+        trampolineState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>());
+
 
         stateMachine.EnterState(neutralState);
     }
 
     public void SwitchState(BuddyState newState)
     {
-        if (pickedUp.IsPickedUp) return;
         stateMachine.EnterState(newState);
     }
 

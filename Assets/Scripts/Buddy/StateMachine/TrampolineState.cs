@@ -10,7 +10,7 @@ public class TrampolineState : BuddyState
     public override void OnUpdate()
     {
        
-            if (InputManager.TransformationIsPressed == true)
+            if (InputManager.TransformationIsPressed == true && !pickedUp.IsPickedUp)
             {
                 followPlayer.IsTrasformed = true;
                 if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
