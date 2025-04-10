@@ -34,7 +34,7 @@ public class FollowPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && /*isGrounded*/)
+        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && isGrounded)
         {
             MoveTowardsTarget();
         }
@@ -95,7 +95,7 @@ public class FollowPlayer : MonoBehaviour
         if (isGrounded && needJump)
         {
             needJump = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x + 15f, aiSettings.jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
         if (isGrounded && target.position.y > transform.position.y - 2f)
         {

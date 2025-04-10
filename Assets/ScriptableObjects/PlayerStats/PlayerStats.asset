@@ -37,7 +37,7 @@ MonoBehaviour:
   JumpCoyoteTime: 0.1
   GravityMultiplier: 2
   FallGravityMultiplier: 2.5
-  ThrowForce: 25
+  ThrowForce: 15
   ThrowAngle: 45
   Damage: 1
   DebugShowIsGroundedBox: 0
