@@ -253,6 +253,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &55813360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+  m_PrefabInstance: {fileID: 610680872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &107533845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7965949423656897136, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+  m_PrefabInstance: {fileID: 1762288230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &311965224
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +648,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 571564455}
+    - target: {fileID: 9032496640084319590, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -991,6 +1005,18 @@ PrefabInstance:
       propertyPath: _playerMovement
       value: 
       objectReference: {fileID: 571564453}
+    - target: {fileID: 8669920481694177177, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 571564450}
+    - target: {fileID: 8669920481694177177, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: _pickTarget
+      value: 
+      objectReference: {fileID: 55813360}
+    - target: {fileID: 8669920481694177177, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: _pickUpPosition
+      value: 
+      objectReference: {fileID: 107533845}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

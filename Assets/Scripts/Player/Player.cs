@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     //movement vars
     private Vector2 _moveVelocity;
-    private bool _isFacingRight;
+    public bool _isFacingRight;
 
     //collision check vars
     private RaycastHit2D _groundHit;

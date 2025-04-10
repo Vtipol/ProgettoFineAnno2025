@@ -34,7 +34,7 @@ public class FollowPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp)
+        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && /*isGrounded*/)
         {
             MoveTowardsTarget();
         }

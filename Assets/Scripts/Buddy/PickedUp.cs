@@ -12,13 +12,16 @@ public class PickedUp : MonoBehaviour
             isPickedUp = value;
         }
     }
+
     private FollowPlayer followPlayer;
     private BuddyStateController stateController;
+
     void Awake()
     {
         followPlayer = GetComponent<FollowPlayer>();
         stateController = GetComponent<BuddyStateController>();
     }
+
     public void OnCollisionEnter2D(Collision2D groundCollision)
     {
         IsPickedUp = false;

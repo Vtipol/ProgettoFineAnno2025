@@ -128,7 +128,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: 75851e0215a04854ba93094373174bde, type: 2}
+  _pickUpPosition: {fileID: 7965949423656897136}
   _pickTrigger: {fileID: 1374630410550099974}
+  _animator: {fileID: 8124245553031814339}
+  _pickTarget: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
 --- !u!95 &8124245553031814339
 Animator:
   serializedVersion: 7

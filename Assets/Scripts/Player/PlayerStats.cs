@@ -45,7 +45,7 @@ public class PlayerStats : ScriptableObject
     [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f;
 
     [Header("Throw")]
-    [Range(0f, 1f)] public float ThrowForce = 1f;
+    [Range(0f, 50f)] public float ThrowForce = 25f;
     [Range(45f, 90f)] public float ThrowAngle = 45f;
 
     [Header("Attack")]
