@@ -5,12 +5,14 @@ public abstract class BuddyState : MonoBehaviour
     protected BuddyStateController controller;
     protected BuddyStateMachine machineState;
     protected FollowPlayer followPlayer;
+    protected PickedUp pickedUp;
 
-    public void Initialize(BuddyStateController controller, BuddyStateMachine machineState, FollowPlayer followPlayer)
+    public void Initialize(BuddyStateController controller, BuddyStateMachine machineState, FollowPlayer followPlayer, PickedUp pickedUp)
     {
         this.controller = controller;
         this.machineState = machineState;
         this.followPlayer = followPlayer;
+        this.pickedUp = pickedUp;
     }
 
     public virtual void OnEnter() { }

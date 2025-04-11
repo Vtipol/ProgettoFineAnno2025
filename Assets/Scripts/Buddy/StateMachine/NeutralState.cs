@@ -6,10 +6,11 @@ public class NeutralState : BuddyState
     {
         Debug.Log("Entered Neutral State");
         followPlayer.IsTrasformed = false;
+        controller.EnableOnlyCollider(null);
     }
     public override void OnUpdate()
     {
-        if (InputManager.TransformationIsPressed == true)
+        if (InputManager.TransformationIsPressed == true && !pickedUp.IsPickedUp)
         {
 
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
