@@ -5,6 +5,7 @@ public class Trampoline : MonoBehaviour
     [SerializeField] private CapsuleCollider2D trampolineCollider;
     [SerializeField] private float trampolineBounceForce = 25f;
     public PickedUp pickedUp;
+    public BuddyState buddyState;
 
     private Rigidbody2D _playerRb;
     private bool _shouldBouncePlayer;
@@ -14,10 +15,6 @@ public class Trampoline : MonoBehaviour
         if (pickedUp.IsPickedUp)
         {
             trampolineCollider.enabled = false;
-        }
-        else
-        {
-            trampolineCollider.enabled = true;
         }
     }
 
