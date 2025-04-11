@@ -3,15 +3,21 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
     [SerializeField] private CapsuleCollider2D trampolineCollider;
+    [SerializeField] private float trampolineBounceForce = 25f;
     public PickedUp pickedUp;
+
+    private Rigidbody2D _playerRb;
+    private bool _shouldBouncePlayer;
 
     private void LateUpdate()
     {
         if (pickedUp.IsPickedUp)
         {
-            if (trampolineCollider.enabled)
-                trampolineCollider.enabled = false;
-            else trampolineCollider.enabled = true;
+            trampolineCollider.enabled = false;
+        }
+        else
+        {
+            trampolineCollider.enabled = true;
         }
     }
 
@@ -20,6 +26,7 @@ public class Trampoline : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !pickedUp.IsPickedUp)
         {
             Debug.Log("Entered Trampoline Collider");
+
         }
 
     }
