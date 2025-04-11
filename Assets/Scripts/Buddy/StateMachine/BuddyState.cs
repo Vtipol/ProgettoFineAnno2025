@@ -14,11 +14,9 @@ public abstract class BuddyState : MonoBehaviour
         this.followPlayer = followPlayer;
         this.pickedUp = pickedUp;
     }
-
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
     public virtual void OnExit() { }
-
     public void TeleportToPlayer()
     {
         Vector3 offset = new Vector3(0f, 0f, 0f);
