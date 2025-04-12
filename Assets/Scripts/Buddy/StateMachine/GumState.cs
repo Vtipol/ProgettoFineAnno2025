@@ -1,32 +1,35 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class GumState : BuddyState
+public class GumState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
         Debug.Log("Entered GumState");
         controller.EnableOnlyCollider(controller.circleCollider);
+        followPlayer.IsTrasformed = true;
     }
     public override void OnUpdate()
     {
-        if (InputManager.TransformationIsPressed == true && !pickedUp.IsPickedUp)
-        {
-            followPlayer.IsTrasformed = true;
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
-            {
-                controller.SwitchState(controller.neutralState);
-            }
-            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
-            {
-                controller.SwitchState(controller.soapState);
-            }
-        }
         if (!followPlayer.targetInView)
         {
             Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
+    }
+    public void OnInput(string input)
+    {
+        
+            switch (input)
+            {
+                case "E":
+                    controller.SwitchState(controller.neutralState);
+                    break;
+                case "Q":
+                    controller.SwitchState(controller.soapState);
+                    break;
+            }
+        
     }
     public override void OnExit()
     {

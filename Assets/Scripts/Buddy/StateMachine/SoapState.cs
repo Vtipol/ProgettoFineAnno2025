@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class SoapState : BuddyState
+public class SoapState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
         Debug.Log("Entered SoapState");
         controller.EnableOnlyCollider(controller.boxCollider);
+        followPlayer.IsTrasformed = true;
     }
     public override void OnUpdate()
     {
-        if (InputManager.TransformationIsPressed == true && !pickedUp.IsPickedUp)
-        {
-            followPlayer.IsTrasformed = true;
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
-            {
-                controller.SwitchState(controller.gumState);
-            }
-            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
-            {
-                controller.SwitchState(controller.trampolineState);
-            }
-        }
         if (!followPlayer.targetInView)
         {
             Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
+    }
+    public void OnInput(string input)
+    {
+        
+            switch (input)
+            {
+                case "E":
+                    controller.SwitchState(controller.gumState);
+                    break;
+                case "Q":
+                    controller.SwitchState(controller.trampolineState);
+                    break;
+            }
+        
     }
     public override void OnExit()
     {

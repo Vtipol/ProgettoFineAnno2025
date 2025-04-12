@@ -69,9 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Transformation",
+                    "name": "TransformRight",
                     "type": "Button",
-                    "id": "f444903e-c78b-4a69-84de-826eba94f0eb",
+                    "id": "0d770d53-6ab9-4118-8127-fce8c87531d3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TransformLeft",
+                    "type": "Button",
+                    "id": "2b6be736-012e-4bb3-9b3c-8c4e90b1ee34",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -356,45 +365,45 @@
                 },
                 {
                     "name": "",
-                    "id": "4968e87f-15d5-41b7-b2e5-9371dfe90252",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Transformation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f68ad706-6718-4051-b3a0-ed9e3b34696e",
+                    "id": "0d145ff0-9274-4365-8a13-fe05dfa4e2c9",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Transformation",
+                    "action": "TransformRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "21cd549c-25ed-4caf-9b5f-dd73bd5f30e9",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Transformation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "304dad71-db84-4de7-9011-ba4291d5ea03",
+                    "id": "04680c82-85f6-4dc7-8567-338abd583659",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Transformation",
+                    "action": "TransformRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef8bbed6-4018-4a5a-b214-ca84ab65c7f5",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "TransformLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58bde742-e778-4085-a8aa-ee20ac2bc3b6",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "TransformLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

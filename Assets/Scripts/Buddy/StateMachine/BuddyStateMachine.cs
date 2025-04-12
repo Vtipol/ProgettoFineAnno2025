@@ -1,6 +1,5 @@
 using UnityEngine;
-
-public class BuddyStateMachine 
+public class BuddyStateMachine
 {
     private BuddyState currentState;
 
@@ -21,15 +20,20 @@ public class BuddyStateMachine
 
     public void UpdateState()
     {
-        if (currentState != null)
+        currentState?.OnUpdate();
+    }
+
+    public void HandleInput(string input)
+    {
+        if (currentState is IInputHandler inputHandler)
         {
-            currentState.OnUpdate();
+            inputHandler.OnInput(input);
         }
     }
 
     public void ExitState()
     {
-            currentState.OnExit();
-            currentState = null;
+        currentState?.OnExit();
+        currentState = null;
     }
 }

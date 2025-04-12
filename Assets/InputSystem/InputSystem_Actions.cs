@@ -155,9 +155,18 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Transformation"",
+                    ""name"": ""TransformRight"",
                     ""type"": ""Button"",
-                    ""id"": ""f444903e-c78b-4a69-84de-826eba94f0eb"",
+                    ""id"": ""0d770d53-6ab9-4118-8127-fce8c87531d3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TransformLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b6be736-012e-4bb3-9b3c-8c4e90b1ee34"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -442,45 +451,45 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""4968e87f-15d5-41b7-b2e5-9371dfe90252"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Transformation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f68ad706-6718-4051-b3a0-ed9e3b34696e"",
+                    ""id"": ""0d145ff0-9274-4365-8a13-fe05dfa4e2c9"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Transformation"",
+                    ""action"": ""TransformRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""21cd549c-25ed-4caf-9b5f-dd73bd5f30e9"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Transformation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""304dad71-db84-4de7-9011-ba4291d5ea03"",
+                    ""id"": ""04680c82-85f6-4dc7-8567-338abd583659"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Transformation"",
+                    ""action"": ""TransformRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef8bbed6-4018-4a5a-b214-ca84ab65c7f5"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""TransformLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58bde742-e778-4085-a8aa-ee20ac2bc3b6"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""TransformLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1097,7 +1106,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_Transformation = m_Player.FindAction("Transformation", throwIfNotFound: true);
+        m_Player_TransformRight = m_Player.FindAction("TransformRight", throwIfNotFound: true);
+        m_Player_TransformLeft = m_Player.FindAction("TransformLeft", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1198,7 +1208,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_Transformation;
+    private readonly InputAction m_Player_TransformRight;
+    private readonly InputAction m_Player_TransformLeft;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1239,9 +1250,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Transformation".
+        /// Provides access to the underlying input action "Player/TransformRight".
         /// </summary>
-        public InputAction @Transformation => m_Wrapper.m_Player_Transformation;
+        public InputAction @TransformRight => m_Wrapper.m_Player_TransformRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TransformLeft".
+        /// </summary>
+        public InputAction @TransformLeft => m_Wrapper.m_Player_TransformLeft;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1289,9 +1304,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Transformation.started += instance.OnTransformation;
-            @Transformation.performed += instance.OnTransformation;
-            @Transformation.canceled += instance.OnTransformation;
+            @TransformRight.started += instance.OnTransformRight;
+            @TransformRight.performed += instance.OnTransformRight;
+            @TransformRight.canceled += instance.OnTransformRight;
+            @TransformLeft.started += instance.OnTransformLeft;
+            @TransformLeft.performed += instance.OnTransformLeft;
+            @TransformLeft.canceled += instance.OnTransformLeft;
         }
 
         /// <summary>
@@ -1324,9 +1342,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Transformation.started -= instance.OnTransformation;
-            @Transformation.performed -= instance.OnTransformation;
-            @Transformation.canceled -= instance.OnTransformation;
+            @TransformRight.started -= instance.OnTransformRight;
+            @TransformRight.performed -= instance.OnTransformRight;
+            @TransformRight.canceled -= instance.OnTransformRight;
+            @TransformLeft.started -= instance.OnTransformLeft;
+            @TransformLeft.performed -= instance.OnTransformLeft;
+            @TransformLeft.canceled -= instance.OnTransformLeft;
         }
 
         /// <summary>
@@ -1677,12 +1698,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprint(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Transformation" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "TransformRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnTransformation(InputAction.CallbackContext context);
+        void OnTransformRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TransformLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTransformLeft(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

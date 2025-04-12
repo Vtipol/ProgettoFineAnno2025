@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BuddyStateController : MonoBehaviour
 {
@@ -13,7 +14,20 @@ public class BuddyStateController : MonoBehaviour
     [SerializeField] public CircleCollider2D circleCollider;
     [SerializeField] public BoxCollider2D boxCollider;
     [SerializeField] public CapsuleCollider2D capsuleCollider;
+    public InputAction transformLeftAction;
+    public InputAction transformRightAction;
 
+    private void OnEnable()
+    {
+        transformLeftAction.Enable();
+        transformRightAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        transformLeftAction.Disable();
+        transformRightAction.Disable();
+    }
     private void Awake()
     {
         stateMachine = new BuddyStateMachine();
@@ -45,9 +59,25 @@ public class BuddyStateController : MonoBehaviour
         boxCollider.enabled = active == boxCollider;
         capsuleCollider.enabled = active == capsuleCollider;
     }
-
     private void Update()
     {
+        HandleInput();
         stateMachine.UpdateState();
+    }
+
+    private void HandleInput()
+    {
+        if (!pickedUp.IsPickedUp)
+        {
+            if (InputManager.TransformRightWasPressed)
+            {
+                stateMachine.HandleInput("E");
+            }
+
+            if (InputManager.TransformLeftWasPressed)
+            {
+                stateMachine.HandleInput("Q");
+            }
+        }
     }
 }

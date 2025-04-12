@@ -29,13 +29,4 @@ public abstract class BuddyState : MonoBehaviour
             rb.angularVelocity = 0f;
         }
     }
-    /*
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Buddy"))
-        {
-            collision.GetComponent<BuddyState>().TeleportToPlayer();
-        }
-    }
-    */
 }

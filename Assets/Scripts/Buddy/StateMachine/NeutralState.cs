@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NeutralState : BuddyState
+public class NeutralState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
@@ -10,23 +10,25 @@ public class NeutralState : BuddyState
     }
     public override void OnUpdate()
     {
-        if (InputManager.TransformationIsPressed == true && !pickedUp.IsPickedUp)
-        {
-
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.JoystickButton5))
-            {
-                controller.SwitchState(controller.trampolineState);
-            }
-            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.JoystickButton4))
-            {
-                controller.SwitchState(controller.gumState);
-            }
-        }
         if (!followPlayer.targetInView)
         {
             Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
+    }
+    public void OnInput(string input)
+    {
+      
+            switch (input)
+            {
+                case "E":
+                    controller.SwitchState(controller.trampolineState);
+                    break;
+                case "Q":
+                    controller.SwitchState(controller.gumState);
+                    break;
+            }
+        
     }
     public override void OnExit()
     {
