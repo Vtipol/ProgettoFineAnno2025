@@ -122,6 +122,24 @@ MonoBehaviour:
   circleCollider: {fileID: 2986740559170639401}
   boxCollider: {fileID: 5203781075069336490}
   capsuleCollider: {fileID: 612355088285040826}
+  transformLeftAction:
+    m_Name: Transform Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 232d1ed3-9646-4cc9-8ed9-142c9ecf2e74
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  transformRightAction:
+    m_Name: Transform Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 26243177-cdc1-4bba-9347-33a8e1475d2d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &9032496640084319590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampolineCollider: {fileID: 612355088285040826}
-  trampolineBounceForce: 25
+  playerscript: {fileID: 5304828267378380790, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+  trampolineBounceForce: 250000
   pickedUp: {fileID: 7639820405145412246}
 --- !u!1 &695257149465167763
 GameObject:

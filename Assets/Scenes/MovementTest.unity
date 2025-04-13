@@ -604,6 +604,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buddy
       objectReference: {fileID: 0}
+    - target: {fileID: 5080082805061552308, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 571564453}
+    - target: {fileID: 5080082805061552308, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: playerscript
+      value: 
+      objectReference: {fileID: 571564453}
+    - target: {fileID: 5080082805061552308, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: trampolineBounceForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2

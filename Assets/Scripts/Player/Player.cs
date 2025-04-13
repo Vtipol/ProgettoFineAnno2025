@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private bool _isJumping;
     private bool _isFastFalling;
     private bool _isFalling;
+    public bool IsFalling => _isFalling;
     private float _fastFallTime;
     private float _fastFallReleaseSpeed;
     private int _numberOfJumpsUsed;
@@ -296,6 +297,15 @@ private void Awake()
 
         // Apply the vertical velocity to the Rigidbody
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, VerticalVelocity);
+    }
+    public void OverrideJump(float force)
+    {
+        _isJumping = true;
+        _isFastFalling = false;
+        _isFalling = false;
+        _isPastApexThreshold = false;
+       // _numberOfJumpsUsed = 1;
+        VerticalVelocity = force;
     }
 
     #endregion
