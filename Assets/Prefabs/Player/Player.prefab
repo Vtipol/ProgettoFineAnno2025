@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 815791464884438802}
   - component: {fileID: 5304828267378380790}
   - component: {fileID: 8669920481694177177}
+  - component: {fileID: 297650610400377604}
   - component: {fileID: 8124245553031814339}
   - component: {fileID: 4128824098916803876}
   m_Layer: 0
@@ -115,6 +116,7 @@ MonoBehaviour:
   _feetColl: {fileID: 5246583691719135597}
   _bodyColl: {fileID: 962775260614072667}
   _animator: {fileID: 8124245553031814339}
+  _isFacingRight: 0
 --- !u!114 &8669920481694177177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +134,19 @@ MonoBehaviour:
   _pickTrigger: {fileID: 1374630410550099974}
   _animator: {fileID: 8124245553031814339}
   _pickTarget: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+--- !u!114 &297650610400377604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274336502130243986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9763762db39a4bf428365f67490ee0f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stats: {fileID: 11400000, guid: 75851e0215a04854ba93094373174bde, type: 2}
 --- !u!95 &8124245553031814339
 Animator:
   serializedVersion: 7

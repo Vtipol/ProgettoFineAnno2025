@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
@@ -44,7 +45,12 @@ public class Player : MonoBehaviour
     //coyote time vars
     private float _coyoteTimer;
 
-private void Awake()
+    //jump cut vars
+    private float _jumpDuration;
+    private bool _canCutJump = false;
+
+
+    private void Awake()
     {
         _isFacingRight = true;
         _rb = GetComponent<Rigidbody2D>();
@@ -133,6 +139,13 @@ private void Awake()
 
     private void JumpChecks()
     {
+        // If the lockout timer is active, we skip the jump initiation
+        if (Stats.JumpLockoutTimer > 0f)
+        {
+            Stats.JumpLockoutTimer -= Time.deltaTime;
+            return;  // Skip the jump logic until the lockout is over
+        }
+
         //press jump
         if (InputManager.JumpWasPressed)
         {
@@ -147,7 +160,7 @@ private void Awake()
             {
                 _jumpReleasedDuringBuffer = true;
             }
-            if (_isJumping && VerticalVelocity > 0f)
+            if (_isJumping && VerticalVelocity > 0f /*&& _canCutJump*/)
             {
                 if (_isPastApexThreshold)
                 {
@@ -168,11 +181,11 @@ private void Awake()
         {
             InitiateJump(1);
 
-            if (_jumpReleasedDuringBuffer)
+            /*if (_jumpReleasedDuringBuffer)
             {
                 _isFastFalling = true;
                 _fastFallReleaseSpeed = VerticalVelocity;
-            }
+            }*/
 
         }
 
@@ -199,6 +212,8 @@ private void Awake()
             _isPastApexThreshold = false;
             _fastFallTime = 0f;
             _numberOfJumpsUsed = 0;
+            //_canCutJump = false;
+            Stats.JumpLockoutTimer = Stats.JumpLockoutTime;  // Reset the lockout timer on landing
 
             VerticalVelocity = Physics2D.gravity.y;
         }
@@ -209,9 +224,13 @@ private void Awake()
         if (!_isJumping)
         {
             _isJumping = true;
+            Stats.JumpLockoutTimer = Stats.JumpLockoutTime;  // Start the lockout after initiating a jump
         }
 
         _jumpBufferTimer = 0f;
+        _jumpDuration = 0f;
+        //_canCutJump = false;
+        //StartCoroutine(EnableJumpCutAfterDelay(Stats.MinJumpTimeBeforeCut));
         _numberOfJumpsUsed += numberOfJumpsUsed;
         VerticalVelocity = Stats.InitialJumpVelocity;
     }
@@ -220,6 +239,8 @@ private void Awake()
     {
         if (_isJumping)
         {
+            _jumpDuration += Time.fixedDeltaTime;
+
             // Head bump check: if the player hits their head, force fast fall
             if (_bumpedHead)
             {
@@ -376,6 +397,16 @@ private void Awake()
             _coyoteTimer -= Time.deltaTime;
         }
         else { _coyoteTimer = Stats.JumpCoyoteTime; }
+    }
+
+    #endregion
+
+    #region Corutine
+
+    private IEnumerator EnableJumpCutAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _canCutJump = true;
     }
 
     #endregion

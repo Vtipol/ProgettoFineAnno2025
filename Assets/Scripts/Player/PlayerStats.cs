@@ -21,6 +21,7 @@ public class PlayerStats : ScriptableObject
 
     [Header("Jump")]
     public float JumpHeight = 2f;
+    public float MinJumpHeight = 1f;
     [Range(1f, 1.1f)] public float JumpHeightCompensationFactor = 1.054f;
     public float TimeTillJumpApex = 0.35f;
     [Range(0.01f, 5f)] public float GravityOnReleaseMultiplier = 2f;
@@ -29,6 +30,11 @@ public class PlayerStats : ScriptableObject
 
     [Header("Jump Cut")]
     [Range(0.02f, 0.3f)] public float TimeForUpwardsCancel = 0.027f;
+    [Range(0f, 0.2f)] public float MinJumpTimeBeforeCut = 0.05f;
+
+    [Header("Jump LockDown")]
+    public float JumpLockoutTime = 0.2f;  // Time before a new jump can be initiated
+    public float JumpLockoutTimer = 0f;   // Timer for the lockout
 
     [Header("Jump Apex")]
     [Range(0.5f, 1f)] public float ApexThreshold = 0.97f;
@@ -58,6 +64,9 @@ public class PlayerStats : ScriptableObject
     [Header("JumpVisualization Tool")]
     public bool ShowWalkJumpArc = false;
     public bool ShowRunJumpArc = false;
+    public bool ShowMinJumpArc = false;
+    public Color MaxJumpArcColor = Color.green;
+    public Color MinJumpArcColor = Color.yellow;
     public bool StopOnCollision = true;
     public bool DrawRight = true;
     [Range(5, 100)] public int ArcResolution = 20;
@@ -65,6 +74,7 @@ public class PlayerStats : ScriptableObject
 
     public float Gravity { get; private set; }
     public float InitialJumpVelocity { get; private set; }
+    public float MinJumpVelocity { get; private set; }
     public float AdjustedJumpHeight { get; private set; }
 
     private void OnValidate()
@@ -74,12 +84,54 @@ public class PlayerStats : ScriptableObject
 
     private void OnEnable()
     {
-        CalculateValues();
+        CalculateValues();     
     }
-    private void CalculateValues()
+    public void CalculateValues()
     {
         AdjustedJumpHeight = JumpHeight * JumpHeightCompensationFactor;
         Gravity = -(2f * AdjustedJumpHeight) / Mathf.Pow(TimeTillJumpApex, 2f);
         InitialJumpVelocity = Mathf.Abs(Gravity) * TimeTillJumpApex;
+
+        float adjustedMinJumpHeight = MinJumpHeight * JumpHeightCompensationFactor;
+        MinJumpVelocity = Mathf.Sqrt(2f * Mathf.Abs(Gravity) * adjustedMinJumpHeight);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (!Application.isPlaying)
+            CalculateValues();
+
+        Vector3 startPosition = Vector3.zero;
+        float timeStep = TimeTillJumpApex * 2f / ArcResolution;
+
+        // Draw Max Jump Arc
+        if (ShowWalkJumpArc)
+        {
+            DrawJumpArc(startPosition, InitialJumpVelocity, Gravity, ArcResolution, MaxJumpArcColor);
+        }
+
+        // Draw Min Jump Arc
+        if (ShowMinJumpArc)
+        {
+            DrawJumpArc(startPosition, MinJumpVelocity, Gravity, ArcResolution, MinJumpArcColor);
+        }
+    }
+
+    private void DrawJumpArc(Vector3 startPos, float initialVelocity, float gravity, int resolution, Color color)
+    {
+        Gizmos.color = color;
+        Vector3 prevPoint = startPos;
+
+        for (int i = 1; i <= resolution; i++)
+        {
+            float t = i * (TimeTillJumpApex * 2f / resolution);
+            float x = t * MaxWalkSpeed; // just for visual spacing
+            float y = initialVelocity * t + 0.5f * gravity * t * t;
+            Vector3 newPoint = startPos + new Vector3(x, y, 0f);
+            Gizmos.DrawLine(prevPoint, newPoint);
+            prevPoint = newPoint;
+        }
+    }
+#endif
 }
