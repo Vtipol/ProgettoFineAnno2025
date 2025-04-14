@@ -23,12 +23,12 @@ public class PickedUp : MonoBehaviour
         stateController = GetComponent<BuddyStateController>();
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.gameObject == groundCollider.gameObject)       {
-            Debug.Log("PickedUp is false");
-            IsPickedUp = false;
-        }
-    }
+    // public void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.collider.gameObject == groundCollider.gameObject)       {
+    //         Debug.Log("PickedUp is false");
+    //         IsPickedUp = false;
+    //     }
+    // }
    
 }

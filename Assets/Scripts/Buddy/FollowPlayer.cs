@@ -1,6 +1,4 @@
 using UnityEngine;
-using System.Collections;
-
 public class FollowPlayer : MonoBehaviour
 {
     public AIFollowSettings aiSettings;
@@ -14,24 +12,20 @@ public class FollowPlayer : MonoBehaviour
     private bool needJump;
     private bool isTrasformed;
     public bool IsTrasformed
-
     {
         get { return isTrasformed; }
         set { isTrasformed = value; }
     }
-   
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
     void Update()
     {
         DetectTarget();
         CheckGroundStatus();
         HandleMovementLogic();
     }
-
     void FixedUpdate()
     {
         if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && isGrounded)
@@ -39,12 +33,10 @@ public class FollowPlayer : MonoBehaviour
             MoveTowardsTarget();
         }
     }
-
     void DetectTarget()
     {
         targetInView = Physics2D.OverlapCircle(transform.position, aiSettings.fieldOfViewRadius, aiSettings.targetLayer) != null;
     }
-
     void CheckGroundStatus()
     {
         bool wasGrounded = isGrounded;
@@ -54,7 +46,6 @@ public class FollowPlayer : MonoBehaviour
             pickedUp.IsPickedUp = false;
         }
     }
-
     void HandleMovementLogic()
     {
         if (!target || !targetInView) return;
@@ -79,7 +70,6 @@ public class FollowPlayer : MonoBehaviour
             needJump = false;
         }
     }
-
     void MoveTowardsTarget()
     {
         float distance = Vector2.Distance(transform.position, target.position);
@@ -102,17 +92,17 @@ public class FollowPlayer : MonoBehaviour
             needJump = false;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
         }
-        if (isGrounded && target.position.y > transform.position.y - 2f)
-        {
-            StartCoroutine(BuddyDropThroughPlatform());
-        }
+      //  if (isGrounded && target.position.y > transform.position.y - 2f)
+       // {
+           // StartCoroutine(BuddyDropThroughPlatform());
+       // }
     }
-
+    /*
     IEnumerator BuddyDropThroughPlatform()
     {
         Collider2D buddyCollider = GetComponent<CircleCollider2D>();
         buddyCollider.enabled = false;
         yield return new WaitForSeconds(1f);
         buddyCollider.enabled = true;
-    }
+    }*/
 }
