@@ -57,6 +57,10 @@ public class PlayerStats : ScriptableObject
     [Header("Attack")]
     public float Damage = 1f;
 
+    [Header("Kick")]
+    public float KickForce = 10f;
+    public float KickRange = 1f;
+
     [Header("Debug")]
     public bool DebugShowIsGroundedBox;
     public bool DebugShowHeadBumpBox;
@@ -95,43 +99,4 @@ public class PlayerStats : ScriptableObject
         float adjustedMinJumpHeight = MinJumpHeight * JumpHeightCompensationFactor;
         MinJumpVelocity = Mathf.Sqrt(2f * Mathf.Abs(Gravity) * adjustedMinJumpHeight);
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
-    {
-        if (!Application.isPlaying)
-            CalculateValues();
-
-        Vector3 startPosition = Vector3.zero;
-        float timeStep = TimeTillJumpApex * 2f / ArcResolution;
-
-        // Draw Max Jump Arc
-        if (ShowWalkJumpArc)
-        {
-            DrawJumpArc(startPosition, InitialJumpVelocity, Gravity, ArcResolution, MaxJumpArcColor);
-        }
-
-        // Draw Min Jump Arc
-        if (ShowMinJumpArc)
-        {
-            DrawJumpArc(startPosition, MinJumpVelocity, Gravity, ArcResolution, MinJumpArcColor);
-        }
-    }
-
-    private void DrawJumpArc(Vector3 startPos, float initialVelocity, float gravity, int resolution, Color color)
-    {
-        Gizmos.color = color;
-        Vector3 prevPoint = startPos;
-
-        for (int i = 1; i <= resolution; i++)
-        {
-            float t = i * (TimeTillJumpApex * 2f / resolution);
-            float x = t * MaxWalkSpeed; // just for visual spacing
-            float y = initialVelocity * t + 0.5f * gravity * t * t;
-            Vector3 newPoint = startPos + new Vector3(x, y, 0f);
-            Gizmos.DrawLine(prevPoint, newPoint);
-            prevPoint = newPoint;
-        }
-    }
-#endif
 }

@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class SoapState : BuddyState, IInputHandler
 {
+    public bool IsSoapy = false;
     public override void OnEnter()
     {
         Debug.Log("Entered SoapState");
         controller.EnableOnlyCollider(controller.boxCollider);
         followPlayer.IsTrasformed = true;
+        transform.parent.parent.gameObject.layer = LayerMask.NameToLayer("Trasformation");
+        
+        IsSoapy = true;
+        if (IsSoapy) {Debug.Log("IsSoapy");}
+        
     }
     public override void OnUpdate()
     {
@@ -33,5 +39,7 @@ public class SoapState : BuddyState, IInputHandler
     public override void OnExit()
     {
         controller.EnableOnlyCollider(null);
+        IsSoapy = false ;
+        transform.parent.parent.gameObject.layer = LayerMask.NameToLayer("Buddy");
     }
 }

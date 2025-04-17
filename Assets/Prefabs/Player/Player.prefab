@@ -133,6 +133,9 @@ MonoBehaviour:
   _pickUpPosition: {fileID: 7965949423656897136}
   _pickTrigger: {fileID: 1374630410550099974}
   _animator: {fileID: 8124245553031814339}
+  shellLayer:
+    serializedVersion: 2
+    m_Bits: 256
   _pickTarget: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
 --- !u!114 &297650610400377604
 MonoBehaviour:

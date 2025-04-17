@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     {
         CountTimer();
         JumpChecks();
+        AttackCheck();
         UpdateAnimations();
     }
 
@@ -333,7 +334,7 @@ public class Player : MonoBehaviour
 
     #region Attack
 
-
+    
 
     #endregion
 
@@ -372,7 +373,7 @@ public class Player : MonoBehaviour
         BumpedHead();
     }
 
-    public void AttackCheck()
+    private void AttackCheck()
     {
         if(InputManager.AttackDownExecuted == true && _isGrounded == false)
         {
