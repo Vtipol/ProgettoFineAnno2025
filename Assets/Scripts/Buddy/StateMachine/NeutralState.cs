@@ -4,7 +4,6 @@ public class NeutralState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
-        Debug.Log("Entered Neutral State");
         followPlayer.IsTrasformed = false;
         controller.EnableOnlyCollider(null);
     }
@@ -12,7 +11,6 @@ public class NeutralState : BuddyState, IInputHandler
     {
         if (!followPlayer.targetInView)
         {
-            Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
     }

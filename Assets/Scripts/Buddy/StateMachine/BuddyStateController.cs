@@ -54,7 +54,6 @@ public class BuddyStateController : MonoBehaviour
 
     public void EnableOnlyCollider(Collider2D active)
     {
-        Debug.Log("changed Collider");
         circleCollider.enabled = active == circleCollider;
         boxCollider.enabled = active == boxCollider;
         capsuleCollider.enabled = active == capsuleCollider;

@@ -4,7 +4,6 @@ public class TrampolineState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
-        Debug.Log("Entered TrampolineState");
         controller.EnableOnlyCollider(controller.capsuleCollider);
         followPlayer.IsTrasformed = true;
     }
@@ -12,7 +11,6 @@ public class TrampolineState : BuddyState, IInputHandler
     {
         if (!followPlayer.targetInView)
         {
-            Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
     }

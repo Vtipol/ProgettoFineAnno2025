@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiSettings: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
-  target: {fileID: 0}
+  target: {fileID: 1630446981866368323, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
   groundCheck: {fileID: 8749724908321769867}
   pickedUp: {fileID: 7639820405145412246}
   targetInView: 0

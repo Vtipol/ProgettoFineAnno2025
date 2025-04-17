@@ -5,7 +5,6 @@ public class GumState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
-        Debug.Log("Entered GumState");
         controller.EnableOnlyCollider(controller.circleCollider);
         followPlayer.IsTrasformed = true;
     }
@@ -13,7 +12,6 @@ public class GumState : BuddyState, IInputHandler
     {
         if (!followPlayer.targetInView)
         {
-            Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
     }

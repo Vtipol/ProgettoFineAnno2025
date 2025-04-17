@@ -4,7 +4,6 @@ public class SoapState : BuddyState, IInputHandler
 {
     public override void OnEnter()
     {
-        Debug.Log("Entered SoapState");
         controller.EnableOnlyCollider(controller.boxCollider);
         followPlayer.IsTrasformed = true;
     }
@@ -12,7 +11,6 @@ public class SoapState : BuddyState, IInputHandler
     {
         if (!followPlayer.targetInView)
         {
-            Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
     }
