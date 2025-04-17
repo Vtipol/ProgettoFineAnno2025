@@ -26,7 +26,7 @@ public class PlayerStats : ScriptableObject
     public float TimeTillJumpApex = 0.35f;
     [Range(0.01f, 5f)] public float GravityOnReleaseMultiplier = 2f;
     public float MaxFallSpeed = 15f;
-    [Range(1, 5)] public int NumberOfJumpsAllowed = 2;
+    [Range(1, 5)] public int NumberOfJumpsAllowed = 3;
 
     [Header("Jump Cut")]
     [Range(0.02f, 0.3f)] public float TimeForUpwardsCancel = 0.027f;
@@ -45,7 +45,10 @@ public class PlayerStats : ScriptableObject
 
     [Header("Jump Coyote Time")]
     [Range(0f, 1f)] public float JumpCoyoteTime = 0.1f;
-    
+
+    [Header("Wall Jump")]
+    public float WallJumpHorizontalForce = 5f;
+
     [Header("Gravity Settings")]
     [Range(1f, 5f)] public float GravityMultiplier = 2f;
     [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f;

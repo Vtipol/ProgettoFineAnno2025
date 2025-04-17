@@ -88,7 +88,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDamping: 0
   m_AngularDamping: 0
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: fd07a05426f849d4bab2a2a178fcfa99, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -117,6 +117,9 @@ MonoBehaviour:
   _bodyColl: {fileID: 962775260614072667}
   _animator: {fileID: 8124245553031814339}
   _isFacingRight: 0
+  _isGrounded: 0
+  _isJumping: 0
+  _numberOfJumpsUsed: 0
 --- !u!114 &8669920481694177177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stats: {fileID: 11400000, guid: 75851e0215a04854ba93094373174bde, type: 2}
+  Soap: {fileID: 0}
   _pickUpPosition: {fileID: 7965949423656897136}
   _pickTrigger: {fileID: 1374630410550099974}
   _animator: {fileID: 8124245553031814339}
@@ -137,6 +141,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _pickTarget: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+  _soapMode: {fileID: 0}
 --- !u!114 &297650610400377604
 MonoBehaviour:
   m_ObjectHideFlags: 0

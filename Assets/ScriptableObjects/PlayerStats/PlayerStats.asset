@@ -34,7 +34,7 @@ MonoBehaviour:
   TimeForUpwardsCancel: 0.02
   MinJumpTimeBeforeCut: 0
   JumpLockoutTime: 0.05
-  JumpLockoutTimer: -0.000441193
+  JumpLockoutTimer: -0.0010562034
   ApexThreshold: 1
   ApexHangTime: 0.01
   JumpBufferTime: 0.125
@@ -44,6 +44,8 @@ MonoBehaviour:
   ThrowForce: 15
   ThrowAngle: 45
   Damage: 1
+  KickForce: 50
+  KickRange: 1
   DebugShowIsGroundedBox: 0
   DebugShowHeadBumpBox: 0
   ShowWalkJumpArc: 0

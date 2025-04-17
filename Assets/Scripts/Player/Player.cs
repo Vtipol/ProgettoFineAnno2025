@@ -20,18 +20,18 @@ public class Player : MonoBehaviour
     //collision check vars
     private RaycastHit2D _groundHit;
     private RaycastHit2D _headHit;
-    private bool _isGrounded;
+    public bool _isGrounded;
     private bool _bumpedHead;
 
     //jump vard
     public float VerticalVelocity { get; private set; }
-    private bool _isJumping;
+    public bool _isJumping;
     private bool _isFastFalling;
     private bool _isFalling;
     public bool IsFalling => _isFalling;
     private float _fastFallTime;
     private float _fastFallReleaseSpeed;
-    private int _numberOfJumpsUsed;
+    public int _numberOfJumpsUsed;
 
     //apex vars
     private float _apexPoint;
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Turn(bool turnRight)
+    public void Turn(bool turnRight)
     {
         if (turnRight)
         {
@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
         //jump buffering and coyote time
         if (_jumpBufferTimer > 0 && !_isJumping && (_isGrounded || _coyoteTimer > 0))
         {
-            InitiateJump(1);
+            InitiateJump(3);
 
             /*if (_jumpReleasedDuringBuffer)
             {
@@ -200,7 +200,7 @@ public class Player : MonoBehaviour
         //fall/air jump
         else if (_jumpBufferTimer > 0 && _isFalling && _numberOfJumpsUsed < Stats.NumberOfJumpsAllowed -1)
         {
-            InitiateJump(2); //<- means that if you fall/air jump, you CAN NOT double jump
+            InitiateJump(3); //<- means that if you fall/air jump, you CAN NOT double jump
             _isFastFalling = false;
         }
 
@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void InitiateJump(int numberOfJumpsUsed)
+    public void InitiateJump(int numberOfJumpsUsed)
     {
         if (!_isJumping)
         {
