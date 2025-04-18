@@ -6,6 +6,7 @@ public class NeutralState : BuddyState, IInputHandler
     {
         followPlayer.IsTrasformed = false;
         controller.EnableOnlyCollider(null);
+        Debug.Log("Neutral Mode");
     }
     public override void OnUpdate()
     {

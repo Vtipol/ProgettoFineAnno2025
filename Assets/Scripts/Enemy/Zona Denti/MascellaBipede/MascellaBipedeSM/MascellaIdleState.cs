@@ -6,6 +6,7 @@ public class MascellaIdleState : MascellaState
     public override void OnEnter()
     {
         Idle = GetComponentInParent<MascellaIdle>();
+        Debug.Log("Mascella is in Idle");
     }
     public override void OnUpdate()
     {

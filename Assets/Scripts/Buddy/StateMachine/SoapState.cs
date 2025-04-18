@@ -6,6 +6,7 @@ public class SoapState : BuddyState, IInputHandler
     {
         controller.EnableOnlyCollider(controller.boxCollider);
         followPlayer.IsTrasformed = true;
+        Debug.Log("Soap Mode");
     }
     public override void OnUpdate()
     {
