@@ -27,8 +27,10 @@ public class MascellaIdle : MonoBehaviour
 
     private void SearchPlayer()
     {
-        playerSearch = Physics2D.Raycast(transform.position, (target.position - transform.position).normalized, mascellaStats.sightRange, playerLayer);
-        if(playerSearch)
+        Vector2 direction = transform.right; 
+        playerSearch = Physics2D.Raycast(transform.position, direction, mascellaStats.sightRange, playerLayer);
+        Debug.DrawRay(transform.position, direction * mascellaStats.sightRange, Color.red);
+        if (playerSearch)
         {
             Debug.Log("Spotted Player");
             playerSighted = true;

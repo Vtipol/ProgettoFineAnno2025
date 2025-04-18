@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 20
   speed: 5
-  tiredTime: 5
+  tiredTime: 9999
   vulnerableDuration: 3
+  attackDamage: 10
   jumpForce: 7
-  isGrounded: 1
   runTimer: 0
