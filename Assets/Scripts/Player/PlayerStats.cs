@@ -46,8 +46,12 @@ public class PlayerStats : ScriptableObject
     [Header("Jump Coyote Time")]
     [Range(0f, 1f)] public float JumpCoyoteTime = 0.1f;
 
-    [Header("Wall Jump")]
-    public float WallJumpHorizontalForce = 5f;
+    [Header("Wall Cling")]//<-new
+    public float WallStickGravity = 0.5f;
+    public float WallStickMaxFallSpeed = -2f;
+    public float WallJumpVerticalForce = 12f;
+    public float WallJumpHorizontalForce = 8f;
+    public float WallCheckDistance = 0.25f;
 
     [Header("Gravity Settings")]
     [Range(1f, 5f)] public float GravityMultiplier = 2f;

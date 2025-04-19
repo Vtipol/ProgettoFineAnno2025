@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
     private float _jumpDuration;
     private bool _canCutJump = false;
 
+    // wall check <-new
+    private bool _isTouchingWall;
+    private bool _isWallSticking;
+    private bool _canWallJump;
+    private RaycastHit2D _wallHit;
 
     private void Awake()
     {
@@ -367,10 +372,19 @@ public class Player : MonoBehaviour
         else { _bumpedHead = false; }
     }
 
+    private void CheckWall()//<-new
+    {
+        Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
+        Vector2 origin = _bodyColl.bounds.center;
+        _wallHit = Physics2D.Raycast(origin, direction, Stats.WallCheckDistance, Stats.GroundLayer);
+        _isTouchingWall = _wallHit.collider != null;
+    }
+
     private void CollisionChecks()
     {
         IsGrounded();
         BumpedHead();
+        CheckWall();//<-new
     }
 
     private void AttackCheck()
@@ -398,16 +412,6 @@ public class Player : MonoBehaviour
             _coyoteTimer -= Time.deltaTime;
         }
         else { _coyoteTimer = Stats.JumpCoyoteTime; }
-    }
-
-    #endregion
-
-    #region Corutine
-
-    private IEnumerator EnableJumpCutAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        _canCutJump = true;
     }
 
     #endregion

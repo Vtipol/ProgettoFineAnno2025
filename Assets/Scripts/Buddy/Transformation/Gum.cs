@@ -4,52 +4,40 @@ using UnityEngine;
 public class Gum : MonoBehaviour
 {
     [SerializeField] private CircleCollider2D gumCollider;
-    public PickedUp pickedUp;
     public PickThrow pickThrow;
-    
+
+    [SerializeField] private GameObject player; // Drag your player GameObject here
+    [SerializeField] private PickedUp pickedUp; // Drag the script that has IsPickedUp
+
+    private WallJumpHandler wallJumpHandler;
+    private bool wasPickedUp = false;
+
     private void Start()
     {
-        pickedUp = GetComponentInParent<PickedUp>();
-        pickThrow = GetComponent<PickThrow>();
+        if (player != null)
+        {
+            wallJumpHandler = player.GetComponent<WallJumpHandler>();
+            if (wallJumpHandler == null)
+            {
+                Debug.LogWarning("WallJumpHandler not found on player.");
+            }
+        }
     }
 
     private void Update()
     {
-        if (pickedUp.IsPickedUp)
-        {
-            EnableWallStick();
-        }
-        else
-        {
-            DisableWallStick();
-        }
-    }
+        if (pickedUp == null || wallJumpHandler == null)
+            return;
 
-    private void EnableWallStick()
-    {
-        // Activate wall stick behavior when Gum is picked up
-        PlayerWallStick playerWallStick = transform.root.GetComponent<PlayerWallStick>();
-        if (playerWallStick != null)
+        if (pickedUp.IsPickedUp && !wasPickedUp)
         {
-            playerWallStick.EnableWallStick();
+            wallJumpHandler.EnableWallJump(3);
+            wasPickedUp = true;
         }
-    }
-
-    private void DisableWallStick()
-    {
-        // Deactivate wall stick behavior when Gum is not picked up
-        PlayerWallStick playerWallStick = transform.root.GetComponent<PlayerWallStick>();
-        if (playerWallStick != null)
+        else if (!pickedUp.IsPickedUp && wasPickedUp)
         {
-            playerWallStick.DisableWallStick();
+            wallJumpHandler.DisableWallJump();
+            wasPickedUp = false;
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !pickedUp.IsPickedUp)
-        {
-            Debug.Log("Entered Gum Collider");
-        }
-
     }
 }
