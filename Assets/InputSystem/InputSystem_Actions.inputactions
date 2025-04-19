@@ -281,7 +281,7 @@
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard&Mouse",
+                    "groups": ";Keyboard&Mouse",
                     "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false

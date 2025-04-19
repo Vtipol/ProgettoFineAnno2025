@@ -66,7 +66,8 @@ public class BuddyStateController : MonoBehaviour
 
     private void HandleInput()
     {
-        
+        if (!pickedUp.IsPickedUp)
+        {
             if (InputManager.TransformRightWasPressed)
             {
                 stateMachine.HandleInput("E");
@@ -76,6 +77,6 @@ public class BuddyStateController : MonoBehaviour
             {
                 stateMachine.HandleInput("Q");
             }
-        
+        }
     }
 }
