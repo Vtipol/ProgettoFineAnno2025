@@ -1,12 +1,18 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Damageble))]
 public class Player : MonoBehaviour
 {
     [Header("References")]
     public PlayerStats Stats;
+    public Damageble Damage;
+    //public Attacking Attacking;
     [SerializeField] private Collider2D _feetColl;
     [SerializeField] private Collider2D _bodyColl;
     [SerializeField] private Animator _animator;
@@ -60,6 +66,10 @@ public class Player : MonoBehaviour
         _isFacingRight = true;
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        Damage = GetComponent<Damageble>();
+        //Attacking = GetComponent<Attacking>();
+
+        Damage.damagebleHit.AddListener(OnHit);
     }
 
     private void Update()
@@ -67,6 +77,7 @@ public class Player : MonoBehaviour
         CountTimer();
         JumpChecks();
         AttackCheck();
+        Die();
         UpdateAnimations();
     }
 
@@ -89,28 +100,30 @@ public class Player : MonoBehaviour
 
     private void Move(float acceleration, float deceleration, Vector2 moveInput)
     {
-        if (moveInput != Vector2.zero)
+        if (!Damage.LockVelocity)
         {
-            //check if he needs to turn
-            TurnCheck(moveInput);
-
-            Vector2 targetVelocity = Vector2.zero;
-            if (InputManager.RunIsHeld)
+            if (moveInput != Vector2.zero)
             {
-                targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxRunSpeed;
+                //check if he needs to turn
+                TurnCheck(moveInput);
+
+                Vector2 targetVelocity = Vector2.zero;
+                if (InputManager.RunIsHeld)
+                {
+                    targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxRunSpeed;
+                }
+                else { targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxWalkSpeed; }
+
+                _moveVelocity = Vector2.Lerp(_moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+                _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
             }
-            else { targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxWalkSpeed; }
 
-            _moveVelocity = Vector2.Lerp(_moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
-            _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
+            else if (moveInput == Vector2.zero)
+            {
+                _moveVelocity = Vector2.Lerp(_moveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+                _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
+            }
         }
-
-        else if (moveInput == Vector2.zero)
-        {
-            _moveVelocity = Vector2.Lerp(_moveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
-            _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
-        }
-
     }
 
     private void TurnCheck(Vector2 moveInput)
@@ -339,7 +352,11 @@ public class Player : MonoBehaviour
 
     #region Attack
 
-    
+
+    public void OnHit(int damage, Vector2 knokback)
+    {
+        _rb.linearVelocity = new Vector2(knokback.x, _rb.linearVelocity.y + knokback.y);
+    }
 
     #endregion
 
@@ -432,15 +449,18 @@ public class Player : MonoBehaviour
     }
 
 
-    public void TakeDamage()
+    /*public void TakeDamage()
     {
         _animator.SetTrigger("Damaged");
-    }
+    }*/
 
     public void Die()
     {
-        _animator.SetTrigger("Dead");
-        this.enabled = false; // Disable player controls on death
+        //_animator.SetTrigger("Dead");
+        if (!Damage._isAlive)
+        {
+            this.enabled = false; // Disable player controls on death
+        }        
     }
 
     #endregion
