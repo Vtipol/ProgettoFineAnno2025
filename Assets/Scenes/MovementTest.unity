@@ -948,6 +948,17 @@ MonoBehaviour:
   maxWallJumps: 3
   wallCheckPoint: {fileID: 1258312931}
   wallCheckDistance: 0.3
+--- !u!114 &907421592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+  m_PrefabInstance: {fileID: 1762288230}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907421585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc5a44960eccc34884db99f47ac97bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1024423218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,6 +1486,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: _isAlive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: damagebleHit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: damagebleHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: e4c6b47ff2e3a7e4ea807d71166c8a1e, type: 3}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: damagebleHit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: damagebleHit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4274336502130243986, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1483,6 +1514,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5304828267378380790, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: Damage
+      value: 
+      objectReference: {fileID: 907421592}
     - target: {fileID: 6061844675173396311, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 0
