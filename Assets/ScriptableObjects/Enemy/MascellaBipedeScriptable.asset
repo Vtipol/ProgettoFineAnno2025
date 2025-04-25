@@ -14,9 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sightRange: 10
   chaseRange: 25
-  speed: 5
+  walkSpeed: 5
+  chaseSpeed: 10
   tiredTime: 9999
   vulnerableDuration: 3
   attackDamage: 10
   jumpForce: 7
   runTimer: 0
+  forgetDelay: 9999
+  wanderTimer: 0.27608648
+  wanderDuration: 2
+  currentWanderDuration: 2.5503347
+  wanderDirection: 1
+  pauseDuration: 1
+  pauseTimer: 1.0091121
+  isPaused: 0

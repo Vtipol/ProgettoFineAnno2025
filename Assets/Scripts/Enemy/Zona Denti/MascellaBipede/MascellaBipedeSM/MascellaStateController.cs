@@ -2,21 +2,24 @@ using UnityEngine;
 
 public class MascellaStateController : MonoBehaviour
 { 
-private MascellaStateMachine mascellaMachine;
+    private MascellaStateMachine mascellaMachine;
+    public  MascellaIdle mascellaIdle;
+    public MascellaChase mascellaChase;
     public MascellaIdleState mascellaIdleState;
     public MascellaChaseState mascellaChaseState;
     public MascellaAttackState mascellaAttackState;
     public MascellaCrashedState mascellaCrashedState;
     public MascellaTiredState mascellaTiredState;
+    public GroundChecker groundChecker;
 
     private void Start()
     {
         mascellaMachine = new MascellaStateMachine();
-        mascellaIdleState.Initialize(mascellaMachine, this);
-        mascellaChaseState.Initialize(mascellaMachine, this);
-        mascellaAttackState.Initialize(mascellaMachine, this);
-        mascellaCrashedState.Initialize(mascellaMachine, this);
-        mascellaTiredState.Initialize(mascellaMachine, this);
+        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
+        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
+        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
+        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
+        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
 
         mascellaMachine.EnterState(mascellaIdleState); 
     }
@@ -26,7 +29,6 @@ private MascellaStateMachine mascellaMachine;
     }
     private void Awake()
     {
-        
         mascellaIdleState = GetComponentInChildren<MascellaIdleState>();
         mascellaChaseState = GetComponentInChildren<MascellaChaseState>();
         mascellaAttackState = GetComponentInChildren<MascellaAttackState>();

@@ -6,8 +6,11 @@ public class MascellaChase : MonoBehaviour
     [SerializeField] private MascellaBipedeScriptable mascellaStats;
     [SerializeField] private CircleCollider2D biteTrigger;
     [SerializeField] private Transform player;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GroundChecker groundChecker;
     private bool isTired = false;
     private bool isChasing = false;
+    public bool IsChasing => isChasing;
     private bool playerInBiteRange = false;
 
     public bool PlayerInRange
@@ -15,48 +18,29 @@ public class MascellaChase : MonoBehaviour
         get => playerInBiteRange;
         set => playerInBiteRange = value;
     }
-
-    private void Update()
+   
+    public void ChasePlayer()
     {
-        if (isChasing && !isTired && !playerInBiteRange)
+        if (player == null || isTired || PlayerInRange || !groundChecker.IsGroundAhead())
         {
-            ChasePlayer();
+            StopChasing();
+            return;
         }
-    }
 
-    private void ChasePlayer()
-    {
+        isChasing = true;
         Vector2 direction = (player.position - transform.position).normalized;
-        transform.position += (Vector3)(direction * mascellaStats.speed * Time.deltaTime);
+        Vector2 velocity = new Vector2(direction.x * mascellaStats.chaseSpeed, 0f);
+        rb.linearVelocity = velocity;
     }
-
-    public void StartChasing()
+    public void StopChasing()
     {
-        if (!isChasing)
-        {
-            isChasing = true;
-            StartCoroutine(ChaseRoutine());
-        }
-    }
-
-    private IEnumerator ChaseRoutine()
-    {
-        float runDuration = mascellaStats.runTimer;
-        yield return new WaitForSeconds(runDuration);
-
-        isTired = true;
+        rb.linearVelocity = Vector2.zero;
         isChasing = false;
-
-        yield return new WaitForSeconds(mascellaStats.tiredTime);
-        isTired = false;
     }
-
-    public void OnPlayerDetected()
+    public bool IsPlayerTooFar()
     {
-        if (!isTired)
-            StartChasing();
+        return Vector2.Distance(transform.position, player.position) > mascellaStats.chaseRange;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -73,3 +57,50 @@ public class MascellaChase : MonoBehaviour
         }
     }
 }
+    //public void ChasePlayer()
+    //{
+    //    if (player == null) return;
+
+    //    Vector2 direction = (player.position - transform.position).normalized;
+    //    Vector2 newPosition = rb.position + direction * mascellaStats.speed * Time.fixedDeltaTime;
+    //    rb.MovePosition(newPosition);
+    //}
+
+    //public void StartChasing()
+    //{
+    //    if (!isChasing)
+    //    {
+    //        isChasing = true;
+    //        StartCoroutine(ChaseRoutine());
+    //    }
+    //}
+
+    //private IEnumerator ChaseRoutine()
+    //{
+    //    float runDuration = mascellaStats.runTimer;
+    //    float timer = 0f;
+
+    //    while (timer < runDuration)
+    //    {
+    //        if (player != null)
+    //        {
+    //            ChasePlayer();
+    //        }
+
+    //        timer += Time.deltaTime;
+    //        yield return null;
+    //    }
+
+    //    isTired = true;
+    //    isChasing = false;
+
+    //    yield return new WaitForSeconds(mascellaStats.tiredTime);
+    //    isTired = false;
+    //}
+
+    //public void OnPlayerDetected()
+    //{
+    //    if (!isTired)
+    //        StartChasing();
+    //}
+

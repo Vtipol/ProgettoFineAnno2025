@@ -572,6 +572,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &493674514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9019159853897575288, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 7252912429475396922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308b52003497247269c18eb2ff23c75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &523908475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,7 +1341,7 @@ Transform:
   m_GameObject: {fileID: 1968324368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.03, y: -3.7549171, z: 0.02229781}
+  m_LocalPosition: {x: -42.5, y: -3.7549171, z: 0.02229781}
   m_LocalScale: {x: 50, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1930,6 +1941,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaIdle
+      value: 
+      objectReference: {fileID: 493674514}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.78
@@ -1974,7 +1989,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: MascellaBipede
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
