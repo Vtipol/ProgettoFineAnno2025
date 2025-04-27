@@ -7,6 +7,8 @@ public class MascellaIdle : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform rootTransform;
     [SerializeField] private GroundChecker groundChecker;
+    private float flipCooldownTimer = 0f;
+    private const float flipCooldownDuration = 0.5f;
     private RaycastHit2D playerSearch;
     private float lastSeenTime = -Mathf.Infinity;
     private bool playerSighted = false;
@@ -25,6 +27,11 @@ public class MascellaIdle : MonoBehaviour
     }
     public void Wander()
     {
+        if (flipCooldownTimer > 0f)
+        {
+            flipCooldownTimer -= Time.deltaTime;
+        }
+
         if (mascellaStats.isPaused)
         {
             mascellaStats.pauseTimer += Time.deltaTime;
@@ -37,19 +44,28 @@ public class MascellaIdle : MonoBehaviour
             }
             return;
         }
+
         Vector2 movement = Vector2.right * mascellaStats.wanderDirection * mascellaStats.walkSpeed * Time.deltaTime;
 
-        if (mascellaStats.wanderDirection != 0 && groundChecker.IsGroundAhead())
+        if (mascellaStats.wanderDirection != 0)
         {
-            rootTransform.Translate(movement);
-            rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
+            if (groundChecker.IsGroundAhead())
+            {
+                rootTransform.Translate(movement);
+                rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
+            }
+            else if (flipCooldownTimer <= 0f)
+            {
+                mascellaStats.wanderDirection *= -1;
+                rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
+                flipCooldownTimer = flipCooldownDuration;
+
+                // Force a tiny step back after flipping
+                Vector2 retreatMovement = Vector2.right * mascellaStats.wanderDirection * 0.1f;
+                rootTransform.Translate(retreatMovement);
+            }
         }
-        else
-        {
-            mascellaStats.wanderDirection = 0;
-            mascellaStats.isPaused = true;
-            mascellaStats.pauseTimer = 0f;
-        }
+
         mascellaStats.wanderTimer += Time.deltaTime;
         if (mascellaStats.wanderTimer >= mascellaStats.currentWanderDuration)
         {
@@ -57,11 +73,6 @@ public class MascellaIdle : MonoBehaviour
             mascellaStats.isPaused = true;
             mascellaStats.pauseTimer = 0f;
             return;
-        }
-
-        if (mascellaStats.wanderDirection != 0)
-        {
-            rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
         }
     }
 

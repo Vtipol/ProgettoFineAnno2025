@@ -5,6 +5,8 @@ public class MascellaChaseState : MascellaState
 {
     private float lostPlayerTimer = 0f;
     private float lostPlayerThreshold = 2f;
+    private float groundLostTimer = 0f;
+    private float groundLostThreshold = 0.5f;
     public override void OnEnter()
     {
         Debug.Log("Mascella is chasing");
@@ -18,14 +20,32 @@ public class MascellaChaseState : MascellaState
             mascellaController.MascellaSwitchState(mascellaController.mascellaAttackState);
             return;
         }
+
         if (!groundChecker.IsGroundAhead())
         {
-            mascellaChase.StopChasing();
-            mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
+            groundLostTimer += Time.deltaTime;
+
+            if (!mascellaChase.isMascellaBackingAway)
+            {
+                mascellaChase.Flip();
+                mascellaChase.BackAway();
+                mascellaChase.isMascellaBackingAway = true;
+            }
+
+            if (groundLostTimer >= groundLostThreshold)
+            {
+                mascellaChase.StopChasing();
+                mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
+            }
             return;
         }
+        else
+        {
+            groundLostTimer = 0f;
+            mascellaChase.isMascellaBackingAway = false;
+        }
 
-        if (mascellaChase.IsPlayerTooFar())
+        if (!mascellaPerception.CanSeePlayer())
         {
             lostPlayerTimer += Time.deltaTime;
             if (lostPlayerTimer >= lostPlayerThreshold)
@@ -40,8 +60,12 @@ public class MascellaChaseState : MascellaState
             lostPlayerTimer = 0f;
         }
 
-        mascellaChase.ChasePlayer();
+        if (!mascellaChase.isMascellaBackingAway)
+        {
+            mascellaChase.ChasePlayer();
+        }
     }
+
 
     public override void OnExit()
     {

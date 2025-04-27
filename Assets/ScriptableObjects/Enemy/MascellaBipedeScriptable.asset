@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MascellaBipedeScriptable
   m_EditorClassIdentifier: 
   sightRange: 10
-  chaseRange: 25
+  chaseRange: 20
   walkSpeed: 5
   chaseSpeed: 10
   tiredTime: 9999
@@ -21,11 +21,11 @@ MonoBehaviour:
   attackDamage: 10
   jumpForce: 7
   runTimer: 0
-  forgetDelay: 9999
-  wanderTimer: 0.27608648
+  forgetDelay: 1
+  wanderTimer: 0.4923009
   wanderDuration: 2
-  currentWanderDuration: 2.5503347
-  wanderDirection: 1
+  currentWanderDuration: 1.9431713
+  wanderDirection: -1
   pauseDuration: 1
-  pauseTimer: 1.0091121
+  pauseTimer: 1.0002878
   isPaused: 0

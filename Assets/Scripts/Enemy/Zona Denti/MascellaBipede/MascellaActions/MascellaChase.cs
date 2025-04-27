@@ -8,6 +8,7 @@ public class MascellaChase : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundChecker groundChecker;
+    public bool isMascellaBackingAway = false;
     private bool isTired = false;
     private bool isChasing = false;
     public bool IsChasing => isChasing;
@@ -36,6 +37,18 @@ public class MascellaChase : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         isChasing = false;
+    }
+    public void BackAway()
+    {
+        Debug.Log("Mascella is backing away");
+        Vector2 retreatDirection = new Vector2(-Mathf.Sign(rb.linearVelocity.x), 0f);
+        rb.linearVelocity = retreatDirection * (mascellaStats.chaseSpeed * 0.5f);
+    }
+    public void Flip()
+    {
+        Vector3 scale = transform.parent.localScale;
+        scale.x *= -1;
+        transform.parent.localScale = scale;
     }
     public bool IsPlayerTooFar()
     {

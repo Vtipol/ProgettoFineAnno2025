@@ -10,16 +10,17 @@ public class MascellaStateController : MonoBehaviour
     public MascellaAttackState mascellaAttackState;
     public MascellaCrashedState mascellaCrashedState;
     public MascellaTiredState mascellaTiredState;
+    public MascellaPerception mascellaPerception;
     public GroundChecker groundChecker;
 
     private void Start()
     {
         mascellaMachine = new MascellaStateMachine();
-        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
-        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
-        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
-        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
-        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker);
+        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
+        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
+        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
+        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
+        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
 
         mascellaMachine.EnterState(mascellaIdleState); 
     }
