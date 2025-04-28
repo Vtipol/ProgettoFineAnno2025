@@ -21,14 +21,20 @@ public class PlayerStats : ScriptableObject
 
     [Header("Jump")]
     public float JumpHeight = 2f;
+    public float MinJumpHeight = 1f;
     [Range(1f, 1.1f)] public float JumpHeightCompensationFactor = 1.054f;
     public float TimeTillJumpApex = 0.35f;
     [Range(0.01f, 5f)] public float GravityOnReleaseMultiplier = 2f;
     public float MaxFallSpeed = 15f;
-    [Range(1, 5)] public int NumberOfJumpsAllowed = 2;
+    [Range(1, 5)] public int NumberOfJumpsAllowed = 3;
 
     [Header("Jump Cut")]
     [Range(0.02f, 0.3f)] public float TimeForUpwardsCancel = 0.027f;
+    [Range(0f, 0.2f)] public float MinJumpTimeBeforeCut = 0.05f;
+
+    [Header("Jump LockDown")]
+    public float JumpLockoutTime = 0.2f;  // Time before a new jump can be initiated
+    public float JumpLockoutTimer = 0f;   // Timer for the lockout
 
     [Header("Jump Apex")]
     [Range(0.5f, 1f)] public float ApexThreshold = 0.97f;
@@ -39,7 +45,14 @@ public class PlayerStats : ScriptableObject
 
     [Header("Jump Coyote Time")]
     [Range(0f, 1f)] public float JumpCoyoteTime = 0.1f;
-    
+
+    [Header("Wall Cling")]//<-new
+    public float WallStickGravity = 0.5f;
+    public float WallStickMaxFallSpeed = -2f;
+    public float WallJumpVerticalForce = 12f;
+    public float WallJumpHorizontalForce = 8f;
+    public float WallCheckDistance = 0.25f;
+
     [Header("Gravity Settings")]
     [Range(1f, 5f)] public float GravityMultiplier = 2f;
     [Range(1f, 5f)] public float FallGravityMultiplier = 2.5f;
@@ -51,6 +64,10 @@ public class PlayerStats : ScriptableObject
     [Header("Attack")]
     public float Damage = 1f;
 
+    [Header("Kick")]
+    public float KickForce = 10f;
+    public float KickRange = 1f;
+
     [Header("Debug")]
     public bool DebugShowIsGroundedBox;
     public bool DebugShowHeadBumpBox;
@@ -58,6 +75,9 @@ public class PlayerStats : ScriptableObject
     [Header("JumpVisualization Tool")]
     public bool ShowWalkJumpArc = false;
     public bool ShowRunJumpArc = false;
+    public bool ShowMinJumpArc = false;
+    public Color MaxJumpArcColor = Color.green;
+    public Color MinJumpArcColor = Color.yellow;
     public bool StopOnCollision = true;
     public bool DrawRight = true;
     [Range(5, 100)] public int ArcResolution = 20;
@@ -65,6 +85,7 @@ public class PlayerStats : ScriptableObject
 
     public float Gravity { get; private set; }
     public float InitialJumpVelocity { get; private set; }
+    public float MinJumpVelocity { get; private set; }
     public float AdjustedJumpHeight { get; private set; }
 
     private void OnValidate()
@@ -74,12 +95,15 @@ public class PlayerStats : ScriptableObject
 
     private void OnEnable()
     {
-        CalculateValues();
+        CalculateValues();     
     }
-    private void CalculateValues()
+    public void CalculateValues()
     {
         AdjustedJumpHeight = JumpHeight * JumpHeightCompensationFactor;
         Gravity = -(2f * AdjustedJumpHeight) / Mathf.Pow(TimeTillJumpApex, 2f);
         InitialJumpVelocity = Mathf.Abs(Gravity) * TimeTillJumpApex;
+
+        float adjustedMinJumpHeight = MinJumpHeight * JumpHeightCompensationFactor;
+        MinJumpVelocity = Mathf.Sqrt(2f * Mathf.Abs(Gravity) * adjustedMinJumpHeight);
     }
 }

@@ -1,11 +1,18 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static UnityEngine.UIElements.UxmlAttributeDescription;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(Damageble))]
 public class Player : MonoBehaviour
 {
     [Header("References")]
     public PlayerStats Stats;
+    public Damageble Damage;
+    //public Attacking Attacking;
     [SerializeField] private Collider2D _feetColl;
     [SerializeField] private Collider2D _bodyColl;
     [SerializeField] private Animator _animator;
@@ -19,18 +26,18 @@ public class Player : MonoBehaviour
     //collision check vars
     private RaycastHit2D _groundHit;
     private RaycastHit2D _headHit;
-    private bool _isGrounded;
+    public bool _isGrounded;
     private bool _bumpedHead;
 
     //jump vard
     public float VerticalVelocity { get; private set; }
-    private bool _isJumping;
+    public bool _isJumping;
     private bool _isFastFalling;
     private bool _isFalling;
     public bool IsFalling => _isFalling;
     private float _fastFallTime;
     private float _fastFallReleaseSpeed;
-    private int _numberOfJumpsUsed;
+    public int _numberOfJumpsUsed;
 
     //apex vars
     private float _apexPoint;
@@ -44,17 +51,33 @@ public class Player : MonoBehaviour
     //coyote time vars
     private float _coyoteTimer;
 
-private void Awake()
+    //jump cut vars
+    private float _jumpDuration;
+    private bool _canCutJump = false;
+
+    // wall check <-new
+    private bool _isTouchingWall;
+    private bool _isWallSticking;
+    private bool _canWallJump;
+    private RaycastHit2D _wallHit;
+
+    private void Awake()
     {
         _isFacingRight = true;
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        Damage = GetComponent<Damageble>();
+        //Attacking = GetComponent<Attacking>();
+
+        Damage.damagebleHit.AddListener(OnHit);
     }
 
     private void Update()
     {
         CountTimer();
         JumpChecks();
+        AttackCheck();
+        Die();
         UpdateAnimations();
     }
 
@@ -77,28 +100,30 @@ private void Awake()
 
     private void Move(float acceleration, float deceleration, Vector2 moveInput)
     {
-        if (moveInput != Vector2.zero)
+        if (!Damage.LockVelocity)
         {
-            //check if he needs to turn
-            TurnCheck(moveInput);
-
-            Vector2 targetVelocity = Vector2.zero;
-            if (InputManager.RunIsHeld)
+            if (moveInput != Vector2.zero)
             {
-                targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxRunSpeed;
+                //check if he needs to turn
+                TurnCheck(moveInput);
+
+                Vector2 targetVelocity = Vector2.zero;
+                if (InputManager.RunIsHeld)
+                {
+                    targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxRunSpeed;
+                }
+                else { targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxWalkSpeed; }
+
+                _moveVelocity = Vector2.Lerp(_moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
+                _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
             }
-            else { targetVelocity = new Vector2(moveInput.x, 0f) * Stats.MaxWalkSpeed; }
 
-            _moveVelocity = Vector2.Lerp(_moveVelocity, targetVelocity, acceleration * Time.fixedDeltaTime);
-            _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
+            else if (moveInput == Vector2.zero)
+            {
+                _moveVelocity = Vector2.Lerp(_moveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
+                _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
+            }
         }
-
-        else if (moveInput == Vector2.zero)
-        {
-            _moveVelocity = Vector2.Lerp(_moveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
-            _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
-        }
-
     }
 
     private void TurnCheck(Vector2 moveInput)
@@ -113,7 +138,7 @@ private void Awake()
         }
     }
 
-    private void Turn(bool turnRight)
+    public void Turn(bool turnRight)
     {
         if (turnRight)
         {
@@ -133,6 +158,13 @@ private void Awake()
 
     private void JumpChecks()
     {
+        // If the lockout timer is active, we skip the jump initiation
+        if (Stats.JumpLockoutTimer > 0f)
+        {
+            Stats.JumpLockoutTimer -= Time.deltaTime;
+            return;  // Skip the jump logic until the lockout is over
+        }
+
         //press jump
         if (InputManager.JumpWasPressed)
         {
@@ -147,7 +179,7 @@ private void Awake()
             {
                 _jumpReleasedDuringBuffer = true;
             }
-            if (_isJumping && VerticalVelocity > 0f)
+            if (_isJumping && VerticalVelocity > 0f /*&& _canCutJump*/)
             {
                 if (_isPastApexThreshold)
                 {
@@ -166,13 +198,13 @@ private void Awake()
         //jump buffering and coyote time
         if (_jumpBufferTimer > 0 && !_isJumping && (_isGrounded || _coyoteTimer > 0))
         {
-            InitiateJump(1);
+            InitiateJump(3);
 
-            if (_jumpReleasedDuringBuffer)
+            /*if (_jumpReleasedDuringBuffer)
             {
                 _isFastFalling = true;
                 _fastFallReleaseSpeed = VerticalVelocity;
-            }
+            }*/
 
         }
 
@@ -186,7 +218,7 @@ private void Awake()
         //fall/air jump
         else if (_jumpBufferTimer > 0 && _isFalling && _numberOfJumpsUsed < Stats.NumberOfJumpsAllowed -1)
         {
-            InitiateJump(2); //<- means that if you fall/air jump, you CAN NOT double jump
+            InitiateJump(3); //<- means that if you fall/air jump, you CAN NOT double jump
             _isFastFalling = false;
         }
 
@@ -199,19 +231,25 @@ private void Awake()
             _isPastApexThreshold = false;
             _fastFallTime = 0f;
             _numberOfJumpsUsed = 0;
+            //_canCutJump = false;
+            Stats.JumpLockoutTimer = Stats.JumpLockoutTime;  // Reset the lockout timer on landing
 
             VerticalVelocity = Physics2D.gravity.y;
         }
     }
 
-    private void InitiateJump(int numberOfJumpsUsed)
+    public void InitiateJump(int numberOfJumpsUsed)
     {
         if (!_isJumping)
         {
             _isJumping = true;
+            Stats.JumpLockoutTimer = Stats.JumpLockoutTime;  // Start the lockout after initiating a jump
         }
 
         _jumpBufferTimer = 0f;
+        _jumpDuration = 0f;
+        //_canCutJump = false;
+        //StartCoroutine(EnableJumpCutAfterDelay(Stats.MinJumpTimeBeforeCut));
         _numberOfJumpsUsed += numberOfJumpsUsed;
         VerticalVelocity = Stats.InitialJumpVelocity;
     }
@@ -220,6 +258,8 @@ private void Awake()
     {
         if (_isJumping)
         {
+            _jumpDuration += Time.fixedDeltaTime;
+
             // Head bump check: if the player hits their head, force fast fall
             if (_bumpedHead)
             {
@@ -313,6 +353,10 @@ private void Awake()
     #region Attack
 
 
+    public void OnHit(int damage, Vector2 knokback)
+    {
+        _rb.linearVelocity = new Vector2(knokback.x, _rb.linearVelocity.y + knokback.y);
+    }
 
     #endregion
 
@@ -345,13 +389,22 @@ private void Awake()
         else { _bumpedHead = false; }
     }
 
+    private void CheckWall()//<-new
+    {
+        Vector2 direction = _isFacingRight ? Vector2.right : Vector2.left;
+        Vector2 origin = _bodyColl.bounds.center;
+        _wallHit = Physics2D.Raycast(origin, direction, Stats.WallCheckDistance, Stats.GroundLayer);
+        _isTouchingWall = _wallHit.collider != null;
+    }
+
     private void CollisionChecks()
     {
         IsGrounded();
         BumpedHead();
+        CheckWall();//<-new
     }
 
-    public void AttackCheck()
+    private void AttackCheck()
     {
         if(InputManager.AttackDownExecuted == true && _isGrounded == false)
         {
@@ -396,15 +449,18 @@ private void Awake()
     }
 
 
-    public void TakeDamage()
+    /*public void TakeDamage()
     {
         _animator.SetTrigger("Damaged");
-    }
+    }*/
 
     public void Die()
     {
-        _animator.SetTrigger("Dead");
-        this.enabled = false; // Disable player controls on death
+        //_animator.SetTrigger("Dead");
+        if (!Damage._isAlive)
+        {
+            this.enabled = false; // Disable player controls on death
+        }        
     }
 
     #endregion

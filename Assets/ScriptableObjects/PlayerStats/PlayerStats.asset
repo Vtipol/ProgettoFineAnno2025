@@ -25,12 +25,16 @@ MonoBehaviour:
   HeadDetectionRayLength: 0.02
   HeadWidth: 0.75
   JumpHeight: 2
+  MinJumpHeight: 1
   JumpHeightCompensationFactor: 1.054
   TimeTillJumpApex: 0.35
   GravityOnReleaseMultiplier: 2
   MaxFallSpeed: 15
   NumberOfJumpsAllowed: 1
-  TimeForUpwardsCancel: 0.027
+  TimeForUpwardsCancel: 0.02
+  MinJumpTimeBeforeCut: 0
+  JumpLockoutTime: 0.05
+  JumpLockoutTimer: -0.0010562034
   ApexThreshold: 1
   ApexHangTime: 0.01
   JumpBufferTime: 0.125
@@ -40,10 +44,15 @@ MonoBehaviour:
   ThrowForce: 15
   ThrowAngle: 45
   Damage: 1
+  KickForce: 50
+  KickRange: 1
   DebugShowIsGroundedBox: 0
   DebugShowHeadBumpBox: 0
   ShowWalkJumpArc: 0
   ShowRunJumpArc: 0
+  ShowMinJumpArc: 0
+  MaxJumpArcColor: {r: 0, g: 1, b: 0, a: 1}
+  MinJumpArcColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   StopOnCollision: 1
   DrawRight: 1
   ArcResolution: 20

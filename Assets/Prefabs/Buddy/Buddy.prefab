@@ -36,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 2435504552409607706}
   - {fileID: 8749724908321769867}
+  - {fileID: 2595447095497234021}
   - {fileID: 3387632594952278252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiSettings: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
-  target: {fileID: 1630446981866368323, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+  target: {fileID: 0}
   groundCheck: {fileID: 8749724908321769867}
   pickedUp: {fileID: 7639820405145412246}
   targetInView: 0
@@ -254,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trampolineCollider: {fileID: 612355088285040826}
   player: {fileID: 0}
-  trampolineBounceForce: 25
+  trampolineBounceForce: 250000
   pickedUp: {fileID: 7639820405145412246}
 --- !u!1 &695257149465167763
 GameObject:
@@ -289,6 +290,74 @@ Transform:
   - {fileID: 7814042948319637132}
   m_Father: {fileID: 6952805030074251103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &934900120758809226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2595447095497234021}
+  - component: {fileID: 1703994611451569742}
+  m_Layer: 7
+  m_Name: WallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2595447095497234021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934900120758809226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6952805030074251103}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1703994611451569742
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934900120758809226}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.1
 --- !u!1 &1829187673286637511
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +398,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829187673286637511}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -372,6 +441,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gumCollider: {fileID: 2986740559170639401}
   pickedUp: {fileID: 7639820405145412246}
+  pickThrow: {fileID: 0}
+  player: {fileID: 0}
+  Stats: {fileID: 11400000, guid: 75851e0215a04854ba93094373174bde, type: 2}
+  wallCheckDistance: 0.5
+  wallStickTime: 1.5
+  wallStickCounter: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  wallCheckOrigin: {fileID: 2595447095497234021}
+  _playerRB: {fileID: 0}
 --- !u!1 &2541835796001408121
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d8fc5e1841804f7582ced3ce0f61aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsSoapy: 0
 --- !u!114 &1035276020747867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,6 +805,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soapCollider: {fileID: 5203781075069336490}
   pickedUp: {fileID: 7639820405145412246}
+  pickThrow: {fileID: 0}
+  player: {fileID: 0}
+  Stats: {fileID: 0}
+  soap: {fileID: 0}
+  trampolineBounceForce: 25
+  _pickTarget: {fileID: 0}
 --- !u!1 &8080311216604763398
 GameObject:
   m_ObjectHideFlags: 0

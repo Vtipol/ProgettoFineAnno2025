@@ -6,12 +6,17 @@ public class PickThrow : MonoBehaviour
     public PlayerStats Stats;
     private PickedUp PickedUp;
     private Player Player;
+    public SoapState Soap;
     [SerializeField] private GameObject _pickUpPosition;
     [SerializeField] private Collider2D _pickTrigger;
     [SerializeField] private Animator _animator;
 
+    [SerializeField] private LayerMask shellLayer;
+
     [SerializeField] private GameObject _pickTarget;
+    [SerializeField] private GameObject _soapMode;
     private Rigidbody2D _targetRB;
+    private Collider2D soapCollider;
 
     private void Awake()
     {
@@ -21,15 +26,16 @@ public class PickThrow : MonoBehaviour
     private void Start()
     {
         Player = GetComponent<Player>();
+        soapCollider = _soapMode.GetComponent<Collider2D>();
     }
 
     private void Update()
     {
         if (_pickTarget != null)
         {
-            _targetRB = _pickTarget.GetComponent<Rigidbody2D>();
+            _targetRB = _pickTarget.GetComponent<Rigidbody2D>();            
             PickedUp = _pickTarget.GetComponent<PickedUp>();
-
+            
             // While being picked up, follow the pickup position
             if (PickedUp != null && PickedUp.IsPickedUp)
             {
@@ -52,20 +58,53 @@ public class PickThrow : MonoBehaviour
         if (InputManager.RunIsHeld == true && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
         {
             //Debug.Log("Correct object triggered while running!");
+            if (!Soap.IsSoapy)
+            {
+                // Set state
+                PickedUp.IsPickedUp = true;
 
-            // Set state
-            PickedUp.IsPickedUp = true;
+                // Optional: make it kinematic so it doesn't fall
+                _targetRB.bodyType = RigidbodyType2D.Kinematic;
+                _targetRB.linearVelocity = Vector2.zero;
 
-            // Optional: make it kinematic so it doesn't fall
-            _targetRB.bodyType = RigidbodyType2D.Kinematic;
-            _targetRB.linearVelocity = Vector2.zero;
+                // Attach the object to follow the pickup position
+                _pickTarget.transform.position = _pickUpPosition.transform.position;
+                _pickTarget.transform.parent = _pickUpPosition.transform;
 
-            // Attach the object to follow the pickup position
-            _pickTarget.transform.position = _pickUpPosition.transform.position;
-            _pickTarget.transform.parent = _pickUpPosition.transform;
+                // Play pickup animation
+                _animator.SetTrigger("PickUp");
+            }
+            else if (Soap.IsSoapy)
+            {
+                if (soapCollider != null)
+                {
+                    Soap soapScript = soapCollider.GetComponentInParent<Soap>();
+                    if (soapScript != null)
+                    {
+                        Vector2 kickDirection = Player._isFacingRight ? Vector2.right : Vector2.left;
 
-            // Play pickup animation
-            _animator.SetTrigger("PickUp");
+                        // Apply a stronger force when kicking
+                        Rigidbody2D soapRB = soapCollider.GetComponentInParent<Rigidbody2D>();
+                        if (soapRB != null)
+                        {
+                            soapRB.AddForce(kickDirection * Stats.KickForce, ForceMode2D.Impulse);  // Kick with force
+                            Debug.Log($"[KICK] Soap kicked in direction: {kickDirection} with force: {Stats.KickForce}");
+                        }
+                        else
+                        {
+                            Debug.LogWarning("[KICK] soapCollider found, but no Rigidbody2D component on Soap object!");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning("[KICK] soapCollider found, but Soap script missing!");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("[KICK] soapCollider reference is null!");
+                }
+            }
         }
     }
 

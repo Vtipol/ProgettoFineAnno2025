@@ -1,16 +1,43 @@
+using System.Collections;
 using UnityEngine;
 
 public class Gum : MonoBehaviour
 {
     [SerializeField] private CircleCollider2D gumCollider;
-    public PickedUp pickedUp;
+    public PickThrow pickThrow;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] private GameObject player; // Drag your player GameObject here
+    [SerializeField] private PickedUp pickedUp; // Drag the script that has IsPickedUp
+
+    private WallJumpHandler wallJumpHandler;
+    private bool wasPickedUp = false;
+
+    private void Start()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !pickedUp.IsPickedUp)
+        if (player != null)
         {
-            Debug.Log("Entered Gum Collider");
+            wallJumpHandler = player.GetComponent<WallJumpHandler>();
+            if (wallJumpHandler == null)
+            {
+                Debug.LogWarning("WallJumpHandler not found on player.");
+            }
         }
+    }
 
+    private void Update()
+    {
+        if (pickedUp == null || wallJumpHandler == null)
+            return;
+
+        if (pickedUp.IsPickedUp && !wasPickedUp)
+        {
+            wallJumpHandler.EnableWallJump(3);
+            wasPickedUp = true;
+        }
+        else if (!pickedUp.IsPickedUp && wasPickedUp)
+        {
+            wallJumpHandler.DisableWallJump();
+            wasPickedUp = false;
+        }
     }
 }
