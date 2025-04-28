@@ -3,8 +3,11 @@ using UnityEngine;
 public class MascellaStateController : MonoBehaviour
 { 
     private MascellaStateMachine mascellaMachine;
-    public  MascellaIdle mascellaIdle;
+    public MascellaBipedeScriptable mascellaStats;
+    public MascellaIdle mascellaIdle;
     public MascellaChase mascellaChase;
+    public MascellaAttack mascellaAttack;
+    public MascellaVulnerable mascellaVulnerable;
     public MascellaIdleState mascellaIdleState;
     public MascellaChaseState mascellaChaseState;
     public MascellaAttackState mascellaAttackState;
@@ -16,11 +19,11 @@ public class MascellaStateController : MonoBehaviour
     private void Start()
     {
         mascellaMachine = new MascellaStateMachine();
-        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
-        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
-        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
-        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
-        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception);
+        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
+        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
+        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
+        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
+        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
 
         mascellaMachine.EnterState(mascellaIdleState); 
     }

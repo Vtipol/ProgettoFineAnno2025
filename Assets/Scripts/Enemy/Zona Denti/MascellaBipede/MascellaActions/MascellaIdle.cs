@@ -7,6 +7,7 @@ public class MascellaIdle : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform rootTransform;
     [SerializeField] private GroundChecker groundChecker;
+    private Rigidbody2D rb;
     private float flipCooldownTimer = 0f;
     private const float flipCooldownDuration = 0.5f;
     private RaycastHit2D playerSearch;
@@ -20,11 +21,14 @@ public class MascellaIdle : MonoBehaviour
             playerSighted = value;
         }
     }
+
     private void Awake()
     {
-        rootTransform = transform.parent;
-        playerLayer = LayerMask.GetMask("Player");
+            rootTransform = transform.parent;
+            playerLayer = LayerMask.GetMask("Player");
+            rb = rootTransform.GetComponent<Rigidbody2D>();
     }
+
     public void Wander()
     {
         if (flipCooldownTimer > 0f)
@@ -42,16 +46,16 @@ public class MascellaIdle : MonoBehaviour
                 mascellaStats.currentWanderDuration = Random.Range(1f, 3f);
                 mascellaStats.wanderTimer = 0f;
             }
+            rb.linearVelocity = Vector2.zero; // Stop when paused
             return;
         }
-
-        Vector2 movement = Vector2.right * mascellaStats.wanderDirection * mascellaStats.walkSpeed * Time.deltaTime;
 
         if (mascellaStats.wanderDirection != 0)
         {
             if (groundChecker.IsGroundAhead())
             {
-                rootTransform.Translate(movement);
+                Vector2 targetVelocity = new Vector2(mascellaStats.wanderDirection * mascellaStats.walkSpeed, rb.linearVelocity.y);
+                rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 5f); 
                 rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
             }
             else if (flipCooldownTimer <= 0f)
@@ -60,10 +64,13 @@ public class MascellaIdle : MonoBehaviour
                 rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
                 flipCooldownTimer = flipCooldownDuration;
 
-                // Force a tiny step back after flipping
-                Vector2 retreatMovement = Vector2.right * mascellaStats.wanderDirection * 0.1f;
-                rootTransform.Translate(retreatMovement);
+                Vector2 retreatVelocity = new Vector2(mascellaStats.wanderDirection * 0.5f, rb.linearVelocity.y);
+                rb.linearVelocity = retreatVelocity;
             }
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
         }
 
         mascellaStats.wanderTimer += Time.deltaTime;

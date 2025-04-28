@@ -19,7 +19,7 @@ public class MascellaChase : MonoBehaviour
         get => playerInBiteRange;
         set => playerInBiteRange = value;
     }
-   
+
     public void ChasePlayer()
     {
         if (player == null || isTired || PlayerInRange || !groundChecker.IsGroundAhead())
@@ -30,8 +30,9 @@ public class MascellaChase : MonoBehaviour
 
         isChasing = true;
         Vector2 direction = (player.position - transform.position).normalized;
-        Vector2 velocity = new Vector2(direction.x * mascellaStats.chaseSpeed, 0f);
-        rb.linearVelocity = velocity;
+        Vector2 targetVelocity = new Vector2(direction.x * mascellaStats.chaseSpeed, rb.linearVelocity.y);
+
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * mascellaStats.acceleration);
     }
     public void StopChasing()
     {
@@ -42,7 +43,7 @@ public class MascellaChase : MonoBehaviour
     {
         Debug.Log("Mascella is backing away");
         Vector2 retreatDirection = new Vector2(-Mathf.Sign(rb.linearVelocity.x), 0f);
-        rb.linearVelocity = retreatDirection * (mascellaStats.chaseSpeed * 0.5f);
+        rb.linearVelocity = retreatDirection * mascellaStats.walkSpeed;
     }
     public void Flip()
     {

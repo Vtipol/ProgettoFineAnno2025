@@ -4,7 +4,7 @@ using UnityEngine;
 public class MascellaChaseState : MascellaState
 {
     private float lostPlayerTimer = 0f;
-    private float lostPlayerThreshold = 2f;
+    private float lostPlayerThreshold = 0.5f;
     private float groundLostTimer = 0f;
     private float groundLostThreshold = 0.5f;
     public override void OnEnter()
@@ -30,6 +30,8 @@ public class MascellaChaseState : MascellaState
                 mascellaChase.Flip();
                 mascellaChase.BackAway();
                 mascellaChase.isMascellaBackingAway = true;
+                mascellaStats.pauseTimer += -1f;
+                mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
             }
 
             if (groundLostTimer >= groundLostThreshold)
@@ -66,8 +68,8 @@ public class MascellaChaseState : MascellaState
         }
     }
 
-
     public override void OnExit()
     {
     }
+
 }
