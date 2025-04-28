@@ -222,7 +222,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4731837307436734170}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -261,11 +261,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
+    - []
   m_UseDelaunayMesh: 0
 --- !u!1 &7284948936778649149
 GameObject:
@@ -525,6 +521,7 @@ MonoBehaviour:
   mascellaIdle: {fileID: 9019159853897575288}
   mascellaChase: {fileID: 448842208053253790}
   mascellaAttack: {fileID: 4247173658301119563}
+  mascellaVulnerable: {fileID: 0}
   mascellaIdleState: {fileID: 518418492142440437}
   mascellaChaseState: {fileID: 7992238749958026404}
   mascellaAttackState: {fileID: 7041058757401208920}

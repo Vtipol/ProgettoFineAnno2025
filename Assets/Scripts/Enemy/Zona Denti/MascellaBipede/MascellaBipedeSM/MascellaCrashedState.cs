@@ -8,7 +8,7 @@ public class MascellaCrashedState : MascellaState
     }
     public override void OnUpdate()
     {
-
+        mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
     }
     public override void OnExit()
     {
