@@ -4,7 +4,7 @@ using System.Collections;
 public class MascellaChase : MonoBehaviour
 {
     [SerializeField] private MascellaBipedeScriptable mascellaStats;
-    [SerializeField] private CircleCollider2D biteTrigger;
+    [SerializeField] private CapsuleCollider2D biteTrigger;
     [SerializeField] private Transform player;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundChecker groundChecker;
@@ -30,8 +30,17 @@ public class MascellaChase : MonoBehaviour
 
         isChasing = true;
         Vector2 direction = (player.position - transform.position).normalized;
-        Vector2 targetVelocity = new Vector2(direction.x * mascellaStats.chaseSpeed, rb.linearVelocity.y);
 
+        if (direction.x > 0 && transform.parent.localScale.x < 0)
+        {
+            Flip();
+        }
+        else if (direction.x < 0 && transform.parent.localScale.x > 0)
+        {
+            Flip();
+        }
+
+        Vector2 targetVelocity = new Vector2(direction.x * mascellaStats.chaseSpeed, rb.linearVelocity.y);
         rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * mascellaStats.acceleration);
     }
     public void StopChasing()

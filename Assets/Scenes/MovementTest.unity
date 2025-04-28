@@ -285,6 +285,48 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7965949423656897136, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
   m_PrefabInstance: {fileID: 1762288230}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &190351692 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8651997404969986584, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 1331683523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &190351699
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190351692}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &311965224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,6 +1350,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 448842208053253790, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: biteTrigger
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.987152
@@ -1348,14 +1394,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4731837307436734170, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680792864434036560, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7899356897481942568, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_Name
       value: MascellaBipede
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8651997404969986584, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5285916640852593334, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8651997404969986584, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 190351699}
   m_SourcePrefab: {fileID: 100100000, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
 --- !u!1 &1519121362
 GameObject:
