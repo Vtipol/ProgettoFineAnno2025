@@ -12,7 +12,8 @@ public class SoapState : BuddyState, IInputHandler
         
         IsSoapy = true;
         if (IsSoapy) {Debug.Log("IsSoapy");}
-        
+
+        _animator.SetTrigger("Soap");
     }
     public override void OnUpdate()
     {

@@ -341,6 +341,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1538109120823419230}
   - component: {fileID: 6978680873578052696}
+  - component: {fileID: 7311475652444669116}
+  - component: {fileID: 9087102460066230352}
   m_Layer: 0
   m_Name: VulnerableSpot
   m_TagString: Untagged
@@ -400,6 +402,40 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 1}
   m_Direction: 0
+--- !u!114 &7311475652444669116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680792864434036560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db373ec654f047aca8ffbc28c268b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: {fileID: 0}
+--- !u!114 &9087102460066230352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7680792864434036560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc5a44960eccc34884db99f47ac97bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagebleHit:
+    m_PersistentCalls:
+      m_Calls: []
+  _maxHealth: 100
+  _health: 100
+  _isAlive: 1
+  isInvincible: 0
+  timeSinceHit: 0
+  invincibilityTime: 0.25
 --- !u!1 &7899356897481942568
 GameObject:
   m_ObjectHideFlags: 0

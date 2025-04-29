@@ -20,7 +20,7 @@ public class PickThrow : MonoBehaviour
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();              
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -48,6 +48,8 @@ public class PickThrow : MonoBehaviour
                 ThrowObject();
             }
         }
+
+        UpdateAnimation();
     }
 
     #region PickUp
@@ -72,7 +74,7 @@ public class PickThrow : MonoBehaviour
                 _pickTarget.transform.parent = _pickUpPosition.transform;
 
                 // Play pickup animation
-                _animator.SetTrigger("PickUp");
+                //_animator.SetTrigger("PickUp");
             }
             else if (Soap.IsSoapy)
             {
@@ -152,6 +154,17 @@ public class PickThrow : MonoBehaviour
         _animator.SetTrigger("Throw");
 
         Debug.Log($"[THROW] Threw object at direction {throwDir}, force {Stats.ThrowForce}");
+    }
+
+    #endregion
+
+    #region Animation
+
+    private void UpdateAnimation()
+    {
+        bool PickUp = PickedUp.IsPickedUp;
+        _animator.SetBool("PickUp", PickUp);
+        
     }
 
     #endregion

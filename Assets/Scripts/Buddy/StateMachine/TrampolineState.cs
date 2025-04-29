@@ -7,6 +7,7 @@ public class TrampolineState : BuddyState, IInputHandler
         controller.EnableOnlyCollider(controller.capsuleCollider);
         followPlayer.IsTrasformed = true;
         Debug.Log("Trampoline Mode");
+        _animator.SetTrigger("Trampoline");
     }
     public override void OnUpdate()
     {

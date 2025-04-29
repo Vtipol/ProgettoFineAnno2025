@@ -5,12 +5,20 @@ public class FollowPlayer : MonoBehaviour
     public Transform target;
     public Transform groundCheck;
     public PickedUp pickedUp;
+    [SerializeField] private Animator _animator;
 
     private Rigidbody2D rb;
     private bool isGrounded;
     public bool targetInView;
     private bool needJump;
     private bool isTrasformed;
+
+    // animation var
+    private bool _isWalking;
+    //private bool _isRunning;
+    private bool _isJumping;
+    private bool _isFalling;
+
     public bool IsTrasformed
     {
         get { return isTrasformed; }
@@ -19,12 +27,17 @@ public class FollowPlayer : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
     }
     void Update()
     {
         DetectTarget();
         CheckGroundStatus();
         HandleMovementLogic();
+
+        UpdateAnimation();
+        JumpFall();
+        WalkRunStop();
     }
     void FixedUpdate()
     {
@@ -105,4 +118,52 @@ public class FollowPlayer : MonoBehaviour
         yield return new WaitForSeconds(1f);
         buddyCollider.enabled = true;
     }*/
+
+    #region Animation
+
+    private void UpdateAnimation()
+    {
+        bool walking = _isWalking && isGrounded;
+        _animator.SetBool("IsWalking", walking);
+        bool running = InputManager.RunIsHeld && isGrounded;
+        _animator.SetBool("IsRunning", walking && running);
+        bool jumping = _isJumping && !isGrounded;
+        _animator.SetBool("IsJumping", jumping);
+        bool falling = !_isJumping && !isGrounded;
+        _animator.SetBool("IsFalling", falling);
+    }
+
+    private void JumpFall()
+    {
+        if (rb.linearVelocity.y < 0.1f && !isGrounded)
+        {
+            _isJumping = true;
+        }
+        if (_isJumping && isGrounded)
+        {
+            _isJumping = false; 
+        }
+        if (!_isJumping && !isGrounded)
+        {
+            _isFalling = true;
+        }
+        else if (!_isJumping && isGrounded)
+        {
+            _isFalling = false;
+        }
+    }
+
+    private void WalkRunStop()
+    {
+        if (rb.linearVelocity.magnitude < 0.01f && isGrounded)
+        {
+            _isWalking = false;
+        }
+        else if (rb.linearVelocity.magnitude > 0.01f && isGrounded)
+        {
+            _isWalking = true;
+        }
+    }
+
+    #endregion
 }

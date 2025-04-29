@@ -8,6 +8,7 @@ public class GumState : BuddyState, IInputHandler
         controller.EnableOnlyCollider(controller.circleCollider);
         followPlayer.IsTrasformed = true;
         Debug.Log("Gum Mode");
+        _animator.SetTrigger("Gum");
     }
     public override void OnUpdate()
     {

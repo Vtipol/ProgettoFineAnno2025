@@ -1,9 +1,10 @@
 using UnityEngine;
 using System;
 public class PickedUp : MonoBehaviour
-{
+{    
     private bool isPickedUp = false;
     [SerializeField] private Collider2D groundCollider;
+    [SerializeField] private Animator _animator;
     public bool IsPickedUp
     {
         get => isPickedUp;
@@ -21,6 +22,23 @@ public class PickedUp : MonoBehaviour
     {
         followPlayer = GetComponent<FollowPlayer>();
         stateController = GetComponent<BuddyStateController>();
+        _animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        UpdateAnimation();
+    }
+
+    private void UpdateAnimation()
+    {
+        bool PickedUp = isPickedUp;
+        _animator.SetBool("PickedUp", PickedUp);
+        if (!IsPickedUp)
+        {
+            _animator.SetTrigger("Thrown");
+        }
+        
     }
 
     // public void OnCollisionEnter2D(Collision2D collision)
@@ -30,5 +48,5 @@ public class PickedUp : MonoBehaviour
     //         IsPickedUp = false;
     //     }
     // }
-   
+
 }
