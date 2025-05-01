@@ -46,7 +46,7 @@ public class MascellaIdle : MonoBehaviour
                 mascellaStats.currentWanderDuration = Random.Range(1f, 3f);
                 mascellaStats.wanderTimer = 0f;
             }
-            rb.linearVelocity = Vector2.zero; // Stop when paused
+            rb.linearVelocity = Vector2.zero; 
             return;
         }
 

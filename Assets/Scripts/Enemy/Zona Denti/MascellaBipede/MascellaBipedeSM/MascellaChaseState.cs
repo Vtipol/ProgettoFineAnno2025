@@ -10,10 +10,13 @@ public class MascellaChaseState : MascellaState
     public override void OnEnter()
     {
         Debug.Log("Mascella is chasing");
+        mascellaController.isMascellaChasing = true;
+
     }
 
     public override void OnUpdate()
     {
+        mascellaController.UpdateAnimation();
         if (mascellaChase.PlayerInRange)
         {
             mascellaChase.StopChasing();
@@ -70,6 +73,7 @@ public class MascellaChaseState : MascellaState
 
     public override void OnExit()
     {
+        mascellaController.isMascellaChasing = false;
     }
 
 }

@@ -23,6 +23,9 @@ public class MascellaBipedeScriptable : ScriptableObject
     public int wanderDirection = 1;
     public float pauseDuration = 1f;
     public float pauseTimer = 0f;
+    public float lungeGravityScale = 5f;
+    public float defaultGravityScale = 1.5f;
+    public float vulnerableTime = 5f;
     public bool isPaused = false;
     public bool isCrashed = false;
 }

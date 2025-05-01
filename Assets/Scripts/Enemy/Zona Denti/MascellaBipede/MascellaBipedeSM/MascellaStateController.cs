@@ -3,6 +3,10 @@ using UnityEngine;
 public class MascellaStateController : MonoBehaviour
 { 
     private MascellaStateMachine mascellaMachine;
+    public bool isMascellaWalking;
+    public bool isMascellaChasing;
+    public bool isMascellaAttacking;
+    public bool isMascellaCrashed;
     public MascellaBipedeScriptable mascellaStats;
     public MascellaIdle mascellaIdle;
     public MascellaChase mascellaChase;
@@ -15,15 +19,16 @@ public class MascellaStateController : MonoBehaviour
     public MascellaTiredState mascellaTiredState;
     public MascellaPerception mascellaPerception;
     public GroundChecker groundChecker;
+    public Animator mascellaAnimator;
 
     private void Start()
     {
         mascellaMachine = new MascellaStateMachine();
-        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
-        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
-        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
-        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
-        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable);
+        mascellaIdleState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
+        mascellaChaseState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
+        mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
+        mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
+        mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
 
         mascellaMachine.EnterState(mascellaIdleState); 
     }
@@ -42,5 +47,17 @@ public class MascellaStateController : MonoBehaviour
     private void Update()
     {
         mascellaMachine.UpdateState();
+    }
+
+    public void UpdateAnimation()
+    {
+        bool mascellaWalking = isMascellaWalking;
+        mascellaAnimator.SetBool("IsWalking", isMascellaWalking);
+        bool mascellaChasing = isMascellaChasing;
+        mascellaAnimator.SetBool("IsRunning", isMascellaChasing);
+        bool mascellaAttacking = isMascellaAttacking;
+        mascellaAnimator.SetBool("IsJumping", isMascellaAttacking);
+        bool mascellaCrashed = isMascellaCrashed;
+        mascellaAnimator.SetBool("IsFalling", isMascellaCrashed);
     }
 }

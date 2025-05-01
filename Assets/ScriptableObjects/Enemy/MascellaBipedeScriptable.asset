@@ -21,16 +21,16 @@ MonoBehaviour:
   vulnerableDuration: 3
   attackDamage: 10
   jumpForce: 7
-  runTimer: 0
+  runTimer: 9.791453
   forgetDelay: 1
-  wanderTimer: 0.011697456
+  wanderTimer: 2.2993336
   wanderDuration: 2
-  currentWanderDuration: 1.1386809
+  currentWanderDuration: 2.4456706
   mascellaLungeForce: 5
-  mascellaLungeHorizontalForce: 10
-  mascellaLungeVerticalForce: 7
-  wanderDirection: 1
+  mascellaLungeHorizontalForce: 15
+  mascellaLungeVerticalForce: 9
+  wanderDirection: -1
   pauseDuration: 1
-  pauseTimer: 1.0060071
+  pauseTimer: 1.0053474
   isPaused: 0
-  isCrashed: 0
+  isCrashed: 1

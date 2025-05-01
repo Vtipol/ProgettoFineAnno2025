@@ -5,7 +5,7 @@ public class MascellaChase : MonoBehaviour
 {
     [SerializeField] private MascellaBipedeScriptable mascellaStats;
     [SerializeField] private CapsuleCollider2D biteTrigger;
-    [SerializeField] private Transform player;
+    private Transform player;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundChecker groundChecker;
     public bool isMascellaBackingAway = false;
@@ -19,9 +19,36 @@ public class MascellaChase : MonoBehaviour
         get => playerInBiteRange;
         set => playerInBiteRange = value;
     }
-
+    private void Awake()
+    {
+        if (player == null)
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+            else
+            {
+                Debug.LogWarning("MascellaChase could not find a GameObject tagged 'Player' in Awake.");
+            }
+        }
+    }
     public void ChasePlayer()
     {
+        if (player == null)
+        {
+           Debug.Log("Player is Null");
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+            else
+            {
+                Debug.LogWarning("MascellaChaseState could not find a GameObject tagged 'Player'.");
+            }
+        }
         if (player == null || isTired || PlayerInRange || !groundChecker.IsGroundAhead())
         {
             StopChasing();
