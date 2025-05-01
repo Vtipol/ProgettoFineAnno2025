@@ -13,7 +13,6 @@ public class MascellaAttackState : MascellaState
 
     public override void OnUpdate()
     {
-        mascellaController.UpdateAnimation();
         if (mascellaAttack.HasMissed)
         {
               mascellaController.MascellaSwitchState(mascellaController.mascellaCrashedState);

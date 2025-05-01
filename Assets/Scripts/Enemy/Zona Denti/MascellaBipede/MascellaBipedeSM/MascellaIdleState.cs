@@ -14,12 +14,15 @@ public class MascellaIdleState : MascellaState
         searchDelayTimer = 0.5f;
         chaseCooldownTimer = chaseCooldownDuration;
         mascellaController.isMascellaWalking = true;
+        if (mascellaAnimator == null)
+        {
+            Debug.LogError("Animator not assigned on MascellaStateController!");
+        }
     }
 
     public override void OnUpdate()
     {
         mascellaIdle.Wander();
-        mascellaController.UpdateAnimation();
         if (searchDelayTimer > 0f)
         {
             searchDelayTimer -= Time.deltaTime;

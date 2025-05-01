@@ -47,17 +47,18 @@ public class MascellaStateController : MonoBehaviour
     private void Update()
     {
         mascellaMachine.UpdateState();
+        UpdateAnimation();
     }
 
-    public void UpdateAnimation()
+    private void UpdateAnimation()
     {
         bool mascellaWalking = isMascellaWalking;
-        mascellaAnimator.SetBool("IsWalking", isMascellaWalking);
+        mascellaAnimator.SetBool("isWalking", mascellaWalking);
         bool mascellaChasing = isMascellaChasing;
-        mascellaAnimator.SetBool("IsRunning", isMascellaChasing);
+        mascellaAnimator.SetBool("isChasing", mascellaChasing);
         bool mascellaAttacking = isMascellaAttacking;
-        mascellaAnimator.SetBool("IsJumping", isMascellaAttacking);
+        mascellaAnimator.SetBool("isAttacking", mascellaAttacking);
         bool mascellaCrashed = isMascellaCrashed;
-        mascellaAnimator.SetBool("IsFalling", isMascellaCrashed);
+        mascellaAnimator.SetBool("isCrashed", mascellaCrashed);
     }
 }

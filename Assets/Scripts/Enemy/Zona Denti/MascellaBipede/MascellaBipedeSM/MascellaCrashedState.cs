@@ -14,7 +14,6 @@ public class MascellaCrashedState : MascellaState
     public override void OnUpdate()
     {
         timer += Time.deltaTime;
-        mascellaController.UpdateAnimation();
         if (timer >= mascellaStats.vulnerableTime)
         {
             mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);

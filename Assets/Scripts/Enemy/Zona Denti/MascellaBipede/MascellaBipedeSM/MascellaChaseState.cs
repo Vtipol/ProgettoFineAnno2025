@@ -16,7 +16,6 @@ public class MascellaChaseState : MascellaState
 
     public override void OnUpdate()
     {
-        mascellaController.UpdateAnimation();
         if (mascellaChase.PlayerInRange)
         {
             mascellaChase.StopChasing();
