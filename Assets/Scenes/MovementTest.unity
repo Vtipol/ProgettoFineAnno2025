@@ -1365,7 +1365,7 @@ PrefabInstance:
     - target: {fileID: 1957993825396906250, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6200000, guid: 75371e691251c476abff76d8e67630c3, type: 2}
     - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: isMascellaWalking
       value: 1

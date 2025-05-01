@@ -43,7 +43,7 @@ public class MascellaIdle : MonoBehaviour
             {
                 mascellaStats.isPaused = false;
                 mascellaStats.wanderDirection = Random.Range(0, 2) == 0 ? -1 : 1;
-                mascellaStats.currentWanderDuration = Random.Range(1f, 3f);
+                mascellaStats.currentWanderDuration = Random.Range(1f, 5f);
                 mascellaStats.wanderTimer = 0f;
             }
             rb.linearVelocity = Vector2.zero; 
@@ -52,10 +52,10 @@ public class MascellaIdle : MonoBehaviour
 
         if (mascellaStats.wanderDirection != 0)
         {
-            if (groundChecker.IsGroundAhead())
+            if (groundChecker.IsGroundAhead() && !groundChecker.IsWallAhead(mascellaStats.wanderDirection))
             {
                 Vector2 targetVelocity = new Vector2(mascellaStats.wanderDirection * mascellaStats.walkSpeed, rb.linearVelocity.y);
-                rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 5f); 
+                rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 5f);
                 rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
             }
             else if (flipCooldownTimer <= 0f)
@@ -67,6 +67,7 @@ public class MascellaIdle : MonoBehaviour
                 Vector2 retreatVelocity = new Vector2(mascellaStats.wanderDirection * 0.5f, rb.linearVelocity.y);
                 rb.linearVelocity = retreatVelocity;
             }
+
         }
         else
         {

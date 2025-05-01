@@ -32,7 +32,7 @@ public class MascellaChaseState : MascellaState
                 mascellaChase.Flip();
                 mascellaChase.BackAway();
                 mascellaChase.isMascellaBackingAway = true;
-                mascellaStats.pauseTimer += -1f;
+                mascellaStats.pauseTimer += -2f;
                 mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
             }
 

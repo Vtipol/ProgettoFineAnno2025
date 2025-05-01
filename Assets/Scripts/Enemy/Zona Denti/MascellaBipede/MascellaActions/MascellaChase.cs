@@ -49,7 +49,9 @@ public class MascellaChase : MonoBehaviour
                 Debug.LogWarning("MascellaChaseState could not find a GameObject tagged 'Player'.");
             }
         }
-        if (player == null || isTired || PlayerInRange || !groundChecker.IsGroundAhead())
+        if (player == null || isTired || PlayerInRange ||
+    !groundChecker.IsGroundAhead() ||
+    groundChecker.IsWallAhead((int)Mathf.Sign(player.position.x - transform.position.x)))
         {
             StopChasing();
             return;
