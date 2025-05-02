@@ -1366,6 +1366,14 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 75371e691251c476abff76d8e67630c3, type: 2}
+    - target: {fileID: 2490464238519507413, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788254819174218534, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: isMascellaWalking
       value: 1
@@ -1426,6 +1434,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7284948936778649149, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7311475652444669116, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: Damage
       value: 
@@ -1456,6 +1468,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+--- !u!70 &1331683524 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6978680873578052696, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 1331683523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519121362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,6 +2666,75 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bb8de645c6d941fdab848e551820745, type: 3}
+--- !u!1001 &8044189247337257015
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 380005994263429837, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: Damage
+      value: 
+      objectReference: {fileID: 38575983}
+    - target: {fileID: 380005994263429837, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: VulnerableSpot
+      value: 
+      objectReference: {fileID: 1331683524}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -40.824966
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2583497
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.012757979
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594661431022133005, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744427748980470049, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: m_Name
+      value: DentoneGrosso
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641857517003729951, guid: 40c693f94455343e494a7600881a7333, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 571564455}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40c693f94455343e494a7600881a7333, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2659,3 +2745,4 @@ SceneRoots:
   - {fileID: 1762288230}
   - {fileID: 610680872}
   - {fileID: 1331683523}
+  - {fileID: 8044189247337257015}

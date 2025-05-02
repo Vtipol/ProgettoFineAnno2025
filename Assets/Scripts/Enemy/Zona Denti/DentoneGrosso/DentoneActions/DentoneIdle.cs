@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DentoneIdle : MonoBehaviour
 {
-    [SerializeField] private MascellaBipedeScriptable mascellaStats;
+    [SerializeField] private DentoneGrossoScriptable dentoneStats;
     [SerializeField] private Transform target;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform rootTransform;
@@ -31,55 +31,55 @@ public class DentoneIdle : MonoBehaviour
 
     public void Wander()
     {
-        Debug.Log("Dentone is Wandering");
         if (flipCooldownTimer > 0f)
         {
             flipCooldownTimer -= Time.deltaTime;
         }
 
-        if (mascellaStats.isPaused)
+        if (dentoneStats.isPaused)
         {
-            mascellaStats.pauseTimer += Time.deltaTime;
-            if (mascellaStats.pauseTimer >= mascellaStats.pauseDuration)
+            dentoneStats.pauseTimer += Time.deltaTime;
+            if (dentoneStats.pauseTimer >= dentoneStats.pauseDuration)
             {
-                mascellaStats.isPaused = false;
-                mascellaStats.wanderDirection = Random.Range(0, 2) == 0 ? -1 : 1;
-                mascellaStats.currentWanderDuration = Random.Range(1f, 3f);
-                mascellaStats.wanderTimer = 0f;
+                dentoneStats.isPaused = false;
+                dentoneStats.wanderDirection = Random.Range(0, 2) == 0 ? -1 : 1;
+                dentoneStats.currentWanderDuration = Random.Range(1f, 5f);
+                dentoneStats.wanderTimer = 0f;
             }
-            rb.linearVelocity = Vector2.zero; 
+            rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        if (mascellaStats.wanderDirection != 0)
+        if (dentoneStats.wanderDirection != 0)
         {
-            if (groundChecker.IsGroundAhead())
+            if (groundChecker.IsGroundAhead() && !groundChecker.IsWallAhead(dentoneStats.wanderDirection))
             {
-                Vector2 targetVelocity = new Vector2(mascellaStats.wanderDirection * mascellaStats.walkSpeed, rb.linearVelocity.y);
+                Vector2 targetVelocity = new Vector2(dentoneStats.wanderDirection * dentoneStats.walkSpeed, rb.linearVelocity.y);
                 rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, targetVelocity, Time.deltaTime * 5f);
-                rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
+                rootTransform.localScale = new Vector3(dentoneStats.wanderDirection, 1, 1);
             }
             else if (flipCooldownTimer <= 0f)
             {
-                mascellaStats.wanderDirection *= -1;
-                rootTransform.localScale = new Vector3(mascellaStats.wanderDirection, 1, 1);
+                dentoneStats.wanderDirection *= -1;
+                rootTransform.localScale = new Vector3(dentoneStats.wanderDirection, 1, 1);
                 flipCooldownTimer = flipCooldownDuration;
 
-                Vector2 retreatVelocity = new Vector2(mascellaStats.wanderDirection * 0.5f, rb.linearVelocity.y);
+                Vector2 retreatVelocity = new Vector2(dentoneStats.wanderDirection * 0.5f, rb.linearVelocity.y);
                 rb.linearVelocity = retreatVelocity;
             }
+
         }
         else
         {
             rb.linearVelocity = Vector2.zero;
         }
 
-        mascellaStats.wanderTimer += Time.deltaTime;
-        if (mascellaStats.wanderTimer >= mascellaStats.currentWanderDuration)
+        dentoneStats.wanderTimer += Time.deltaTime;
+        if (dentoneStats.wanderTimer >= dentoneStats.currentWanderDuration)
         {
-            mascellaStats.wanderDirection = 0;
-            mascellaStats.isPaused = true;
-            mascellaStats.pauseTimer = 0f;
+            dentoneStats.wanderDirection = 0;
+            dentoneStats.isPaused = true;
+            dentoneStats.pauseTimer = 0f;
             return;
         }
     }
@@ -97,14 +97,14 @@ public class DentoneIdle : MonoBehaviour
     public void SearchPlayer()
     {
         Vector2 direction = new Vector2(rootTransform.localScale.x, 0f).normalized;
-        playerSearch = Physics2D.Raycast(transform.position, direction, mascellaStats.sightRange, playerLayer);
-        Debug.DrawRay(transform.position, direction * mascellaStats.sightRange, Color.red);
+        playerSearch = Physics2D.Raycast(transform.position, direction, dentoneStats.sightRange, playerLayer);
+        Debug.DrawRay(transform.position, direction * dentoneStats.sightRange, Color.red);
 
         if (playerSearch.collider != null)
         {
             lastSeenTime = Time.time;
         }
 
-        playerSighted = (Time.time - lastSeenTime) < mascellaStats.forgetDelay;
+        playerSighted = (Time.time - lastSeenTime) < dentoneStats.forgetDelay;
     }
 }
