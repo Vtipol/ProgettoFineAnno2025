@@ -60,5 +60,7 @@ public class MascellaStateController : MonoBehaviour
         mascellaAnimator.SetBool("isAttacking", mascellaAttacking);
         bool mascellaCrashed = isMascellaCrashed;
         mascellaAnimator.SetBool("isCrashed", mascellaCrashed);
+        //bool macellaStunned = isMascellaStunned;
+        //mascellaAnimator.SetBool("isStunned", macellaStunned);
     }
 }
