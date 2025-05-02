@@ -121,6 +121,7 @@ MonoBehaviour:
   gumState: {fileID: 297729594644627854}
   trampolineState: {fileID: 1035276020747867}
   pickedUp: {fileID: 7639820405145412246}
+  _animator: {fileID: 1080481773219173685}
   circleCollider: {fileID: 2986740559170639401}
   boxCollider: {fileID: 5203781075069336490}
   capsuleCollider: {fileID: 612355088285040826}
@@ -158,7 +159,7 @@ MonoBehaviour:
   target: {fileID: 0}
   groundCheck: {fileID: 8749724908321769867}
   pickedUp: {fileID: 7639820405145412246}
-  _animator: {fileID: 0}
+  _animator: {fileID: 1080481773219173685}
   targetInView: 0
 --- !u!114 &7639820405145412246
 MonoBehaviour:
@@ -173,7 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCollider: {fileID: 2481468055649861812}
-  _animator: {fileID: 0}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  rb: {fileID: 19285748109032977}
 --- !u!95 &1080481773219173685
 Animator:
   serializedVersion: 7
@@ -465,9 +469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gumCollider: {fileID: 2986740559170639401}
-  pickThrow: {fileID: 0}
-  player: {fileID: 0}
-  pickedUp: {fileID: 7639820405145412246}
 --- !u!1 &2541835796001408121
 GameObject:
   m_ObjectHideFlags: 0

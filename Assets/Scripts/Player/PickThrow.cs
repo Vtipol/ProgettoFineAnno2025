@@ -35,11 +35,19 @@ public class PickThrow : MonoBehaviour
         {
             _targetRB = _pickTarget.GetComponent<Rigidbody2D>();            
             PickedUp = _pickTarget.GetComponent<PickedUp>();
-            
+
             // While being picked up, follow the pickup position
             if (PickedUp != null && PickedUp.IsPickedUp)
             {
                 _pickTarget.transform.position = _pickUpPosition.transform.position;
+            }
+            else
+            {
+                // Just in case the Buddy somehow got stuck parented
+                if (_pickTarget.transform.parent == _pickUpPosition.transform)
+                    _pickTarget.transform.parent = null;
+                _targetRB.bodyType = RigidbodyType2D.Dynamic;
+                PickedUp.IsPickedUp = false;
             }
 
             // Throw if we stop holding Run
