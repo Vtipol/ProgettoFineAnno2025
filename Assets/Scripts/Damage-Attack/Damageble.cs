@@ -9,7 +9,7 @@ public class Damageble : MonoBehaviour
 {
     public UnityEvent<int, Vector2> damagebleHit;
 
-    Animator animator;
+    [SerializeField]Animator animator;
     [SerializeField]
     private int _maxHealth = 100;
 
@@ -81,7 +81,7 @@ public class Damageble : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -99,7 +99,7 @@ public class Damageble : MonoBehaviour
         }
     }
 
-    public void Hit(int damage, Vector2 knokback)
+    /*public void Hit(int damage, Vector2 knokback)
     {
         if (IsAlive && !isInvincible)
         {
@@ -111,6 +111,29 @@ public class Damageble : MonoBehaviour
             LockVelocity = true;
             damagebleHit?.Invoke(damage, knokback);
             CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+        }
+    }*/
+
+    public void Hit(int damage, Vector2 knockback)
+    {
+        if (IsAlive && !isInvincible)
+        {
+            Health -= damage;
+            isInvincible = true;
+
+            animator.SetTrigger("Hit");
+            LockVelocity = true;
+
+            // Apply knockback directly here
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero; // Optional: reset velocity
+                rb.AddForce(knockback, ForceMode2D.Impulse);
+            }
+
+            damagebleHit?.Invoke(damage, knockback);
+            CharacterEvents.characterDamaged?.Invoke(gameObject, damage);
         }
     }
 }

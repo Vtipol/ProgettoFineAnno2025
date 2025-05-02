@@ -3,6 +3,7 @@ using UnityEngine;
 public class Attacking : MonoBehaviour
 {
     Collider2D attackCollider;
+    public GameObject owner;
     public int attackDamage = 10;
     public Vector2 knokback = Vector2.zero;
 
@@ -13,7 +14,16 @@ public class Attacking : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // See if it can be hit
+        if (collision.gameObject == owner) return;
+
+        Damageble damageble = collision.GetComponent<Damageble>();
+
+        if (damageble != null)
+        {
+            Vector2 deliverKnokback = transform.parent.localScale.x > 0 ? knokback : new Vector2(-knokback.x, knokback.y);
+            damageble.Hit(attackDamage, deliverKnokback);
+        }
+        /*// See if it can be hit
         Damageble damageble = collision.GetComponent<Damageble>();
 
         if (damageble != null)
@@ -23,5 +33,6 @@ public class Attacking : MonoBehaviour
             // Hit the target
             damageble.Hit(attackDamage, deliverKnokback);
         }
+        */
     }
 }

@@ -7,7 +7,7 @@ public class DentoneVulnerable : MonoBehaviour
     public Damageble Damage;
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponentInParent<Rigidbody2D>();
         Damage = GetComponent<Damageble>();
         Damage.damagebleHit.AddListener(OnHit);
     }
