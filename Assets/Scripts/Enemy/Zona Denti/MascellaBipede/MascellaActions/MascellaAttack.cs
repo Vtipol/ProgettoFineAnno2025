@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MascellaAttack : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class MascellaAttack : MonoBehaviour
         attackCollider.enabled = true;
 
         rb.linearVelocity = Vector2.zero;
-        
+
         rb.gravityScale = mascellaStats.lungeGravityScale;
 
         Vector2 lungeDirection = (target.position - transform.position).normalized;
@@ -42,35 +43,21 @@ public class MascellaAttack : MonoBehaviour
 
         rb.AddForce(lungeForce, ForceMode2D.Impulse);
         HasMissed = true;
+
+        // wait one second then change the two conditions below
+        StartCoroutine(HandlePostLunge());
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("Mascella hit the Player!");
-            // TODO: damage logic
-
-            attackCollider.enabled = false;
-        }
-        else
-        {
-            if (!collision.isTrigger) 
-            {
-                Debug.Log("Mascella missed and crashed!");
-
-                
-                mascellaStats.isCrashed = true; 
-
-
-                attackCollider.enabled = false;
-            }
-        }
-    }
     
     public void ResetAttackFlags()
     {
         HasMissed = false;
         mascellaStats.isCrashed = false;
+    }
+    private IEnumerator HandlePostLunge()
+    {
+        yield return new WaitForSeconds(1f);
+        mascellaStats.isCrashed = true;
+        attackCollider.enabled = false;
     }
 }

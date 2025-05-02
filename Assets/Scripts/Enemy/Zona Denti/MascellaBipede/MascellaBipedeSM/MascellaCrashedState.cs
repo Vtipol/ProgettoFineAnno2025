@@ -7,7 +7,6 @@ public class MascellaCrashedState : MascellaState
     public override void OnEnter()
     {
         timer = 0f;
-        mascellaVulnerable.ActivateWeakSpot(true);
         mascellaController.isMascellaCrashed = true;
     }
 
