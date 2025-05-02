@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148314349076097835}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,9 +52,9 @@ GameObject:
   - component: {fileID: 3725257953848091121}
   - component: {fileID: 8124245553031814339}
   - component: {fileID: 4128824098916803876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 2030388462198322829}
   - component: {fileID: 2964204667359039399}
   - component: {fileID: 8839623919610070199}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 833123015463993842}
   - component: {fileID: 5496041247568164205}
   - component: {fileID: 5588082015069712942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AirAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4199763485005547954}
   - component: {fileID: 962775260614072667}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3110155392000171174}
   - component: {fileID: 5246583691719135597}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7956179890912573079}
   - component: {fileID: 1374630410550099974}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PickUpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886306855830607632}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BuddyPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
