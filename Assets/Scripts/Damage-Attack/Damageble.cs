@@ -122,7 +122,7 @@ public class Damageble : MonoBehaviour
             isInvincible = true;
 
             animator.SetTrigger("Hit");
-            LockVelocity = true;
+            //LockVelocity = true;
 
             // Apply knockback directly here
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
