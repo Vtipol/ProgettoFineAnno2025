@@ -462,6 +462,5 @@ public class Player : MonoBehaviour
             this.enabled = false; // Disable player controls on death
         }        
     }
-
     #endregion
 }
