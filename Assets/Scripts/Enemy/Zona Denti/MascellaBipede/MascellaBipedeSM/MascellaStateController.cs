@@ -64,4 +64,8 @@ public class MascellaStateController : MonoBehaviour
         mascellaAnimator.SetBool("isStunned", isMascellaStunned);
         mascellaAnimator.SetBool("isGetUp", isMascellaGetUp);
     }
+    private void Die()
+    {
+        
+    }
 }
