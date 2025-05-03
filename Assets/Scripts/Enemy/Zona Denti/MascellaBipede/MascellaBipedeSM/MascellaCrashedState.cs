@@ -15,25 +15,28 @@ public class MascellaCrashedState : MascellaState
     {
      if (mascellaVulnerable.receivedHit)
         {
+            mascellaController.isMascellaCrashed = false;
             mascellaController.MascellaSwitchState(mascellaController.mascellaStunnedState);
         }
         timer += Time.deltaTime;
         if (timer >= mascellaStats.vulnerableTime && !mascellaVulnerable.receivedHit)
         {
-            mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
+            mascellaController.isMascellaCrashed = false;
             mascellaVulnerable.ActivateWeakSpot(false);
+            mascellaController.StartCoroutine(GetUp());
         }
     }
 
     public override void OnExit()
     {
-        GetUp();
-        mascellaController.isMascellaCrashed = false;
+
     }
     private IEnumerator GetUp()
     {
         mascellaController.isMascellaGetUp = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1f);
         mascellaController.isMascellaGetUp = false;
+        yield return new WaitForSeconds(0.5f);
+        mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
     }
 }

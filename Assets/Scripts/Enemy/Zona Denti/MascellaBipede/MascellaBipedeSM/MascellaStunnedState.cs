@@ -9,6 +9,7 @@ public class MascellaStunnedState : MascellaState
     {
         Debug.Log("Mascella is stunned");
         mascellaController.isMascellaStunned = true;
+        mascellaController.isMascellaCrashed = false;
         mascellaController.StartCoroutine(HandleStun());
     }
 
@@ -20,16 +21,16 @@ public class MascellaStunnedState : MascellaState
     public override void OnExit()
     {
         mascellaVulnerable.receivedHit = false;
-        mascellaVulnerable.ActivateWeakSpot(false);
-        mascellaController.isMascellaStunned = false;
     }
     private IEnumerator HandleStun()
     {
         yield return new WaitForSeconds(mascellaStats.stunnedTime);
+        mascellaVulnerable.ActivateWeakSpot(false);
+        mascellaController.isMascellaStunned = false;
         mascellaController.isMascellaGetUp = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(1f);
         mascellaController.isMascellaGetUp = false;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.5f);
         mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
     }
 

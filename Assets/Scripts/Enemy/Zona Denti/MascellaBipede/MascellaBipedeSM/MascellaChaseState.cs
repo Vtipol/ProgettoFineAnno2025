@@ -19,6 +19,7 @@ public class MascellaChaseState : MascellaState
         if (mascellaChase.PlayerInRange)
         {
             mascellaChase.StopChasing();
+            mascellaController.isMascellaChasing = false;
             mascellaController.MascellaSwitchState(mascellaController.mascellaAttackState);
             return;
         }

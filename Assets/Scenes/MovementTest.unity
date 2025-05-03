@@ -1267,6 +1267,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2788254819174218534, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4033902482678318367, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: damageble
       value: 
@@ -1314,6 +1318,10 @@ PrefabInstance:
     - target: {fileID: 4731837307436734170, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6978680873578052696, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7064204027880977146, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[1].Array.size
@@ -1730,6 +1738,14 @@ PrefabInstance:
     - target: {fileID: 3110155392000171174, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: _health
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3725257953848091121, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: _maxHealth
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4128824098916803876, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_Size.x

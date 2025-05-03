@@ -11,7 +11,7 @@ public class MascellaIdleState : MascellaState
     {
         Debug.Log("Mascella is in Idle");
         mascellaAttack.rb.gravityScale = mascellaStats.defaultGravityScale;
-        searchDelayTimer = 0.5f;
+        searchDelayTimer = 0.1f;
         chaseCooldownTimer = chaseCooldownDuration;
         mascellaController.isMascellaWalking = true;
         if (mascellaAnimator == null)

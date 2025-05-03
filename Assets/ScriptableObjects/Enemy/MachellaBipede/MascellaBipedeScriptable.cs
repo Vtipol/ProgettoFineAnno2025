@@ -13,7 +13,7 @@ public class MascellaBipedeScriptable : ScriptableObject
     public float vulnerableTime = 1f;
     public float stunnedTime = 3f;
     public float tiredTime = 5f;
-    public float vulnerableDuration = 3f;
+    //public float vulnerableDuration = 3f;
     public float jumpForce = 3f;
     public float runTimer = 0f;
     public float forgetDelay = 10;

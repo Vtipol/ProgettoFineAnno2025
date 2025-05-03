@@ -54,7 +54,7 @@ public class MascellaAttack : MonoBehaviour
     }
     private IEnumerator HandlePostLunge()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         attackCollider.enabled = false;
         HasMissed = true;
         mascellaStats.isCrashed = true;
