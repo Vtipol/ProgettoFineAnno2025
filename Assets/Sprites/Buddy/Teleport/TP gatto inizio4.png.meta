@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: 4c096029999074248b38ee7d3bf72c13
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7956029829300023004
+    second: TP gatto inizio4_0
+  - first:
+      213: 630500319307142580
+    second: TP gatto inizio4_1
+  - first:
+      213: -1225259280788916804
+    second: TP gatto inizio4_2
+  - first:
+      213: 6070610253131593961
+    second: TP gatto inizio4_3
+  - first:
+      213: 3143489562730904436
+    second: TP gatto inizio4_4
+  - first:
+      213: -1979398660189287716
+    second: TP gatto inizio4_5
+  - first:
+      213: 9145469051976240827
+    second: TP gatto inizio4_6
+  - first:
+      213: 4785670661546143965
+    second: TP gatto inizio4_7
+  - first:
+      213: -3493725040727850424
+    second: TP gatto inizio4_8
+  - first:
+      213: -4243173124155036970
+    second: TP gatto inizio4_9
+  - first:
+      213: 4765553193948722281
+    second: TP gatto inizio4_10
+  - first:
+      213: 4497465598934262586
+    second: TP gatto inizio4_11
+  - first:
+      213: 3250113483857225881
+    second: TP gatto inizio4_12
+  - first:
+      213: 3810394658641922194
+    second: TP gatto inizio4_13
+  - first:
+      213: -4823736125234815024
+    second: TP gatto inizio4_14
+  - first:
+      213: 7697848763387460763
+    second: TP gatto inizio4_15
+  - first:
+      213: -635995377786698982
+    second: TP gatto inizio4_16
+  - first:
+      213: 8261566261266678570
+    second: TP gatto inizio4_17
+  - first:
+      213: -8673129809686501410
+    second: TP gatto inizio4_18
+  - first:
+      213: 6584394189813774303
+    second: TP gatto inizio4_19
+  - first:
+      213: -4883561595713207634
+    second: TP gatto inizio4_20
+  - first:
+      213: 1457189956464000053
+    second: TP gatto inizio4_21
+  - first:
+      213: 4598259593137361807
+    second: TP gatto inizio4_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TP gatto inizio4_0
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 169
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 421192ae501869190800000000000000
+      internalID: -7956029829300023004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 177
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b5921b23bcffb800800000000000000
+      internalID: 630500319307142580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 130
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb573d20d210ffee0800000000000000
+      internalID: -1225259280788916804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 136
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e8b0cb9cd32f3450800000000000000
+      internalID: 6070610253131593961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_4
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 148
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47b39b53a1bef9b20800000000000000
+      internalID: 3143489562730904436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_5
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 136
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda8886e763c784e0800000000000000
+      internalID: -1979398660189287716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_6
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 144
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbe4f53e5ab3bee70800000000000000
+      internalID: 9145469051976240827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_7
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 127
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd077717c1e1a6240800000000000000
+      internalID: 4785670661546143965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 123
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8428784069bc38fc0800000000000000
+      internalID: -3493725040727850424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_9
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 112
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6da214e56883d15c0800000000000000
+      internalID: -4243173124155036970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_10
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 115
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964ba838165a22240800000000000000
+      internalID: 4765553193948722281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_11
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 107
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a33240632253a6e30800000000000000
+      internalID: 4497465598934262586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_12
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 94
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99864056ef8ba1d20800000000000000
+      internalID: 3250113483857225881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_13
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 100
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 298c562f0cd31e430800000000000000
+      internalID: 3810394658641922194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_14
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 81
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dfd8252d85ae0db0800000000000000
+      internalID: -4823736125234815024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_15
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 83
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9cb3645aa044da60800000000000000
+      internalID: 7697848763387460763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_16
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 75
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a13cb34d29d7c27f0800000000000000
+      internalID: -635995377786698982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_17
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 65
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2307233ebaf6a270800000000000000
+      internalID: 8261566261266678570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_18
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 77
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed7e8cae36ad2a780800000000000000
+      internalID: -8673129809686501410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_19
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 75
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd7fef841a7706b50800000000000000
+      internalID: 6584394189813774303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_20
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 55
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea246c85a9a1a3cb0800000000000000
+      internalID: -4883561595713207634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_21
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 54
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53cbd4d7b8af83410800000000000000
+      internalID: 1457189956464000053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TP gatto inizio4_22
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 54
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f831cf1ccbc40df30800000000000000
+      internalID: 4598259593137361807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      TP gatto inizio4_0: -7956029829300023004
+      TP gatto inizio4_1: 630500319307142580
+      TP gatto inizio4_10: 4765553193948722281
+      TP gatto inizio4_11: 4497465598934262586
+      TP gatto inizio4_12: 3250113483857225881
+      TP gatto inizio4_13: 3810394658641922194
+      TP gatto inizio4_14: -4823736125234815024
+      TP gatto inizio4_15: 7697848763387460763
+      TP gatto inizio4_16: -635995377786698982
+      TP gatto inizio4_17: 8261566261266678570
+      TP gatto inizio4_18: -8673129809686501410
+      TP gatto inizio4_19: 6584394189813774303
+      TP gatto inizio4_2: -1225259280788916804
+      TP gatto inizio4_20: -4883561595713207634
+      TP gatto inizio4_21: 1457189956464000053
+      TP gatto inizio4_22: 4598259593137361807
+      TP gatto inizio4_3: 6070610253131593961
+      TP gatto inizio4_4: 3143489562730904436
+      TP gatto inizio4_5: -1979398660189287716
+      TP gatto inizio4_6: 9145469051976240827
+      TP gatto inizio4_7: 4785670661546143965
+      TP gatto inizio4_8: -3493725040727850424
+      TP gatto inizio4_9: -4243173124155036970
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

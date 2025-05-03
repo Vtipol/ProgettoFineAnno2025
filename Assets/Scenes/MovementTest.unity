@@ -644,10 +644,6 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2165941650435933838, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 55813364}
     - target: {fileID: 2498239786501170359, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: soap
       value: 
@@ -688,13 +684,21 @@ PrefabInstance:
       propertyPath: trampolineBounceForce
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 5974586784244928937, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: m_Radius
+      value: 0.52968574
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974586784244928937, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.029685736
+      objectReference: {fileID: 0}
     - target: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.48
+      value: -5.517
       objectReference: {fileID: 0}
     - target: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.468
       objectReference: {fileID: 0}
     - target: {fileID: 6952805030074251103, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -736,10 +740,6 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 55813364}
-    - target: {fileID: 7639820405145412246, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: groundLayers.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 8749724908321769867, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.5
@@ -784,17 +784,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 571564455}
-    - target: {fileID: 9032496640084319590, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 55813364}
-    - target: {fileID: 9032496640084319590, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 934900120758809226, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+    - {fileID: 6514645261323117235, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
@@ -1751,6 +1744,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1084410997318685074, guid: 82dc5b014b21b9a459671608866afd73, type: 3}
     - target: {fileID: 4128824098916803876, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128824098916803876, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -1870,6 +1867,10 @@ PrefabInstance:
       propertyPath: _playerMovement
       value: 
       objectReference: {fileID: 571564453}
+    - target: {fileID: 8124245553031814339, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8124245553031814339, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_Controller
       value: 
