@@ -31,5 +31,12 @@ public class MascellaVulnerable : MonoBehaviour
         _rb.linearVelocity = new Vector2(knokback.x, _rb.linearVelocity.y + knokback.y);
         receivedHit = true;
     }
+    public void Die()
+    {
+        if (!Damage._isAlive)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+    }
 
 }

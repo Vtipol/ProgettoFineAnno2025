@@ -14,11 +14,7 @@ public class MascellaStunnedState : MascellaState
 
     public override void OnUpdate()
     {
-        timer += Time.deltaTime;
-        if(timer == mascellaStats.stunnedTime)
-        {
-            mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
-        }
+      
     }
 
     public override void OnExit()
@@ -30,14 +26,11 @@ public class MascellaStunnedState : MascellaState
     private IEnumerator HandleStun()
     {
         yield return new WaitForSeconds(mascellaStats.stunnedTime);
-        mascellaController.StartCoroutine(GetUp());
+        mascellaController.isMascellaGetUp = true;
+        yield return new WaitForSeconds(0.05f);
+        mascellaController.isMascellaGetUp = false;
+        yield return new WaitForSeconds(0.05f);
         mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
     }
 
-    private IEnumerator GetUp()
-    {
-        mascellaController.isMascellaGetUp = true;
-        yield return new WaitForSeconds(0.2f);
-        mascellaController.isMascellaGetUp = false;
-    }
 }

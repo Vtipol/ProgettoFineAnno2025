@@ -33,7 +33,7 @@ public class MascellaCrashedState : MascellaState
     private IEnumerator GetUp()
     {
         mascellaController.isMascellaGetUp = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         mascellaController.isMascellaGetUp = false;
     }
 }

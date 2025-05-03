@@ -53,6 +53,7 @@ public class MascellaStateController : MonoBehaviour
     {
         mascellaMachine.UpdateState();
         UpdateAnimation();
+        mascellaVulnerable.Die();
     }
 
     private void UpdateAnimation()
