@@ -4,7 +4,9 @@ public class FollowPlayer : MonoBehaviour
     public AIFollowSettings aiSettings;
     public Transform target;
     public Transform groundCheck;
+    public LayerMask groundLayer;
     public PickedUp pickedUp;
+    [SerializeField] private Transform buddyWallcheck; 
     [SerializeField] private Animator _animator;
 
     private Rigidbody2D rb;
@@ -28,6 +30,13 @@ public class FollowPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+    }
+    public bool IsWallAhead(int direction)
+    {
+        Vector2 rayDirection = Vector2.right * direction;
+        RaycastHit2D hit = Physics2D.Raycast(buddyWallcheck.position, rayDirection, 1f, groundLayer);
+        Debug.DrawRay(buddyWallcheck.position, rayDirection * 1f, Color.blue);
+        return hit.collider != null;
     }
     void Update()
     {
@@ -70,12 +79,16 @@ public class FollowPlayer : MonoBehaviour
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
 
-        if (!groundFront.collider && !gapAhead.collider)
+        bool wallAhead = IsWallAhead((int)direction);
+
+        if (!groundFront.collider && !gapAhead.collider || wallAhead)
         {
+            _isJumping = true;
             needJump = true;
         }
         else if (isTargetAirborne && platformOverhead.collider)
         {
+            _isJumping = true;
             needJump = true;
         }
         else
@@ -83,6 +96,7 @@ public class FollowPlayer : MonoBehaviour
             needJump = false;
         }
     }
+
     void MoveTowardsTarget()
     {
         float distance = Vector2.Distance(transform.position, target.position);
