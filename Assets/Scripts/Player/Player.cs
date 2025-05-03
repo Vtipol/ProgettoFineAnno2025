@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     //public Attacking Attacking;
     [SerializeField] private Collider2D _feetColl;
     [SerializeField] private Collider2D _bodyColl;
+    [SerializeField] private Collider2D _attackColl;
+    [SerializeField] private Collider2D _downAttackColl;
     [SerializeField] private Animator _animator;
 
     private Rigidbody2D _rb;
@@ -61,6 +63,9 @@ public class Player : MonoBehaviour
     private bool _canWallJump;
     private RaycastHit2D _wallHit;
 
+    // attack vars
+    private float _attackDuration = 1f;
+
     private void Awake()
     {
         _isFacingRight = true;
@@ -76,6 +81,7 @@ public class Player : MonoBehaviour
     {
         CountTimer();
         JumpChecks();
+        Attack();
         AttackCheck();
         Die();
         UpdateAnimations();
@@ -352,6 +358,21 @@ public class Player : MonoBehaviour
 
     #region Attack
 
+    private void Attack()
+    {
+        if (InputManager.AttackDownExecuted && !_isGrounded)
+        {
+            _downAttackColl.enabled = true;
+            StartCoroutine(DisableColliderAfterDelay(_downAttackColl));
+            _animator.SetTrigger("Attack");
+        }
+        else if (InputManager.AttackIsPressed)
+        {
+            _attackColl.enabled = true;
+            StartCoroutine(DisableColliderAfterDelay(_attackColl));
+            _animator.SetTrigger("Attack");
+        }
+    }
 
     public void OnHit(int damage, Vector2 knokback)
     {
@@ -429,6 +450,12 @@ public class Player : MonoBehaviour
             _coyoteTimer -= Time.deltaTime;
         }
         else { _coyoteTimer = Stats.JumpCoyoteTime; }
+    }
+
+    private IEnumerator DisableColliderAfterDelay(Collider2D collider)
+    {
+        yield return new WaitForSeconds(_attackDuration);
+        collider.enabled = false;
     }
 
     #endregion

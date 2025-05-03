@@ -46,6 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1630446981866368323}
   - component: {fileID: 815791464884438802}
+  - component: {fileID: 3098418261554527620}
   - component: {fileID: 5304828267378380790}
   - component: {fileID: 8669920481694177177}
   - component: {fileID: 297650610400377604}
@@ -103,6 +104,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!70 &3098418261554527620
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274336502130243986}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.024219513, y: 0.027068807}
+  m_Size: {x: 0.13717632, y: 0.33883944}
+  m_Direction: 0
 --- !u!114 &5304828267378380790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +156,7 @@ MonoBehaviour:
   Stats: {fileID: 11400000, guid: 75851e0215a04854ba93094373174bde, type: 2}
   Damage: {fileID: 3725257953848091121}
   _feetColl: {fileID: 5246583691719135597}
-  _bodyColl: {fileID: 962775260614072667}
+  _bodyColl: {fileID: 3098418261554527620}
   _animator: {fileID: 8124245553031814339}
   _isFacingRight: 0
   _isGrounded: 0
@@ -144,7 +182,7 @@ MonoBehaviour:
   shellLayer:
     serializedVersion: 2
     m_Bits: 256
-  _pickTarget: {fileID: 491391430774262798, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+  _pickTarget: {fileID: 0}
   _soapMode: {fileID: 0}
 --- !u!114 &297650610400377604
 MonoBehaviour:
@@ -186,6 +224,7 @@ MonoBehaviour:
           m_StringArgument: Player.OnHit
           m_BoolArgument: 0
         m_CallState: 2
+  animator: {fileID: 8124245553031814339}
   _maxHealth: 100
   _health: 100
   _isAlive: 1
@@ -258,12 +297,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3318188226485093758, guid: ae72133dacba6ec4eb33ecde48f50e56, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: f780f0a843b6e6943baf34e2c95bdd92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.69, y: 0.44}
+  m_Size: {x: 0.90625, y: 1.46875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -366,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fe1c9d2972d54a88213964a83cdfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   attackDamage: 10
   knokback: {x: 0, y: 0}
 --- !u!1 &4957575344246038688
@@ -465,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fe1c9d2972d54a88213964a83cdfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  owner: {fileID: 0}
   attackDamage: 10
   knokback: {x: 0, y: 0}
 --- !u!1 &6397278480657764160
