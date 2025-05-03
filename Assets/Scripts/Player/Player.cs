@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
 
     // attack vars
     private float _attackDuration = 1f;
+    private bool _isAttacking;
 
     private void Awake()
     {
@@ -360,17 +361,23 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
+        if (_isAttacking) return;
+        
         if (InputManager.AttackDownExecuted && !_isGrounded)
         {
             _downAttackColl.enabled = true;
             StartCoroutine(DisableColliderAfterDelay(_downAttackColl));
             _animator.SetTrigger("Attack");
+            StartCoroutine(EndAttackCooldown());
+            _isAttacking = true;
         }
         else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
         {
             _attackColl.enabled = true;
             StartCoroutine(DisableColliderAfterDelay(_attackColl));
             _animator.SetTrigger("Attack");
+            StartCoroutine(EndAttackCooldown());
+            _isAttacking = true;
         }
     }
 
@@ -456,6 +463,12 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(_attackDuration);
         collider.enabled = false;
+    }
+
+    private IEnumerator EndAttackCooldown()
+    {
+        yield return new WaitForSeconds(0.5f); // your attack duration
+        _isAttacking = false;
     }
 
     #endregion
