@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class MascellaCrashedState : MascellaState
 {
     private float timer;
@@ -27,7 +27,13 @@ public class MascellaCrashedState : MascellaState
 
     public override void OnExit()
     {
+        GetUp();
         mascellaController.isMascellaCrashed = false;
+    }
+    private IEnumerator GetUp()
+    {
         mascellaController.isMascellaGetUp = true;
+        yield return new WaitForSeconds(0.2f);
+        mascellaController.isMascellaGetUp = false;
     }
 }
