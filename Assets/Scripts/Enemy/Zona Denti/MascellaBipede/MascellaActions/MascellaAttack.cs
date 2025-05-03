@@ -42,9 +42,7 @@ public class MascellaAttack : MonoBehaviour
         );
 
         rb.AddForce(lungeForce, ForceMode2D.Impulse);
-        HasMissed = true;
-
-        // wait one second then change the two conditions below
+        
         StartCoroutine(HandlePostLunge());
     }
 
@@ -56,8 +54,10 @@ public class MascellaAttack : MonoBehaviour
     }
     private IEnumerator HandlePostLunge()
     {
-        yield return new WaitForSeconds(1f);
-        mascellaStats.isCrashed = true;
+        yield return new WaitForSeconds(0.3f);
         attackCollider.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        HasMissed = true;
+        mascellaStats.isCrashed = true;
     }
 }

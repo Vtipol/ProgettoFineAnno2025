@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8146838536523477249}
   - component: {fileID: 518418492142440437}
   - component: {fileID: 6597283211714154594}
+  - component: {fileID: 4593251210920346924}
   m_Layer: 9
   m_Name: StatemachineMB
   m_TagString: Untagged
@@ -94,6 +95,18 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38292eb3476b84537a8c60f116004cd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4593251210920346924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268463906391573614}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff38066776690428080a68704599dc22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2490464238519507413
@@ -462,6 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VulnerableSpot: {fileID: 6978680873578052696}
+  receivedHit: 0
   Damage: {fileID: 9087102460066230352}
 --- !u!114 &9087102460066230352
 MonoBehaviour:
@@ -609,6 +623,8 @@ MonoBehaviour:
   isMascellaChasing: 0
   isMascellaAttacking: 0
   isMascellaCrashed: 0
+  isMascellaGetUp: 0
+  isMascellaStunned: 0
   mascellaStats: {fileID: 11400000, guid: 5580500fcdb2d41a692eaf4399de8b36, type: 2}
   mascellaIdle: {fileID: 9019159853897575288}
   mascellaChase: {fileID: 448842208053253790}
@@ -619,6 +635,7 @@ MonoBehaviour:
   mascellaAttackState: {fileID: 7041058757401208920}
   mascellaCrashedState: {fileID: 8146838536523477249}
   mascellaTiredState: {fileID: 6597283211714154594}
+  mascellaStunnedState: {fileID: 0}
   mascellaPerception: {fileID: 6043078783991960176}
   groundChecker: {fileID: 7660000048991480098}
   mascellaAnimator: {fileID: 1365357187006289687}

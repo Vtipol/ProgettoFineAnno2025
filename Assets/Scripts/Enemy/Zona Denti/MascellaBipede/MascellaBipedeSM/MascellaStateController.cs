@@ -7,6 +7,8 @@ public class MascellaStateController : MonoBehaviour
     public bool isMascellaChasing;
     public bool isMascellaAttacking;
     public bool isMascellaCrashed;
+    public bool isMascellaGetUp;
+    public bool isMascellaStunned;
     public MascellaBipedeScriptable mascellaStats;
     public MascellaIdle mascellaIdle;
     public MascellaChase mascellaChase;
@@ -17,6 +19,7 @@ public class MascellaStateController : MonoBehaviour
     public MascellaAttackState mascellaAttackState;
     public MascellaCrashedState mascellaCrashedState;
     public MascellaTiredState mascellaTiredState;
+    public MascellaStunnedState mascellaStunnedState;
     public MascellaPerception mascellaPerception;
     public GroundChecker groundChecker;
     public Animator mascellaAnimator;
@@ -29,6 +32,7 @@ public class MascellaStateController : MonoBehaviour
         mascellaAttackState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
         mascellaCrashedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
         mascellaTiredState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
+        mascellaStunnedState.Initialize(mascellaMachine, this, mascellaIdle, mascellaChase, groundChecker, mascellaPerception, mascellaStats, mascellaAttack, mascellaVulnerable, mascellaAnimator);
 
         mascellaMachine.EnterState(mascellaIdleState); 
     }
@@ -43,6 +47,7 @@ public class MascellaStateController : MonoBehaviour
         mascellaAttackState = GetComponentInChildren<MascellaAttackState>();
         mascellaCrashedState = GetComponentInChildren<MascellaCrashedState>();
         mascellaTiredState = GetComponentInChildren<MascellaTiredState>();
+        mascellaStunnedState = GetComponentInChildren<MascellaStunnedState>();
     }
     private void Update()
     {
@@ -52,15 +57,11 @@ public class MascellaStateController : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        bool mascellaWalking = isMascellaWalking;
-        mascellaAnimator.SetBool("isWalking", mascellaWalking);
-        bool mascellaChasing = isMascellaChasing;
-        mascellaAnimator.SetBool("isChasing", mascellaChasing);
-        bool mascellaAttacking = isMascellaAttacking;
-        mascellaAnimator.SetBool("isAttacking", mascellaAttacking);
-        bool mascellaCrashed = isMascellaCrashed;
-        mascellaAnimator.SetBool("isCrashed", mascellaCrashed);
-        //bool macellaStunned = isMascellaStunned;
-        //mascellaAnimator.SetBool("isStunned", macellaStunned);
+        mascellaAnimator.SetBool("isWalking", isMascellaWalking);
+        mascellaAnimator.SetBool("isChasing", isMascellaChasing);
+        mascellaAnimator.SetBool("isAttacking", isMascellaAttacking);
+        mascellaAnimator.SetBool("isCrashed", isMascellaCrashed);
+        mascellaAnimator.SetBool("isStunned", isMascellaStunned);
+        mascellaAnimator.SetBool("isGetUp", isMascellaGetUp);
     }
 }

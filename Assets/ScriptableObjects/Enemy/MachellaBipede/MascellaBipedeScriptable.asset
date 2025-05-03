@@ -17,23 +17,24 @@ MonoBehaviour:
   walkSpeed: 5
   chaseSpeed: 20
   acceleration: 5
+  vulnerableTime: 1
+  stunnedTime: 3
   tiredTime: 9999
   vulnerableDuration: 3
-  attackDamage: 10
   jumpForce: 7
   runTimer: 9.791453
   forgetDelay: 1
-  wanderTimer: 2.0993838
+  wanderTimer: 3.6019502
   wanderDuration: 4
-  currentWanderDuration: 4.2587724
+  currentWanderDuration: 4.8224225
+  attackDamage: 10
   mascellaLungeForce: 5
   mascellaLungeHorizontalForce: 18
-  mascellaLungeVerticalForce: 10
-  wanderDirection: 1
-  pauseDuration: 0.000001
-  pauseTimer: 0.012446599
   lungeGravityScale: 6
   defaultGravityScale: 1.5
-  vulnerableTime: 5
+  mascellaLungeVerticalForce: 10
+  wanderDirection: -1
+  pauseDuration: 0.000001
+  pauseTimer: 0.00695771
   isPaused: 0
   isCrashed: 1

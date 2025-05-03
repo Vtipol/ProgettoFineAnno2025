@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class MascellaIdleState : MascellaState
 {
-    private float searchDelayTimer = 0.5f;
+    private float searchDelayTimer = 0.1f;
 
     private float chaseCooldownTimer = 0f;
-    private const float chaseCooldownDuration = 0.5f; 
+    private const float chaseCooldownDuration = 0.1f; 
 
     public override void OnEnter()
     {

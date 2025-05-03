@@ -5,6 +5,7 @@ public class MascellaVulnerable : MonoBehaviour
 {
     [SerializeField] private CapsuleCollider2D VulnerableSpot; 
     private Rigidbody2D _rb;
+    public bool receivedHit = false;
     public Damageble Damage;
     private void Awake()
     {
@@ -28,6 +29,7 @@ public class MascellaVulnerable : MonoBehaviour
     public void OnHit(int damage, Vector2 knokback)
     {
         _rb.linearVelocity = new Vector2(knokback.x, _rb.linearVelocity.y + knokback.y);
+        receivedHit = true;
     }
 
 }

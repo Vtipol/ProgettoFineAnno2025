@@ -14,7 +14,6 @@ public class Attacking : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"Collided with: {collision.gameObject.name}");
 
         if (collision.gameObject == owner) return;
 
