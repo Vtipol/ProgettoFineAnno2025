@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stun Colpo Frame_0: 1488279920278216412
+      Stun Colpo Frame_1: 6113944486366999981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

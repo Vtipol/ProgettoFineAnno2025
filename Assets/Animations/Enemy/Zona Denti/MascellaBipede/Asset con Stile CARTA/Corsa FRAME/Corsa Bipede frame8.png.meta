@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Corsa Bipede frame8_0: 1718905797900547735
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

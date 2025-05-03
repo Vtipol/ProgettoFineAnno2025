@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MostroBipede Camminata2_0: -2506249565294312310
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

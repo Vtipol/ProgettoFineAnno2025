@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stun salto Frame0_0: 7216634649935021765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

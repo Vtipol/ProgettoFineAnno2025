@@ -66,6 +66,7 @@ public class Player : MonoBehaviour
     // attack vars
     private float _attackDuration = 1f;
     private bool _isAttacking;
+    private bool _lockMovement;
 
     private void Awake()
     {
@@ -93,6 +94,12 @@ public class Player : MonoBehaviour
         CollisionChecks();
         Jump();
 
+        if (_lockMovement)
+        {
+            _rb.linearVelocity = Vector2.zero;return;
+        }
+        
+
         if (_isGrounded)
         {
             Move(Stats.GroundAcceleration, Stats.GroundDeceleration, InputManager.Movement);
@@ -107,8 +114,8 @@ public class Player : MonoBehaviour
 
     private void Move(float acceleration, float deceleration, Vector2 moveInput)
     {
-        if (!Damage.LockVelocity)
-        {
+        if (_lockMovement) return;
+        
             if (moveInput != Vector2.zero)
             {
                 //check if he needs to turn
@@ -130,7 +137,7 @@ public class Player : MonoBehaviour
                 _moveVelocity = Vector2.Lerp(_moveVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
                 _rb.linearVelocity = new Vector2(_moveVelocity.x, _rb.linearVelocity.y);
             }
-        }
+        
     }
 
     private void TurnCheck(Vector2 moveInput)
@@ -165,6 +172,8 @@ public class Player : MonoBehaviour
 
     private void JumpChecks()
     {
+        if (_lockMovement) return;
+
         // If the lockout timer is active, we skip the jump initiation
         if (Stats.JumpLockoutTimer > 0f)
         {
@@ -365,19 +374,24 @@ public class Player : MonoBehaviour
         
         if (InputManager.AttackDownExecuted && !_isGrounded)
         {
-            _downAttackColl.enabled = true;
-            StartCoroutine(DisableColliderAfterDelay(_downAttackColl));
-            _animator.SetTrigger("Attack");
-            StartCoroutine(EndAttackCooldown());
             _isAttacking = true;
+
+            _downAttackColl.enabled = true;
+            _animator.SetTrigger("Attack");
+
+            StartCoroutine(DisableColliderAfterDelay(_downAttackColl));            
+            StartCoroutine(EndAttackCooldown());           
         }
         else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
         {
-            _attackColl.enabled = true;
-            StartCoroutine(DisableColliderAfterDelay(_attackColl));
-            _animator.SetTrigger("Attack");
-            StartCoroutine(EndAttackCooldown());
             _isAttacking = true;
+            _lockMovement = true;
+
+            _attackColl.enabled = true;
+            _animator.SetTrigger("Attack");
+
+            StartCoroutine(DisableColliderAfterDelay(_attackColl));            
+            StartCoroutine(EndAttackCooldown());            
         }
     }
 
@@ -469,6 +483,8 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f); // your attack duration
         _isAttacking = false;
+        _lockMovement = false;
+        
     }
 
     #endregion
