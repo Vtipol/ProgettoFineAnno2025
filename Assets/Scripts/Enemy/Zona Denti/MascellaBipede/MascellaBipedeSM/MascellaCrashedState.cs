@@ -36,7 +36,7 @@ public class MascellaCrashedState : MascellaState
         mascellaController.isMascellaGetUp = true;
         yield return new WaitForSeconds(1f);
         mascellaController.isMascellaGetUp = false;
-        yield return new WaitForSeconds(0.5f);
+       // yield return new WaitForSeconds(0.5f);
         mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
     }
 }

@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class MascellaIdleState : MascellaState
 {
-    private float searchDelayTimer = 0.1f;
+    private float searchDelayTimer = 0.00001f;
 
     private float chaseCooldownTimer = 0f;
-    private const float chaseCooldownDuration = 0.1f; 
+    private const float chaseCooldownDuration = 0.000001f; 
 
     public override void OnEnter()
     {
         Debug.Log("Mascella is in Idle");
         mascellaAttack.rb.gravityScale = mascellaStats.defaultGravityScale;
-        searchDelayTimer = 0.1f;
+        searchDelayTimer = 0.00001f;
         chaseCooldownTimer = chaseCooldownDuration;
         mascellaController.isMascellaWalking = true;
         if (mascellaAnimator == null)
