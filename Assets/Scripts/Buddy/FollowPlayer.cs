@@ -34,7 +34,7 @@ public class FollowPlayer : MonoBehaviour
         DetectTarget();
         CheckGroundStatus();
         HandleMovementLogic();
-
+        FlipSprite();
         UpdateAnimation();
         JumpFall();
         WalkRunStop();
@@ -132,7 +132,19 @@ public class FollowPlayer : MonoBehaviour
         bool falling = !_isJumping && !isGrounded;
         _animator.SetBool("IsFalling", falling);
     }
+    private void FlipSprite()
+    {
+        if (!target) return;
 
+        float direction = target.position.x - transform.position.x;
+
+        if (Mathf.Abs(direction) > 0.01f)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = direction > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            transform.localScale = scale;
+        }
+    }
     private void JumpFall()
     {
         if (rb.linearVelocity.y < 0.1f && !isGrounded)

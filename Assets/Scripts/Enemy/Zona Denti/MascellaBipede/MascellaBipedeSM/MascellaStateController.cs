@@ -66,6 +66,6 @@ public class MascellaStateController : MonoBehaviour
     }
     private void Die()
     {
-        
+
     }
 }

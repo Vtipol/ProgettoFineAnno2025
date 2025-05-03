@@ -124,6 +124,7 @@ public class PickThrow : MonoBehaviour
 
     private void ThrowObject()
     {
+
         if (_pickTarget == null || _targetRB == null || Stats == null)
             return;
 
@@ -160,7 +161,6 @@ public class PickThrow : MonoBehaviour
         _targetRB.AddForce(throwDir * Stats.ThrowForce, ForceMode2D.Impulse);
 
         _animator.SetTrigger("Throw");
-
         Debug.Log($"[THROW] Threw object at direction {throwDir}, force {Stats.ThrowForce}");
     }
 

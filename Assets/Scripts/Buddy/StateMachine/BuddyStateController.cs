@@ -63,6 +63,7 @@ public class BuddyStateController : MonoBehaviour
     {
         HandleInput();
         stateMachine.UpdateState();
+        Debug.Log("Picked Up is" + pickedUp.IsPickedUp);
     }
 
     private void HandleInput()
