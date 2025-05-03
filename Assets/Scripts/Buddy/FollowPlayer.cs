@@ -127,7 +127,7 @@ public class FollowPlayer : MonoBehaviour
         _animator.SetBool("IsWalking", walking);
         bool running = InputManager.RunIsHeld && isGrounded;
         _animator.SetBool("IsRunning", walking && running);
-        bool jumping = _isJumping && !isGrounded;
+        bool jumping = _isJumping;
         _animator.SetBool("IsJumping", jumping);
         bool falling = !_isJumping && !isGrounded;
         _animator.SetBool("IsFalling", falling);
