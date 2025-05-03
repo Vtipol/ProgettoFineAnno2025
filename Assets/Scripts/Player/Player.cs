@@ -366,7 +366,7 @@ public class Player : MonoBehaviour
             StartCoroutine(DisableColliderAfterDelay(_downAttackColl));
             _animator.SetTrigger("Attack");
         }
-        else if (InputManager.AttackIsPressed)
+        else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
         {
             _attackColl.enabled = true;
             StartCoroutine(DisableColliderAfterDelay(_attackColl));
