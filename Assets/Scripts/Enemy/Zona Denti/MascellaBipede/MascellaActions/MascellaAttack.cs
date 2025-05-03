@@ -56,7 +56,6 @@ public class MascellaAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         attackCollider.enabled = false;
-        yield return new WaitForSeconds(0.05f);
         HasMissed = true;
         mascellaStats.isCrashed = true;
     }
