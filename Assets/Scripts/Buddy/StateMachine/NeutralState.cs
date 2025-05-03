@@ -25,7 +25,7 @@ public class NeutralState : BuddyState, IInputHandler
                     controller.SwitchState(controller.trampolineState);
                     break;
                 case "Q":
-                    controller.SwitchState(controller.gumState);
+                    controller.SwitchState(controller.soapState);
                     break;
             }
         

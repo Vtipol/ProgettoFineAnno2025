@@ -29,7 +29,7 @@ public class SoapState : BuddyState, IInputHandler
             switch (input)
             {
                 case "E":
-                    controller.SwitchState(controller.gumState);
+                    controller.SwitchState(controller.neutralState);
                     break;
                 case "Q":
                     controller.SwitchState(controller.trampolineState);

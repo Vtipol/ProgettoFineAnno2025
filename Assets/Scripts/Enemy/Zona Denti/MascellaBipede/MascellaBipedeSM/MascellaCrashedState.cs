@@ -28,5 +28,6 @@ public class MascellaCrashedState : MascellaState
     public override void OnExit()
     {
         mascellaController.isMascellaCrashed = false;
+        mascellaController.isMascellaGetUp = true;
     }
 }

@@ -39,15 +39,16 @@ public class PickedUp : MonoBehaviour
         UpdateAnimation();
     }
 
+    private bool _wasPickedUpLastFrame;
+
     private void UpdateAnimation()
     {
-        bool PickedUp = isPickedUp;
-        _animator.SetBool("PickedUp", PickedUp);
-        if (!IsPickedUp)
+        _animator.SetBool("PickedUp", isPickedUp);
+        if (!isPickedUp && _wasPickedUpLastFrame)
         {
             _animator.SetTrigger("Thrown");
         }
-
+        _wasPickedUpLastFrame = isPickedUp;
     }
     private void ResetThrowFlag()
     {
