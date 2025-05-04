@@ -381,8 +381,6 @@ public class Player : MonoBehaviour
         {
             _isAttacking = true;
 
-            VerticalVelocity = -Stats.MaxFallSpeed;
-
             _downAttackColl.enabled = true;
             _animator.SetTrigger("Attack");
 
@@ -393,8 +391,6 @@ public class Player : MonoBehaviour
         {
             _isAttacking = true;
             _lockMovement = true;
-
-            VerticalVelocity = -Stats.MaxFallSpeed;
 
             _attackColl.enabled = true;
             _animator.SetTrigger("Attack");
