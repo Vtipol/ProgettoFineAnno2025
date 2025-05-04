@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3520819e820d449638a560d3fa1d0ecb, type: 3}
   m_Name: AIFollowSettings
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 6
-  stopDistance: 2
-  fieldOfViewRadius: 20
+  speed: 9
+  jumpForce: 12
+  stopDistance: 3
+  fieldOfViewRadius: 12
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -24,5 +24,5 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckRadius: 0.1
   fallingSpeed: 18
-  runSpeedBonus: 8
+  runSpeedBonus: 6
   decelDistance: 4
