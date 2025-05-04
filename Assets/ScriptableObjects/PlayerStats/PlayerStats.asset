@@ -34,7 +34,7 @@ MonoBehaviour:
   TimeForUpwardsCancel: 0.02
   MinJumpTimeBeforeCut: 0
   JumpLockoutTime: 0.05
-  JumpLockoutTimer: -0.00027159578
+  JumpLockoutTimer: -0.0025852954
   ApexThreshold: 1
   ApexHangTime: 0.01
   JumpBufferTime: 0.125
