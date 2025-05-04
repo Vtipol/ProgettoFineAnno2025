@@ -24,7 +24,7 @@ MonoBehaviour:
   GroundDetectionRayLength: 0.02
   HeadDetectionRayLength: 0.02
   HeadWidth: 0.75
-  JumpHeight: 2
+  JumpHeight: 3
   MinJumpHeight: 1
   JumpHeightCompensationFactor: 1.054
   TimeTillJumpApex: 0.35
@@ -34,7 +34,7 @@ MonoBehaviour:
   TimeForUpwardsCancel: 0.02
   MinJumpTimeBeforeCut: 0
   JumpLockoutTime: 0.05
-  JumpLockoutTimer: -0.00013829791
+  JumpLockoutTimer: -0.00027159578
   ApexThreshold: 1
   ApexHangTime: 0.01
   JumpBufferTime: 0.125
