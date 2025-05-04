@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     private RaycastHit2D _wallHit;
 
     // attack vars
-    private float _attackDuration = 1f;
+    private float _attackDuration = 7f;
     private bool _isAttacking;
     private bool _lockMovement;
 
@@ -96,7 +96,11 @@ public class Player : MonoBehaviour
 
         if (_lockMovement)
         {
-            _rb.linearVelocity = Vector2.zero;return;
+            if (_isGrounded)
+            {
+                _rb.linearVelocity = Vector2.zero;
+            }            
+            return;
         }
         
 
@@ -172,7 +176,7 @@ public class Player : MonoBehaviour
 
     private void JumpChecks()
     {
-        if (_lockMovement) return;
+        if (_lockMovement && _isGrounded) return;
 
         // If the lockout timer is active, we skip the jump initiation
         if (Stats.JumpLockoutTimer > 0f)
