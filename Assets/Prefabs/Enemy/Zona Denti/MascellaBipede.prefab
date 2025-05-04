@@ -423,8 +423,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   animator: {fileID: 1365357187006289687}
-  _maxHealth: 100
-  _health: 100
+  _maxHealth: 20
+  _health: 20
   _isAlive: 1
   isInvincible: 0
   timeSinceHit: 0
