@@ -7,14 +7,16 @@ public abstract class BuddyState : MonoBehaviour
     protected FollowPlayer followPlayer;
     protected PickedUp pickedUp;
     protected Animator _animator;
+    protected Soap soap;
 
-    public void Initialize(BuddyStateController controller, BuddyStateMachine machineState, FollowPlayer followPlayer, PickedUp pickedUp, Animator _animator)
+    public void Initialize(BuddyStateController controller, BuddyStateMachine machineState, FollowPlayer followPlayer, PickedUp pickedUp, Animator _animator, Soap soap)
     {
         this.controller = controller;
         this.machineState = machineState;
         this.followPlayer = followPlayer;
         this.pickedUp = pickedUp;
         this._animator = _animator;
+        this.soap = soap;
     }
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }

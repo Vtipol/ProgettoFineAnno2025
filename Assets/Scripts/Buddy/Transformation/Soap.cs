@@ -28,10 +28,6 @@ public class Soap : MonoBehaviour
         _targetRB = _pickTarget.GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        Bounce();
-    }
 
     #region Kick
 
@@ -74,7 +70,7 @@ public class Soap : MonoBehaviour
     {
         if (InputManager.AttackDownExecuted && player.IsFalling)
         {
-            BouncePlayer(player);
+           // BouncePlayer(player);
         }
     }
     private void BouncePlayer(Player player)

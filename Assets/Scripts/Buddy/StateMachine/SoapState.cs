@@ -22,6 +22,10 @@ public class SoapState : BuddyState, IInputHandler
             Debug.Log("Target is OOR");
             TeleportToPlayer();
         }
+        if (controller.soap != null)
+        {
+            controller.soap.Bounce();
+        }
     }
     public void OnInput(string input)
     {

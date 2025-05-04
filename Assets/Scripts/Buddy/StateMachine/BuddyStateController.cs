@@ -9,6 +9,7 @@ public class BuddyStateController : MonoBehaviour
     public TrampolineState trampolineState;
     public PickedUp pickedUp;
     public Animator _animator;
+    public Soap soap;
 
     private BuddyStateMachine stateMachine;
 
@@ -39,10 +40,10 @@ public class BuddyStateController : MonoBehaviour
 
     private void Start()
     {
-        neutralState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator);
-        gumState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator);
-        soapState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator);
-        trampolineState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator);
+        neutralState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator, soap);
+        gumState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator, soap);
+        soapState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator, soap);
+        trampolineState.Initialize(this, stateMachine, GetComponent<FollowPlayer>(), GetComponent<PickedUp>(), _animator, soap);
 
 
         stateMachine.EnterState(neutralState);

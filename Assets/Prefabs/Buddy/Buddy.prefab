@@ -124,6 +124,7 @@ MonoBehaviour:
   trampolineState: {fileID: 1035276020747867}
   pickedUp: {fileID: 7639820405145412246}
   _animator: {fileID: 1080481773219173685}
+  soap: {fileID: 2498239786501170359}
   circleCollider: {fileID: 2986740559170639401}
   boxCollider: {fileID: 5203781075069336490}
   capsuleCollider: {fileID: 612355088285040826}
