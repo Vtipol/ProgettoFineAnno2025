@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     private RaycastHit2D _wallHit;
 
     // attack vars
-    private float _attackDuration = 7f;
+    private float _attackDuration = 1f;
     private bool _isAttacking;
     private bool _lockMovement;
 
@@ -490,7 +490,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator EndAttackCooldown()
     {
-        yield return new WaitForSeconds(0.5f); // your attack duration
+        yield return new WaitForSeconds(1f); // your attack duration
         _isAttacking = false;
         _lockMovement = false;
         
