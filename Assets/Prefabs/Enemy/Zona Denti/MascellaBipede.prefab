@@ -181,7 +181,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4731837307436734170}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3837987208195004771}
   - component: {fileID: 8133598465024124849}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 7284948936778649149}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.52, y: -0.828, z: 0}
+  m_LocalPosition: {x: 0.536, y: -0.547, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -280,7 +280,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284948936778649149}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -533,8 +533,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.14}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0, y: 0.17}
+  m_Size: {x: 1, y: 1.5}
   m_Direction: 0
 --- !u!114 &3960034913981231757
 MonoBehaviour:
