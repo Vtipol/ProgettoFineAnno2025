@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263566c15a3e99449ad04ab685e92240, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  MaxWalkSpeed: 12.5
+  MaxWalkSpeed: 9
   GroundAcceleration: 5
   GroundDeceleration: 20
   AirAcceleration: 5
   AirDeceleration: 20
-  MaxRunSpeed: 20
+  MaxRunSpeed: 15
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -34,11 +34,16 @@ MonoBehaviour:
   TimeForUpwardsCancel: 0.02
   MinJumpTimeBeforeCut: 0
   JumpLockoutTime: 0.05
-  JumpLockoutTimer: -0.0010562034
+  JumpLockoutTimer: -0.00013829791
   ApexThreshold: 1
   ApexHangTime: 0.01
   JumpBufferTime: 0.125
   JumpCoyoteTime: 0.1
+  WallStickGravity: 0.5
+  WallStickMaxFallSpeed: -2
+  WallJumpVerticalForce: 12
+  WallJumpHorizontalForce: 8
+  WallCheckDistance: 0.25
   GravityMultiplier: 2
   FallGravityMultiplier: 2.5
   ThrowForce: 15

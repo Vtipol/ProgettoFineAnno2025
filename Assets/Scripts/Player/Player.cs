@@ -250,6 +250,7 @@ public class Player : MonoBehaviour
             //_canCutJump = false;
             Stats.JumpLockoutTimer = Stats.JumpLockoutTime;  // Reset the lockout timer on landing
 
+            _animator.SetTrigger("Land");
             VerticalVelocity = Physics2D.gravity.y;
         }
     }
