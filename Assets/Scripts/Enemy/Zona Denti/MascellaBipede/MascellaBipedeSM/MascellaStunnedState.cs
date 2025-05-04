@@ -1,15 +1,17 @@
 using UnityEngine;
-using System.Collections;
 
 public class MascellaStunnedState : MascellaState
 {
-    
-
+    private CapsuleCollider2D Body;
+    [SerializeField] private CircleCollider2D Precausion;
     public override void OnEnter()
     {
         Debug.Log("Mascella is stunned");
         mascellaController.isMascellaStunned = true;
         mascellaController.isMascellaCrashed = false;
+        Body = GetComponentInParent<CapsuleCollider2D>();
+        Body.enabled = false;
+        Precausion.enabled = true;
     }
 
     public override void OnUpdate()
@@ -19,7 +21,7 @@ public class MascellaStunnedState : MascellaState
 
     public override void OnExit()
     {
-        mascellaVulnerable.receivedHit = false;
+
     }
     //private IEnumerator HandleStun()
     //{
