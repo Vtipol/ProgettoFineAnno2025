@@ -8,7 +8,7 @@ public class MascellaCrashedState : MascellaState
     {
         timer = 0f;
         mascellaController.isMascellaCrashed = true;
-        mascellaVulnerable.ActivateWeakSpot(true);
+        mascellaController.StartCoroutine(AwaytEnab());
     }
 
     public override void OnUpdate()
@@ -38,5 +38,10 @@ public class MascellaCrashedState : MascellaState
         mascellaController.isMascellaGetUp = false;
        // yield return new WaitForSeconds(0.5f);
         mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
+    }
+    private IEnumerator AwaytEnab()
+    {
+        yield return new WaitForSeconds(0.4f);
+        mascellaVulnerable.ActivateWeakSpot(true);
     }
 }
