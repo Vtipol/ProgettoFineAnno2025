@@ -13,7 +13,6 @@ public class MascellaIdleState : MascellaState
         mascellaAttack.rb.gravityScale = mascellaStats.defaultGravityScale;
         searchDelayTimer = 0.00001f;
         chaseCooldownTimer = chaseCooldownDuration;
-        mascellaController.isMascellaWalking = true;
         if (mascellaAnimator == null)
         {
             Debug.LogError("Animator not assigned on MascellaStateController!");
@@ -22,6 +21,7 @@ public class MascellaIdleState : MascellaState
 
     public override void OnUpdate()
     {
+        mascellaController.isMascellaWalking = true;
         mascellaIdle.Wander();
         if (searchDelayTimer > 0f)
         {
