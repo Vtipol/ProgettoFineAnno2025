@@ -390,7 +390,7 @@ public class Player : MonoBehaviour
         else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
         {
             _isAttacking = true;
-            _lockMovement = true;
+            //_lockMovement = true;
 
             _attackColl.enabled = true;
             _animator.SetTrigger("Attack");
