@@ -68,7 +68,7 @@ public class BuddyStateController : MonoBehaviour
 
     private void HandleInput()
     {
-        if (!pickedUp.IsPickedUp)
+        //if (!pickedUp.IsPickedUp)
         {
             if (InputManager.TransformRightWasPressed)
             {

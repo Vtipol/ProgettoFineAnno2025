@@ -23,17 +23,17 @@ MonoBehaviour:
   jumpForce: 7
   runTimer: 9.791453
   forgetDelay: 1
-  wanderTimer: 3.4989579
+  wanderTimer: 1.0593325
   wanderDuration: 4
-  currentWanderDuration: 4.128907
+  currentWanderDuration: 3.4410045
   attackDamage: 10
   mascellaLungeForce: 10
-  mascellaLungeHorizontalForce: 12
+  mascellaLungeHorizontalForce: 7
   lungeGravityScale: 6
   defaultGravityScale: 1.5
-  mascellaLungeVerticalForce: 15
+  mascellaLungeVerticalForce: 23
   wanderDirection: -1
   pauseDuration: 0.000001
-  pauseTimer: 0.0010720026
+  pauseTimer: 0.010492276
   isPaused: 0
   isCrashed: 1
