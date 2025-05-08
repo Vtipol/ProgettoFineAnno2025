@@ -67,7 +67,7 @@ public class Damageble : MonoBehaviour
         }
     }
 
-    public bool LockVelocity
+    /*public bool LockVelocity
     {
         get
         {
@@ -77,7 +77,7 @@ public class Damageble : MonoBehaviour
         {
             animator.SetBool("LockVelocity", value);
         }
-    }
+    }*/
 
     private void Awake()
     {

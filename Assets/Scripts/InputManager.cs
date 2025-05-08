@@ -48,8 +48,8 @@ public class InputManager : MonoBehaviour
         JumpIsHeld = _jumpAction.IsPressed();
         JumpWasRelesed = _jumpAction.WasReleasedThisFrame();
 
-        AttackIsPressed = _attackAction.IsPressed();
-        AttackDownExecuted = _attackAction.IsPressed() && _downInputAction.IsPressed();
+        AttackIsPressed = _attackAction.WasPressedThisFrame();
+        AttackDownExecuted = _attackAction.WasPressedThisFrame() && _downInputAction.IsPressed();
 
         TransformLeftWasPressed = _transformLeftAction.WasPerformedThisFrame();
         TransformRightWasPressed = _transformRightAction.WasPerformedThisFrame();

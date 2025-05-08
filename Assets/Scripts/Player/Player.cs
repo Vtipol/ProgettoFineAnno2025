@@ -64,7 +64,6 @@ public class Player : MonoBehaviour
     private RaycastHit2D _wallHit;
 
     // attack vars
-    private float _attackDuration = 1f;
     private bool _isAttacking;
     private bool _lockMovement;
 
@@ -380,22 +379,15 @@ public class Player : MonoBehaviour
         if (InputManager.AttackDownExecuted && !_isGrounded)
         {
             _isAttacking = true;
-
-            _downAttackColl.enabled = true;
             _animator.SetTrigger("Attack");
-
-            StartCoroutine(DisableColliderAfterDelay(_downAttackColl));            
+                                   
             StartCoroutine(EndAttackCooldown());           
         }
         else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
         {
             _isAttacking = true;
-            //_lockMovement = true;
-
-            _attackColl.enabled = true;
             _animator.SetTrigger("Attack");
-
-            StartCoroutine(DisableColliderAfterDelay(_attackColl));            
+                                    
             StartCoroutine(EndAttackCooldown());            
         }
     }
@@ -478,15 +470,9 @@ public class Player : MonoBehaviour
         else { _coyoteTimer = Stats.JumpCoyoteTime; }
     }
 
-    private IEnumerator DisableColliderAfterDelay(Collider2D collider)
-    {
-        yield return new WaitForSeconds(_attackDuration);
-        collider.enabled = false;
-    }
-
     private IEnumerator EndAttackCooldown()
     {
-        yield return new WaitForSeconds(1f); // your attack duration
+        yield return new WaitForSeconds(1f);
         _isAttacking = false;
         _lockMovement = false;
         
@@ -509,15 +495,8 @@ public class Player : MonoBehaviour
        // Debug.Log($"Running: {running}, Jumping: {_isJumping}, Falling: {falling}");
     }
 
-
-    /*public void TakeDamage()
-    {
-        _animator.SetTrigger("Damaged");
-    }*/
-
     public void Die()
-    {
-        //_animator.SetTrigger("Dead");
+    {        
         if (!Damage._isAlive)
         {
             this.enabled = false; // Disable player controls on death

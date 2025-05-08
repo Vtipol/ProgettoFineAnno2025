@@ -239,8 +239,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 7899356897481942568}
-  attackDamage: 10
-  knokback: {x: 1, y: 1}
+  attackDamage: 1
+  knokback: {x: 0, y: 0}
 --- !u!1 &7284948936778649149
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,8 +423,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   animator: {fileID: 1365357187006289687}
-  _maxHealth: 20
-  _health: 20
+  _maxHealth: 2
+  _health: 2
   _isAlive: 1
   isInvincible: 0
   timeSinceHit: 0
