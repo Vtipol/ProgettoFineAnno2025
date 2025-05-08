@@ -25,19 +25,20 @@ public class DeathCanvasController : MonoBehaviour
         if (!hasDied && playerDamageble != null && !playerDamageble.IsAlive)
         {
             hasDied = true;
+            Time.timeScale = 0f;
             deathCanvas.gameObject.SetActive(true);
         }
     }
 
     private void RestartLevel()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void QuitGame()
     {
         Application.Quit();
-        
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
