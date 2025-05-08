@@ -8,7 +8,6 @@ public class PickedUp : MonoBehaviour
     private Animator _animator;
     [SerializeField] private Rigidbody2D rb;
     private bool hasBeenThrown = false;
-
     public bool IsPickedUp
     {
         get => isPickedUp;

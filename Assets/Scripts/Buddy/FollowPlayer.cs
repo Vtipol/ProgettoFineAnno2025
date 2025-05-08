@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class FollowPlayer : MonoBehaviour
 {
     public AIFollowSettings aiSettings;
@@ -6,38 +7,33 @@ public class FollowPlayer : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public PickedUp pickedUp;
-    [SerializeField] private Transform buddyWallcheck; 
+
+    [SerializeField] private Transform buddyWallcheck;
     [SerializeField] private Animator _animator;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
     public bool targetInView;
+    private bool isGrounded;
     private bool needJump;
     private bool isTrasformed;
 
-    // animation var
+    // Animation flags
     private bool _isWalking;
-    //private bool _isRunning;
     private bool _isJumping;
     private bool _isFalling;
 
     public bool IsTrasformed
     {
-        get { return isTrasformed; }
-        set { isTrasformed = value; }
+        get => isTrasformed;
+        set => isTrasformed = value;
     }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
-    public bool IsWallAhead(int direction)
-    {
-        Vector2 rayDirection = Vector2.right * direction;
-        RaycastHit2D hit = Physics2D.Raycast(buddyWallcheck.position, rayDirection, 1f, groundLayer);
-        Debug.DrawRay(buddyWallcheck.position, rayDirection * 1f, Color.blue);
-        return hit.collider != null;
-    }
+
     void Update()
     {
         DetectTarget();
@@ -45,50 +41,55 @@ public class FollowPlayer : MonoBehaviour
         HandleMovementLogic();
         FlipSprite();
         UpdateAnimation();
-        JumpFall();
-        WalkRunStop();
+        UpdateMovementState();
     }
+
     void FixedUpdate()
     {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, groundLayer);
+
         if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && isGrounded)
         {
             MoveTowardsTarget();
         }
+
+        HandleJumping();
     }
+
     void DetectTarget()
     {
-        targetInView = Physics2D.OverlapCircle(transform.position, aiSettings.fieldOfViewRadius, aiSettings.targetLayer) != null;
+        targetInView = Physics2D.OverlapCircle(transform.position, aiSettings.fieldOfViewRadius, aiSettings.targetLayer);
     }
+
     void CheckGroundStatus()
     {
         bool wasGrounded = isGrounded;
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, aiSettings.groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, groundLayer);
+
         if (!wasGrounded && isGrounded && pickedUp.IsPickedUp)
         {
             pickedUp.IsPickedUp = false;
         }
     }
+
     void HandleMovementLogic()
     {
         if (!target || !targetInView) return;
 
         float direction = Mathf.Sign(target.position.x - transform.position.x);
-        bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
 
+        bool wallAhead = IsWallAhead((int)direction);
         RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
+        bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
 
-        bool wallAhead = IsWallAhead((int)direction);
-
-        if (!groundFront.collider && !gapAhead.collider || wallAhead)
+        if ((!groundFront.collider && !gapAhead.collider) || wallAhead)
         {
-            _isJumping = true;
             needJump = true;
         }
         else if (isTargetAirborne && platformOverhead.collider)
         {
-            _isJumping = true;
             needJump = true;
         }
         else
@@ -97,60 +98,66 @@ public class FollowPlayer : MonoBehaviour
         }
     }
 
+    void HandleJumping()
+    {
+        if (isGrounded && needJump)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+            rb.AddForce(Vector2.up * aiSettings.jumpForce, ForceMode2D.Impulse);
+            needJump = false;
+            _isJumping = true;
+        }
+    }
+
     void MoveTowardsTarget()
     {
         float distance = Vector2.Distance(transform.position, target.position);
         if (distance < aiSettings.stopDistance) return;
-        if (isGrounded && target.position.y > transform.position.y + 4f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
-        }
+
         Vector2 direction = (target.position - transform.position).normalized;
         float runBonus = InputManager.RunIsHeld ? aiSettings.runSpeedBonus : 0f;
         float moveSpeed = aiSettings.speed + runBonus;
+
         if (distance < aiSettings.decelDistance)
         {
-            float t = distance / aiSettings.decelDistance; 
+            float t = distance / aiSettings.decelDistance;
             moveSpeed = Mathf.Lerp(0, moveSpeed, t);
         }
+
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
-        if (isGrounded && needJump)
-        {
-            needJump = false;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, aiSettings.jumpForce);
-        }
-      //  if (isGrounded && target.position.y > transform.position.y - 2f)
-       // {
-           // StartCoroutine(BuddyDropThroughPlatform());
-       // }
     }
-    /*
-    IEnumerator BuddyDropThroughPlatform()
+
+    public bool IsWallAhead(int direction)
     {
-        Collider2D buddyCollider = GetComponent<CircleCollider2D>();
-        buddyCollider.enabled = false;
-        yield return new WaitForSeconds(1f);
-        buddyCollider.enabled = true;
-    }*/
+        Vector2 rayDirection = Vector2.right * direction;
+        RaycastHit2D hit = Physics2D.Raycast(buddyWallcheck.position, rayDirection, 1f, groundLayer);
+        Debug.DrawRay(buddyWallcheck.position, rayDirection * 1f, Color.blue);
+        return hit.collider != null;
+    }
 
     #region Animation
 
-    private void UpdateAnimation()
+    void UpdateAnimation()
     {
-        bool walking = _isWalking && isGrounded;
-        _animator.SetBool("IsWalking", walking);
-        bool running = InputManager.RunIsHeld && isGrounded;
-        _animator.SetBool("IsRunning", walking && running);
-        bool jumping = _isJumping;
-        _animator.SetBool("IsJumping", jumping);
-        bool falling = !_isJumping && !isGrounded;
-        _animator.SetBool("IsFalling", falling);
+        _animator.SetBool("IsWalking", _isWalking && isGrounded);
+        _animator.SetBool("IsRunning", _isWalking && InputManager.RunIsHeld && isGrounded);
+        _animator.SetBool("IsJumping", _isJumping);
+        _animator.SetBool("IsFalling", _isFalling);
     }
-    private void FlipSprite()
-    {
-        if (!target) return;
 
-        float direction = target.position.x - transform.position.x;
+    void FlipSprite()
+    {
+        if (pickedUp.IsPickedUp) return; 
+        float direction;
+
+        if (!targetInView || isTrasformed || pickedUp.IsPickedUp || !isGrounded)
+        {
+            direction = rb.linearVelocity.x;
+        }
+        else
+        {
+            direction = target.position.x - transform.position.x;
+        }
 
         if (Mathf.Abs(direction) > 0.01f)
         {
@@ -159,35 +166,21 @@ public class FollowPlayer : MonoBehaviour
             transform.localScale = scale;
         }
     }
-    private void JumpFall()
+
+
+    void UpdateMovementState()
     {
-        if (rb.linearVelocity.y < 0.1f && !isGrounded)
-        {
-            _isJumping = true;
-        }
-        if (_isJumping && isGrounded)
-        {
-            _isJumping = false; 
-        }
-        if (!_isJumping && !isGrounded)
+        _isWalking = Mathf.Abs(rb.linearVelocity.x) > 0.01f && isGrounded;
+
+        if (rb.linearVelocity.y < -0.1f && !isGrounded)
         {
             _isFalling = true;
+            _isJumping = false;
         }
-        else if (!_isJumping && isGrounded)
+        else if (isGrounded)
         {
             _isFalling = false;
-        }
-    }
-
-    private void WalkRunStop()
-    {
-        if (rb.linearVelocity.magnitude < 0.01f && isGrounded)
-        {
-            _isWalking = false;
-        }
-        else if (rb.linearVelocity.magnitude > 0.01f && isGrounded)
-        {
-            _isWalking = true;
+            _isJumping = false;
         }
     }
 
