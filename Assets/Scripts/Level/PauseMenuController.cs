@@ -7,7 +7,10 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private Canvas pauseCanvas;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button returnToTitleButton;
+    [SerializeField] private Button loadCheckpointButton;
     [SerializeField] private Button quitButton;
+    
+    [SerializeField] private OutOfBound outOfBoundScript; 
 
     private bool isPaused = false;
 
@@ -16,6 +19,7 @@ public class PauseMenuController : MonoBehaviour
         pauseCanvas.gameObject.SetActive(false);
 
         continueButton.onClick.AddListener(ResumeGame);
+        loadCheckpointButton.onClick.AddListener(LoadCheckpoint);
         returnToTitleButton.onClick.AddListener(ReturnToTitle);
         quitButton.onClick.AddListener(QuitGame);
     }
@@ -43,6 +47,12 @@ public class PauseMenuController : MonoBehaviour
         isPaused = false;
         pauseCanvas.gameObject.SetActive(false);
         Time.timeScale = 1f;
+    }
+    private void LoadCheckpoint()
+    {
+        Time.timeScale = 1f;
+        outOfBoundScript.LoadCheckpoint();
+        ResumeGame(); 
     }
 
     private void ReturnToTitle()

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5398096422427897294}
   - component: {fileID: 561985556180096249}
   m_Layer: 0
-  m_Name: Start_CheckPoint
+  m_Name: StartPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPoint: {fileID: 3666870032702709373}
-  Player: {fileID: 0}
+  player: {fileID: 0}
 --- !u!61 &561985556180096249
 BoxCollider2D:
   m_ObjectHideFlags: 0
