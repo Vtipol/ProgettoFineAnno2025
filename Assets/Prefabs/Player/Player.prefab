@@ -70,7 +70,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1148314349076097835}
@@ -157,8 +157,8 @@ MonoBehaviour:
   Damage: {fileID: 3725257953848091121}
   _feetColl: {fileID: 5246583691719135597}
   _bodyColl: {fileID: 3098418261554527620}
-  _attackColl: {fileID: 0}
-  _downAttackColl: {fileID: 0}
+  _attackColl: {fileID: 2964204667359039399}
+  _downAttackColl: {fileID: 5496041247568164205}
   _animator: {fileID: 8124245553031814339}
   _isFacingRight: 0
   _isGrounded: 0
@@ -243,7 +243,7 @@ Animator:
   m_GameObject: {fileID: 4274336502130243986}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 312496b25d842af4a938e96c7d5aaee0, type: 2}
+  m_Controller: {fileID: 9100000, guid: c995a844a55850942b823a116cef881c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -296,18 +296,18 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1009977133
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4723107735738678597, guid: f780f0a843b6e6943baf34e2c95bdd92, type: 3}
+  m_Sprite: {fileID: -3781910019033479378, guid: 74de3b0c5dedcd24aad425107244a70c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.90625, y: 1.46875}
+  m_Size: {x: 1.57, y: 1.83}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4830782739461612999

@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public static bool AttackDownExecuted;
     public static bool TransformLeftWasPressed;
     public static bool TransformRightWasPressed;
+    public static bool InteractWasPressed;
 
 
     private InputAction _moveAction;
@@ -24,6 +25,7 @@ public class InputManager : MonoBehaviour
     private InputAction _downInputAction;
     private InputAction _transformLeftAction;
     private InputAction _transformRightAction;
+    private InputAction _interactAction;
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class InputManager : MonoBehaviour
 
         _transformLeftAction = PlayerInput.actions["TransformLeft"];
         _transformRightAction = PlayerInput.actions["TransformRight"];
+        _interactAction = PlayerInput.actions["Interact"];
     }
 
     private void Update()
@@ -53,5 +56,6 @@ public class InputManager : MonoBehaviour
 
         TransformLeftWasPressed = _transformLeftAction.WasPerformedThisFrame();
         TransformRightWasPressed = _transformRightAction.WasPerformedThisFrame();
+        InteractWasPressed = _interactAction.WasPressedThisFrame();
     }
 }
