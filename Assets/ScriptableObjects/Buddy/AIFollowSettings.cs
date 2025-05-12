@@ -5,6 +5,8 @@ public class AIFollowSettings : ScriptableObject
 {
     public float speed = 5f;
     public float jumpForce = 10f;
+    public float wallJumpForce = 10f;
+    public float fastFallSpeed = 5f;
     public float stopDistance = 1f;
     public float fieldOfViewRadius = 10f;
     public LayerMask groundLayer;

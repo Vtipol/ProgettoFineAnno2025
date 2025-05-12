@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      UI vita danno foglio a righe_0: 5889711490281550426
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

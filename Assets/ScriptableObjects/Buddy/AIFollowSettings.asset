@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AIFollowSettings
   m_EditorClassIdentifier: 
   speed: 9
-  jumpForce: 12
+  jumpForce: 16
+  wallJumpForce: 20
+  fastFallSpeed: 5
   stopDistance: 3
   fieldOfViewRadius: 12
   groundLayer:

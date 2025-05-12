@@ -38,10 +38,10 @@ public class FollowPlayer : MonoBehaviour
     {
         DetectTarget();
         CheckGroundStatus();
-        HandleMovementLogic();
         FlipSprite();
         UpdateAnimation();
         UpdateMovementState();
+
     }
 
     void FixedUpdate()
@@ -52,8 +52,9 @@ public class FollowPlayer : MonoBehaviour
         {
             MoveTowardsTarget();
         }
-
+        HandleMovementLogic();
         HandleJumping();
+        FastFall();
     }
 
     void DetectTarget()
@@ -71,14 +72,27 @@ public class FollowPlayer : MonoBehaviour
             pickedUp.IsPickedUp = false;
         }
     }
+    void FastFall()
+    {
+        if (!isGrounded && target != null)
+        {
+            float verticalDifference = transform.position.y - target.position.y;
+            if (verticalDifference > 2f)
+            {
+                rb.linearVelocity += Vector2.down * aiSettings.fastFallSpeed * Time.deltaTime;
+            }
+        }
+    }
 
     void HandleMovementLogic()
     {
         if (!target || !targetInView) return;
 
-        float direction = Mathf.Sign(target.position.x - transform.position.x);
+        //float direction = Mathf.Sign(target.position.x - transform.position.x);
 
-        bool wallAhead = IsWallAhead((int)direction);
+        int direction = (target.position.x - transform.position.x) >= 0 ? 1 : -1;
+        if (direction == 0) direction = transform.localScale.x > 0 ? 1 : -1;
+        bool wallAhead = IsWallAhead(direction);
         RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
@@ -100,10 +114,22 @@ public class FollowPlayer : MonoBehaviour
 
     void HandleJumping()
     {
-        if (isGrounded && needJump)
+        if (isGrounded && needJump && !isTrasformed)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
-            rb.AddForce(Vector2.up * aiSettings.jumpForce, ForceMode2D.Impulse);
+            int direction = (target.position.x - transform.position.x) >= 0 ? 1 : -1;
+            bool wallAhead = IsWallAhead(direction);
+            if (wallAhead)
+            {
+                Debug.Log("Performed Wall Jump");
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+                rb.AddForce(Vector2.up * aiSettings.wallJumpForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                Debug.Log("Performed Normal Jump");
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+                rb.AddForce(Vector2.up * aiSettings.jumpForce, ForceMode2D.Impulse);
+            }
             needJump = false;
             _isJumping = true;
         }
@@ -130,8 +156,12 @@ public class FollowPlayer : MonoBehaviour
     public bool IsWallAhead(int direction)
     {
         Vector2 rayDirection = Vector2.right * direction;
-        RaycastHit2D hit = Physics2D.Raycast(buddyWallcheck.position, rayDirection, 1f, groundLayer);
-        Debug.DrawRay(buddyWallcheck.position, rayDirection * 1f, Color.blue);
+        Vector2 origin = buddyWallcheck.position + Vector3.up * 0.1f; 
+        float rayLength = 2.5f;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, rayLength, groundLayer);
+        Debug.DrawRay(origin, rayDirection * rayLength, Color.blue);
+
         return hit.collider != null;
     }
 
@@ -166,7 +196,6 @@ public class FollowPlayer : MonoBehaviour
             transform.localScale = scale;
         }
     }
-
 
     void UpdateMovementState()
     {
