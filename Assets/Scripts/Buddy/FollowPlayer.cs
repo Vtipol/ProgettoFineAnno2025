@@ -93,8 +93,8 @@ public class FollowPlayer : MonoBehaviour
         int direction = (target.position.x - transform.position.x) >= 0 ? 1 : -1;
         if (direction == 0) direction = transform.localScale.x > 0 ? 1 : -1;
         bool wallAhead = IsWallAhead(direction);
-        RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
-        Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.gray);
+        /*RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
+        Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.gray);*/
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
         Debug.DrawRay(transform.position + new Vector3(direction, -1, 0), Vector2.down, Color.yellow);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
@@ -109,7 +109,7 @@ public class FollowPlayer : MonoBehaviour
         {
             needJump = true;
         }
-        else if(wallAhead)
+        else if (wallAhead && (target.position.y - transform.position.y > 1f))
         {
             needJump = true;
         }
