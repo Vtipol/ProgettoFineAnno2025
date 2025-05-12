@@ -667,7 +667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7956179890912573079}
   - component: {fileID: 1374630410550099974}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: PickUpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

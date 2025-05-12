@@ -2460,6 +2460,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 108136817445469775, guid: dae8bc4ab6d939849a12339ca2f5c535, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108136817445469775, guid: dae8bc4ab6d939849a12339ca2f5c535, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -42046,6 +42050,10 @@ PrefabInstance:
     - target: {fileID: 3789177899199266373, guid: dae8bc4ab6d939849a12339ca2f5c535, type: 3}
       propertyPath: m_SortingLayerID
       value: 1957292225
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862201234539311608, guid: dae8bc4ab6d939849a12339ca2f5c535, type: 3}
+      propertyPath: m_CompositeOperation
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7047225398406343617, guid: dae8bc4ab6d939849a12339ca2f5c535, type: 3}
       propertyPath: m_LocalScale.x

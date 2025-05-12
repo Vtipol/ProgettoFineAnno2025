@@ -7,10 +7,9 @@ public class FollowPlayer : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public PickedUp pickedUp;
-
     [SerializeField] private Transform buddyWallcheck;
     [SerializeField] private Animator _animator;
-
+    private PickThrow pickThrow;
     private Rigidbody2D rb;
     public bool targetInView;
     private bool isGrounded;
@@ -32,6 +31,7 @@ public class FollowPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        pickThrow = FindAnyObjectByType<PickThrow>();
     }
 
     void Update()
@@ -48,7 +48,7 @@ public class FollowPlayer : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, groundLayer);
 
-        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp /*&& isGrounded*/)
+        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && !pickThrow.isPickThrow /*&& isGrounded*/)
         {
             MoveTowardsTarget();
         }
@@ -203,6 +203,7 @@ public class FollowPlayer : MonoBehaviour
         {
             Vector3 scale = transform.localScale;
             scale.x = direction > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+            Debug.Log("scale: =  " + scale.x);
             transform.localScale = scale;
         }
     }

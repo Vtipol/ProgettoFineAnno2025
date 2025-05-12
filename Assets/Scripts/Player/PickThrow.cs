@@ -10,14 +10,21 @@ public class PickThrow : MonoBehaviour
     [SerializeField] private GameObject _pickUpPosition;
     [SerializeField] private Collider2D _pickTrigger;
     [SerializeField] private Animator _animator;
-
     [SerializeField] private LayerMask shellLayer;
-
     [SerializeField] private GameObject _pickTarget;
     [SerializeField] private GameObject _soapMode;
     private Rigidbody2D _targetRB;
     private Collider2D soapCollider;
-
+    public bool isPickThrow = false;
+    public bool IsPickThrow
+    {
+        get => isPickThrow;
+        set
+        {
+            isPickThrow = value;
+            
+        }
+    }
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -130,7 +137,7 @@ public class PickThrow : MonoBehaviour
 
         // Mark as not picked up
         PickedUp.IsPickedUp = false;
-
+        isPickThrow = true;
         // Detach from player or pickup position
         _pickTarget.transform.parent = null;
 
