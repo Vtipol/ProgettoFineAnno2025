@@ -15,6 +15,7 @@ public class FollowPlayer : MonoBehaviour
     private bool isGrounded;
     private bool needJump;
     private bool isTrasformed;
+    private int directionToTarget;
 
     // Animation flags
     private bool _isWalking;
@@ -37,25 +38,30 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         DetectTarget();
-        CheckGroundStatus();
-        FlipSprite();
         UpdateAnimation();
+        CheckGroundStatus();
         UpdateMovementState();
 
     }
 
     void FixedUpdate()
     {
+        directionToTarget = (target.position.x - transform.position.x) >= 0 ? 1 : -1;
+        if (directionToTarget == 0) directionToTarget = transform.localScale.x > 0 ? 1 : -1;
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, groundLayer);
 
-        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && !pickThrow.isPickThrow /*&& isGrounded*/)
+        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && !pickThrow.isPickThrow)
         {
             MoveTowardsTarget();
         }
+
         HandleMovementLogic();
         HandleJumping();
         FastFall();
+        FlipSprite();
     }
+
 
     void DetectTarget()
     {
@@ -90,13 +96,12 @@ public class FollowPlayer : MonoBehaviour
 
         //float direction = Mathf.Sign(target.position.x - transform.position.x);
 
-        int direction = (target.position.x - transform.position.x) >= 0 ? 1 : -1;
-        if (direction == 0) direction = transform.localScale.x > 0 ? 1 : -1;
-        bool wallAhead = IsWallAhead(direction);
+        if (directionToTarget == 0) directionToTarget = transform.localScale.x > 0 ? 1 : -1;
+        bool wallAhead = IsWallAhead(directionToTarget);
         /*RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
         Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.gray);*/
-        RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
-        Debug.DrawRay(transform.position + new Vector3(direction, -1, 0), Vector2.down, Color.yellow);
+        RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(directionToTarget - 1, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
+        Debug.DrawRay(transform.position + new Vector3(directionToTarget, -1, 0), Vector2.down, Color.yellow);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
         Debug.DrawRay(transform.position, Vector2.up, Color.red);
         bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
@@ -123,8 +128,8 @@ public class FollowPlayer : MonoBehaviour
     {
         if (isGrounded && needJump && !isTrasformed)
         {
-            int direction = (target.position.x - transform.position.x) >= 0 ? 1 : -1;
-            bool wallAhead = IsWallAhead(direction);
+          
+            bool wallAhead = IsWallAhead(directionToTarget);
             if (wallAhead)
             {
                 Debug.Log("Performed Wall Jump");

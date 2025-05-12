@@ -14,9 +14,10 @@ public class BuddyPickThrow : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (collider.IsTouchingLayers(LayerMask.GetMask("Ground"))) 
+        if (collider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             pickThrow.isPickThrow = false;
+            Debug.Log("touched ground");
         }
     }
 }
