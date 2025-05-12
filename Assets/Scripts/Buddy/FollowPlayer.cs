@@ -48,7 +48,7 @@ public class FollowPlayer : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, groundLayer);
 
-        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp && isGrounded)
+        if (targetInView && !isTrasformed && !pickedUp.IsPickedUp /*&& isGrounded*/)
         {
             MoveTowardsTarget();
         }
@@ -94,15 +94,22 @@ public class FollowPlayer : MonoBehaviour
         if (direction == 0) direction = transform.localScale.x > 0 ? 1 : -1;
         bool wallAhead = IsWallAhead(direction);
         RaycastHit2D groundFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, aiSettings.groundLayer);
+        Debug.DrawRay(transform.position, new Vector2(direction, 0), Color.gray);
         RaycastHit2D gapAhead = Physics2D.Raycast(transform.position + new Vector3(direction, 0, 0), Vector2.down, 2f, aiSettings.groundLayer);
+        Debug.DrawRay(transform.position + new Vector3(direction, -1, 0), Vector2.down, Color.yellow);
         RaycastHit2D platformOverhead = Physics2D.Raycast(transform.position, Vector2.up, 2f, aiSettings.groundLayer);
+        Debug.DrawRay(transform.position, Vector2.up, Color.red);
         bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
 
-        if ((!groundFront.collider && !gapAhead.collider) || wallAhead)
+        if ((!gapAhead.collider) )
         {
             needJump = true;
         }
         else if (isTargetAirborne && platformOverhead.collider)
+        {
+            needJump = true;
+        }
+        else if(wallAhead)
         {
             needJump = true;
         }
@@ -158,10 +165,13 @@ public class FollowPlayer : MonoBehaviour
         Vector2 rayDirection = Vector2.right * direction;
         Vector2 origin = buddyWallcheck.position + Vector3.up * 0.1f; 
         float rayLength = 2.5f;
-
+       
         RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, rayLength, groundLayer);
         Debug.DrawRay(origin, rayDirection * rayLength, Color.blue);
-
+        if (hit.collider)
+        {
+            Debug.Log("Wall Ahead");
+        }
         return hit.collider != null;
     }
 
