@@ -71,16 +71,14 @@ public class PickThrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _pickTrigger)
     {
-        // Check if the player is holding Run AND if the object collided is the one you're targeting
         if (InputManager.RunIsHeld == true && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
         {
-            //Debug.Log("Correct object triggered while running!");
             if (!Soap.IsSoapy)
             {
                 // Set state
                 PickedUp.IsPickedUp = true;
 
-                // Optional: make it kinematic so it doesn't fall
+                // Optional: make it kinematic so it non cade
                 _targetRB.bodyType = RigidbodyType2D.Kinematic;
                 _targetRB.linearVelocity = Vector2.zero;
 
@@ -88,39 +86,12 @@ public class PickThrow : MonoBehaviour
                 _pickTarget.transform.position = _pickUpPosition.transform.position;
                 _pickTarget.transform.parent = _pickUpPosition.transform;
 
-                // Play pickup animation
-                //_animator.SetTrigger("PickUp");
-            }
-            else if (Soap.IsSoapy)
-            {
-                if (soapCollider != null)
-                {
-                    Soap soapScript = soapCollider.GetComponentInParent<Soap>();
-                    if (soapScript != null)
-                    {
-                        Vector2 kickDirection = Player._isFacingRight ? Vector2.right : Vector2.left;
+                // Sincronizza la direzione del buddy con quella del player
+                Vector3 scale = _pickTarget.transform.localScale;
+                scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+                _pickTarget.transform.localScale = scale;
 
-                        // Apply a stronger force when kicking
-                        Rigidbody2D soapRB = soapCollider.GetComponentInParent<Rigidbody2D>();
-                        if (soapRB != null)
-                        {
-                            soapRB.AddForce(kickDirection * Stats.KickForce, ForceMode2D.Impulse);  // Kick with force
-                            Debug.Log($"[KICK] Soap kicked in direction: {kickDirection} with force: {Stats.KickForce}");
-                        }
-                        else
-                        {
-                            Debug.LogWarning("[KICK] soapCollider found, but no Rigidbody2D component on Soap object!");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogWarning("[KICK] soapCollider found, but Soap script missing!");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("[KICK] soapCollider reference is null!");
-                }
+                Debug.Log("Buddy raccolto: direzione sincronizzata con il player.");
             }
         }
     }
@@ -131,13 +102,13 @@ public class PickThrow : MonoBehaviour
 
     private void ThrowObject()
     {
-
         if (_pickTarget == null || _targetRB == null || Stats == null)
             return;
 
         // Mark as not picked up
         PickedUp.IsPickedUp = false;
         isPickThrow = true;
+
         // Detach from player or pickup position
         _pickTarget.transform.parent = null;
 
@@ -167,6 +138,11 @@ public class PickThrow : MonoBehaviour
         // Apply force
         _targetRB.AddForce(throwDir * Stats.ThrowForce, ForceMode2D.Impulse);
 
+        // Sincronizza la direzione del buddy con quella del lancio
+    /*  Vector3 scale = _pickTarget.transform.localScale;
+        scale.x = throwDir.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+        _pickTarget.transform.localScale = scale;
+    */
         _animator.SetTrigger("Throw");
         Debug.Log($"[THROW] Threw object at direction {throwDir}, force {Stats.ThrowForce}");
     }

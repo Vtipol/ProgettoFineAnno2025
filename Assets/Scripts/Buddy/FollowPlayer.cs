@@ -192,10 +192,30 @@ public class FollowPlayer : MonoBehaviour
 
     void FlipSprite()
     {
-        if (pickedUp.IsPickedUp) return; 
+        // Se il buddy è raccolto, sincronizza la direzione con quella del player
+        if (pickedUp.IsPickedUp)
+        {
+            // Controlla la rotazione del player per determinare la direzione
+            if (Mathf.Approximately(target.eulerAngles.y, 180f))
+            {
+                // Ruota il buddy verso sinistra
+                transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                Debug.Log("Direzione sincronizzata con il player: Sinistra");
+            }
+            else if (Mathf.Approximately(target.eulerAngles.y, 0f))
+            {
+                // Ruota il buddy verso destra
+                transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                Debug.Log("Direzione sincronizzata con il player: Destra");
+            }
+            return;
+        }
+
         float direction;
 
-        if (!targetInView || isTrasformed || pickedUp.IsPickedUp || !isGrounded)
+
+        // Logica per il movimento normale
+        if (!targetInView || isTrasformed || !isGrounded)
         {
             direction = rb.linearVelocity.x;
         }
@@ -203,14 +223,22 @@ public class FollowPlayer : MonoBehaviour
         {
             direction = target.position.x - transform.position.x;
         }
-
-        if (Mathf.Abs(direction) > 0.01f)
+        if(!pickThrow.isPickThrow)
         {
-            Vector3 scale = transform.localScale;
-            scale.x = direction > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
-            Debug.Log("scale: =  " + scale.x);
-            transform.localScale = scale;
+            if (direction > 0)
+            {
+                // Ruota il buddy verso destra
+                transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+                Debug.Log("Direzione aggiornata: Destra");
+            }
+            else
+            {
+                // Ruota il buddy verso sinistra
+                transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+                Debug.Log("Direzione aggiornata: Sinistra");
+            }
         }
+            
     }
 
     void UpdateMovementState()
