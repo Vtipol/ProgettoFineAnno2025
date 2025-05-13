@@ -13,6 +13,7 @@ public class PickThrow : MonoBehaviour
     [SerializeField] private LayerMask shellLayer;
     [SerializeField] private GameObject _pickTarget;
     [SerializeField] private GameObject _soapMode;
+    private AvoidWallIssuesBuddy buddyWall;
     private Rigidbody2D _targetRB;
     private Collider2D soapCollider;
     public bool isPickThrow = false;
@@ -34,6 +35,7 @@ public class PickThrow : MonoBehaviour
     {
         Player = GetComponent<Player>();
         soapCollider = _soapMode.GetComponent<Collider2D>();
+        buddyWall = FindAnyObjectByType<AvoidWallIssuesBuddy>();
     }
 
     private void Update()
@@ -48,17 +50,17 @@ public class PickThrow : MonoBehaviour
             {
                 _pickTarget.transform.position = _pickUpPosition.transform.position;
             }
-            else
-            {
-                // Just in case the Buddy somehow got stuck parented
-                if (_pickTarget.transform.parent == _pickUpPosition.transform)
-                    _pickTarget.transform.parent = null;
-                _targetRB.bodyType = RigidbodyType2D.Dynamic;
-                PickedUp.IsPickedUp = false;
-            }
+            //else
+            //{
+            //    // Just in case the Buddy somehow got stuck parented
+            //    if (_pickTarget.transform.parent == _pickUpPosition.transform)
+            //        _pickTarget.transform.parent = null;
+            //    _targetRB.bodyType = RigidbodyType2D.Dynamic;
+            //    PickedUp.IsPickedUp = false;
+            //}
 
             // Throw if we stop holding Run
-            if (PickedUp != null && PickedUp.IsPickedUp && !InputManager.RunIsHeld)
+            if (PickedUp != null && PickedUp.IsPickedUp && !InputManager.RunIsHeld && !buddyWall.FailSafe)
             {
                 ThrowObject();
             }
@@ -83,8 +85,8 @@ public class PickThrow : MonoBehaviour
                 _targetRB.linearVelocity = Vector2.zero;
 
                 // Attach the object to follow the pickup position
-                _pickTarget.transform.position = _pickUpPosition.transform.position;
-                _pickTarget.transform.parent = _pickUpPosition.transform;
+                Vector3 offset = _pickUpPosition.transform.position - _pickTarget.transform.position;
+                _targetRB.MovePosition(_pickTarget.transform.position + offset);
 
                 // Sincronizza la direzione del buddy con quella del player
                 Vector3 scale = _pickTarget.transform.localScale;

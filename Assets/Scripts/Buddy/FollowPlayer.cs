@@ -16,6 +16,9 @@ public class FollowPlayer : MonoBehaviour
     private bool needJump;
     private bool isTrasformed;
     private int directionToTarget;
+    private int originalLayer;
+    private int pickedUpLayer;
+    private int currentLayer;
 
     // Animation flags
     private bool _isWalking;
@@ -33,6 +36,8 @@ public class FollowPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         pickThrow = FindAnyObjectByType<PickThrow>();
+        pickedUpLayer = LayerMask.NameToLayer("PickUp");
+        originalLayer = gameObject.layer;
     }
 
     void Update()
@@ -55,7 +60,13 @@ public class FollowPlayer : MonoBehaviour
         {
             MoveTowardsTarget();
         }
+        //int targetLayer = (pickedUp != null && pickedUp.IsPickedUp) ? pickedUpLayer : originalLayer;
 
+        //if (currentLayer != targetLayer)
+        //{
+        //    SetLayerRecursively(gameObject, targetLayer);
+        //    currentLayer = targetLayer;
+        //}
         HandleMovementLogic();
         HandleJumping();
         FastFall();
@@ -89,6 +100,20 @@ public class FollowPlayer : MonoBehaviour
             }
         }
     }
+    void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (obj == null) return;
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (child != null)
+            {
+                SetLayerRecursively(child.gameObject, newLayer);
+            }
+        }
+    }
 
     void HandleMovementLogic()
     {
@@ -106,7 +131,7 @@ public class FollowPlayer : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.up, Color.red);
         bool isTargetAirborne = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << target.gameObject.layer);
 
-        if ((!gapAhead.collider) )
+        if ((!gapAhead.collider))
         {
             needJump = true;
         }
@@ -128,7 +153,7 @@ public class FollowPlayer : MonoBehaviour
     {
         if (isGrounded && needJump && !isTrasformed)
         {
-          
+
             bool wallAhead = IsWallAhead(directionToTarget);
             if (wallAhead)
             {
@@ -168,9 +193,9 @@ public class FollowPlayer : MonoBehaviour
     public bool IsWallAhead(int direction)
     {
         Vector2 rayDirection = Vector2.right * direction;
-        Vector2 origin = buddyWallcheck.position + Vector3.up * 0.1f; 
+        Vector2 origin = buddyWallcheck.position + Vector3.up * 0.1f;
         float rayLength = 2.5f;
-       
+
         RaycastHit2D hit = Physics2D.Raycast(origin, rayDirection, rayLength, groundLayer);
         Debug.DrawRay(origin, rayDirection * rayLength, Color.blue);
         if (hit.collider)
@@ -223,7 +248,7 @@ public class FollowPlayer : MonoBehaviour
         {
             direction = target.position.x - transform.position.x;
         }
-        if(!pickThrow.isPickThrow)
+        if (!pickThrow.isPickThrow)
         {
             if (direction > 0)
             {
@@ -238,7 +263,7 @@ public class FollowPlayer : MonoBehaviour
                 Debug.Log("Direzione aggiornata: Sinistra");
             }
         }
-            
+
     }
 
     void UpdateMovementState()

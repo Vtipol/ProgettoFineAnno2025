@@ -36,9 +36,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8847684974486697995}
   - {fileID: 2435504552409607706}
   - {fileID: 8749724908321769867}
-  - {fileID: 2595447095497234021}
   - {fileID: 3387632594952278252}
   - {fileID: 3136096412016626382}
   m_Father: {fileID: 0}
@@ -381,7 +381,7 @@ Transform:
   - {fileID: 7814042948319637132}
   m_Father: {fileID: 6952805030074251103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &934900120758809226
+--- !u!1 &1635329029675996589
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,8 +389,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2595447095497234021}
-  - component: {fileID: 1703994611451569742}
+  - component: {fileID: 8847684974486697995}
+  - component: {fileID: 7829003191435235688}
+  - component: {fileID: 3323016014403471237}
   m_Layer: 7
   m_Name: WallCheck
   m_TagString: Untagged
@@ -398,29 +399,29 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2595447095497234021
+--- !u!4 &8847684974486697995
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934900120758809226}
+  m_GameObject: {fileID: 1635329029675996589}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.107, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6952805030074251103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1703994611451569742
+--- !u!58 &7829003191435235688
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934900120758809226}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1635329029675996589}
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -448,7 +449,19 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.1
+  m_Radius: 0.4
+--- !u!114 &3323016014403471237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635329029675996589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d582b960a2c4dbda8138f93584edc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1829187673286637511
 GameObject:
   m_ObjectHideFlags: 0

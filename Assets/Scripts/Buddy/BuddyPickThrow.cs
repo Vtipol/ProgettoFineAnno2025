@@ -17,7 +17,6 @@ public class BuddyPickThrow : MonoBehaviour
         if (collider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             pickThrow.isPickThrow = false;
-            Debug.Log("touched ground");
         }
     }
 }
