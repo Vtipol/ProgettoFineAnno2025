@@ -186,6 +186,7 @@ MonoBehaviour:
     m_Bits: 256
   _pickTarget: {fileID: 0}
   _soapMode: {fileID: 0}
+  isPickThrow: 0
 --- !u!114 &297650610400377604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,8 +408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fe1c9d2972d54a88213964a83cdfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  attackDamage: 10
+  owner: {fileID: 4274336502130243986}
+  attackDamage: 1
   knokback: {x: 0, y: 0}
 --- !u!1 &4957575344246038688
 GameObject:
@@ -507,8 +508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fe1c9d2972d54a88213964a83cdfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  attackDamage: 10
+  owner: {fileID: 4274336502130243986}
+  attackDamage: 1
   knokback: {x: 0, y: 0}
 --- !u!1 &6397278480657764160
 GameObject:

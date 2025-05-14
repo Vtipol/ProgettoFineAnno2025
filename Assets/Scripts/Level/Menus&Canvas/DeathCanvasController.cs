@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DeathCanvasController : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class DeathCanvasController : MonoBehaviour
     [SerializeField] private Canvas deathCanvas;
     [SerializeField] private Button restartButton;
     [SerializeField] private Button quitButton;
+    [SerializeField] private float delayBeforeCanvas = 1.5f; // Adjust this to match your animation duration
 
     private bool hasDied = false;
 
@@ -25,8 +27,7 @@ public class DeathCanvasController : MonoBehaviour
         if (!hasDied && playerDamageble != null && !playerDamageble.IsAlive)
         {
             hasDied = true;
-            Time.timeScale = 0f;
-            deathCanvas.gameObject.SetActive(true);
+            StartCoroutine(ShowDeathCanvasAfterDelay());
         }
     }
 
@@ -43,4 +44,15 @@ public class DeathCanvasController : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
+
+    #region Timers
+
+    private IEnumerator ShowDeathCanvasAfterDelay()
+    {
+        yield return new WaitForSeconds(delayBeforeCanvas); // Wait before showing the menu
+        Time.timeScale = 0f;
+        deathCanvas.gameObject.SetActive(true);
+    }
+
+    #endregion
 }
