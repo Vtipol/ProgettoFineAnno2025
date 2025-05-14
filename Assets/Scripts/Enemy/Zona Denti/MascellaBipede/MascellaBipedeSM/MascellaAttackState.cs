@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MascellaAttackState : MascellaState
 {
-
     public override void OnEnter()
     {
         Debug.Log("Mascella is attacking!");

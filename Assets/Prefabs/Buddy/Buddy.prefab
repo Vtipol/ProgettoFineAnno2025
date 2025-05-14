@@ -78,7 +78,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.029685736, y: 0}
-  m_Radius: 0.52968574
+  m_Radius: 0.5
 --- !u!50 &19285748109032977
 Rigidbody2D:
   serializedVersion: 5
@@ -330,8 +330,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.25}
-  m_Size: {x: 1.5, y: 0.5}
+  m_Offset: {x: 0, y: 0.4}
+  m_Size: {x: 2, y: 0.75}
   m_Direction: 1
 --- !u!114 &5080082805061552308
 MonoBehaviour:
@@ -349,7 +349,6 @@ MonoBehaviour:
   player: {fileID: 0}
   trampolineBounceForce: 25
   trampGrabCollider: {fileID: 8063806043129661527}
-  trampGrab: 0
   pickedUp: {fileID: 7639820405145412246}
 --- !u!1 &695257149465167763
 GameObject:
@@ -533,7 +532,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.55
 --- !u!114 &8997338818904406161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b49b5f1af704f5caf6191677bba03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gumCollider: {fileID: 2986740559170639401}
 --- !u!1 &2541835796001408121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1004,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.4}
+  m_Offset: {x: 0.1, y: 2.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1016,7 +1014,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8, y: 2.2}
+  m_Size: {x: 3.6, y: 3.6}
   m_EdgeRadius: 0
 --- !u!1 &9129766226001474135
 GameObject:

@@ -26,6 +26,7 @@ public abstract class BuddyState : MonoBehaviour
         Vector3 offset = new Vector3(0f, 0f, 0f);
         controller.transform.position = followPlayer.target.position + offset;
         controller.SwitchState(controller.neutralState);
+        controller.EnableOnlyCollider(null);
         Rigidbody2D rb = controller.GetComponent<Rigidbody2D>();
         if (rb != null)
         {

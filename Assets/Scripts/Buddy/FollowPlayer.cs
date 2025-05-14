@@ -227,13 +227,13 @@ public class FollowPlayer : MonoBehaviour
             {
                 // Ruota il buddy verso sinistra
                 transform.rotation = Quaternion.Euler(0f, 180f, 0f);
-                Debug.Log("Direzione sincronizzata con il player: Sinistra");
+               // Debug.Log("Direzione sincronizzata con il player: Sinistra");
             }
             else if (Mathf.Approximately(target.eulerAngles.y, 0f))
             {
                 // Ruota il buddy verso destra
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-                Debug.Log("Direzione sincronizzata con il player: Destra");
+              //  Debug.Log("Direzione sincronizzata con il player: Destra");
             }
             return;
         }

@@ -20,7 +20,6 @@ public class AvoidWallIssuesBuddy : MonoBehaviour
             if (collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
                 failSafe = true;
-                Debug.Log("Wall Fail Safe is on");
             }
         }
     }
@@ -32,7 +31,6 @@ public class AvoidWallIssuesBuddy : MonoBehaviour
             if (collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
             {
                 failSafe = false;
-                Debug.Log("Wall Fail Safe is off");
             }
         }
     }

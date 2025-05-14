@@ -30,6 +30,8 @@ public class PickThrow : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _targetRB = _pickTarget.GetComponent<Rigidbody2D>();            
+        PickedUp = _pickTarget.GetComponent<PickedUp>();
     }
 
     private void Start()
@@ -44,8 +46,8 @@ public class PickThrow : MonoBehaviour
     {
         if (_pickTarget != null)
         {
-            _targetRB = _pickTarget.GetComponent<Rigidbody2D>();            
-            PickedUp = _pickTarget.GetComponent<PickedUp>();
+            //_targetRB = _pickTarget.GetComponent<Rigidbody2D>();            
+            //PickedUp = _pickTarget.GetComponent<PickedUp>();
 
             // While being picked up, follow the pickup position
             if (PickedUp != null && PickedUp.IsPickedUp)
@@ -81,8 +83,8 @@ public class PickThrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _pickTrigger)
     {
-        if (InputManager.RunIsHeld == true && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
-        {
+        if (InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
+        { Debug.Log("Was grabbed thanks to OnTriggerEnter");
             if (!Soap.IsSoapy)
             {
                 // Set state
@@ -105,7 +107,32 @@ public class PickThrow : MonoBehaviour
             }
         }
     }
+    private void OnTriggerStay2D(Collider2D _pickTrigger)
+    {
+        if (InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
+        { Debug.Log("Was grabbed thanks to OnTriggerStay");
+            if (!Soap.IsSoapy)
+            {
+                // Set state
+                PickedUp.IsPickedUp = true;
 
+                // Optional: make it kinematic so it non cade
+                _targetRB.bodyType = RigidbodyType2D.Kinematic;
+                _targetRB.linearVelocity = Vector2.zero;
+
+                // Attach the object to follow the pickup position
+                Vector3 offset = _pickUpPosition.transform.position - _pickTarget.transform.position;
+                _targetRB.MovePosition(_pickTarget.transform.position + offset);
+
+                // Sincronizza la direzione del buddy con quella del player
+                Vector3 scale = _pickTarget.transform.localScale;
+                scale.x = transform.localScale.x > 0 ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+                _pickTarget.transform.localScale = scale;
+
+                Debug.Log("Buddy raccolto: direzione sincronizzata con il player.");
+            }
+        }
+    }
     #endregion
 
     #region Throw & Release

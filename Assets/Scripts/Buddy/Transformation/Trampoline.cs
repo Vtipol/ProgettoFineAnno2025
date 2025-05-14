@@ -7,7 +7,6 @@ public class Trampoline : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private float trampolineBounceForce = 25f;
     [SerializeField] private BoxCollider2D trampGrabCollider;
-    public bool trampGrab = false;
     public PickedUp pickedUp;
    
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,10 +43,8 @@ public class Trampoline : MonoBehaviour
     }
     private IEnumerator TrampGrab()
     {
-        trampGrab = true;
         trampGrabCollider.enabled = true;
-        yield return new WaitForSeconds(0.1f);
-        trampGrab = false;
+        yield return new WaitForSeconds(0.25f);
         trampGrabCollider.enabled = false;
     }
 }
