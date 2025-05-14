@@ -22,7 +22,7 @@ public class TrampolineState : BuddyState, IInputHandler
             switch (input)
             {
                 case "E":
-                    controller.SwitchState(controller.soapState);
+                    controller.SwitchState(controller.gumState);
                     break;
                 case "Q":
                     controller.SwitchState(controller.neutralState);

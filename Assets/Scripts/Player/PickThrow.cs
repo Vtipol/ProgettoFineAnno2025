@@ -15,7 +15,7 @@ public class PickThrow : MonoBehaviour
     [SerializeField] private GameObject _soapMode;
     private AvoidWallIssuesBuddy buddyWall;
     private Rigidbody2D _targetRB;
-    private Collider2D soapCollider;
+   // private Collider2D soapCollider;
     public bool isPickThrow = false;
     public bool IsPickThrow
     {
@@ -34,7 +34,7 @@ public class PickThrow : MonoBehaviour
     private void Start()
     {
         Player = GetComponent<Player>();
-        soapCollider = _soapMode.GetComponent<Collider2D>();
+     //   soapCollider = _soapMode.GetComponent<Collider2D>();
         buddyWall = _pickTarget.GetComponentInChildren<AvoidWallIssuesBuddy>();
     }
 
