@@ -61,11 +61,17 @@ public class PickThrow : MonoBehaviour
             //    PickedUp.IsPickedUp = false;
             //}
 
-            // Throw if we stop holding Run
-            if (PickedUp != null && PickedUp.IsPickedUp && !InputManager.RunIsHeld && !buddyWall.FailSafe)
+            // Handle throw input (RMB held + LMB pressed)
+            if (PickedUp != null && PickedUp.IsPickedUp && InputManager.RunIsHeld && Input.GetMouseButtonDown(0) && !buddyWall.FailSafe)
             {
                 ThrowObject();
             }
+            // Handle release input (RMB released)
+            else if (PickedUp != null && PickedUp.IsPickedUp && !InputManager.RunIsHeld)
+            {
+                ReleaseObject();
+            }
+
         }
 
         UpdateAnimation();
@@ -102,7 +108,7 @@ public class PickThrow : MonoBehaviour
 
     #endregion
 
-    #region Throw
+    #region Throw & Release
 
     private void ThrowObject()
     {
@@ -150,6 +156,28 @@ public class PickThrow : MonoBehaviour
         _animator.SetTrigger("Throw");
         Debug.Log($"[THROW] Threw object at direction {throwDir}, force {Stats.ThrowForce}");
     }
+
+    private void ReleaseObject()
+    {
+        if (_pickTarget == null || _targetRB == null)
+            return;
+
+        PickedUp.IsPickedUp = false;
+        isPickThrow = false;
+
+        _pickTarget.transform.parent = null;
+
+        _targetRB.bodyType = RigidbodyType2D.Dynamic;
+        _targetRB.linearVelocity = Vector2.zero;
+        _targetRB.angularVelocity = 0f;
+
+        Collider2D objCollider = _pickTarget.GetComponent<Collider2D>();
+        if (objCollider != null)
+            objCollider.enabled = true;
+
+        Debug.Log("[RELEASE] Object gently released without throwing.");
+    }
+
 
     #endregion
 

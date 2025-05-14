@@ -2059,6 +2059,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7306603473114424639, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
+      propertyPath: m_VerticalFit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306603473114424639, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
+      propertyPath: m_HorizontalFit
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7574157222151985914, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: damageble
       value: 
@@ -2093,19 +2101,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 898.40356
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.011111111
+      value: 0.013357026
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.011111111
+      value: 0.013357026
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.011111111
+      value: 0.013357026
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2154,6 +2162,10 @@ PrefabInstance:
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7826198233946689252, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_AnchorMax.y
