@@ -10,15 +10,16 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private Transform buddyWallcheck;
     [SerializeField] private Animator _animator;
     private PickThrow pickThrow;
+    private AvoidWallIssuesBuddy wallFailSafe;
     private Rigidbody2D rb;
     public bool targetInView;
     private bool isGrounded;
     private bool needJump;
     private bool isTrasformed;
     private int directionToTarget;
-    private int originalLayer;
-    private int pickedUpLayer;
-    private int currentLayer;
+    //private int originalLayer;
+    //private int pickedUpLayer;
+    //private int currentLayer;
 
     // Animation flags
     private bool _isWalking;
@@ -36,18 +37,19 @@ public class FollowPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         pickThrow = FindAnyObjectByType<PickThrow>();
-        pickedUpLayer = LayerMask.NameToLayer("PickUp");
-        originalLayer = gameObject.layer;
+        wallFailSafe = GetComponentInChildren<AvoidWallIssuesBuddy>();
+        //pickedUpLayer = LayerMask.NameToLayer("PickUp");
+        //originalLayer = gameObject.layer;
     }
 
     void Update()
     {
         DetectTarget();
         UpdateAnimation();
-        CheckGroundStatus();
         UpdateMovementState();
-
+        CheckGroundStatus();
     }
+    
 
     void FixedUpdate()
     {
@@ -84,7 +86,7 @@ public class FollowPlayer : MonoBehaviour
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, aiSettings.groundCheckRadius, groundLayer);
 
-        if (!wasGrounded && isGrounded && pickedUp.IsPickedUp)
+        if (!wasGrounded && isGrounded && pickedUp.IsPickedUp && !wallFailSafe.FailSafe)
         {
             pickedUp.IsPickedUp = false;
         }

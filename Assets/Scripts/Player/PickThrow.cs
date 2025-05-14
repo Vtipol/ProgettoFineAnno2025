@@ -35,7 +35,7 @@ public class PickThrow : MonoBehaviour
     {
         Player = GetComponent<Player>();
         soapCollider = _soapMode.GetComponent<Collider2D>();
-        buddyWall = FindAnyObjectByType<AvoidWallIssuesBuddy>();
+        buddyWall = _pickTarget.GetComponentInChildren<AvoidWallIssuesBuddy>();
     }
 
     private void Update()
