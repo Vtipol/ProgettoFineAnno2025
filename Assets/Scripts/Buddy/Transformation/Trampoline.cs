@@ -1,11 +1,15 @@
 using UnityEngine;
+using System.Collections;
 
 public class Trampoline : MonoBehaviour
 {
     [SerializeField] private CapsuleCollider2D trampolineCollider;
     [SerializeField] private Player player;
     [SerializeField] private float trampolineBounceForce = 25f;
+    [SerializeField] private BoxCollider2D trampGrabCollider;
+    public bool trampGrab = false;
     public PickedUp pickedUp;
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !pickedUp.IsPickedUp)
@@ -24,9 +28,26 @@ public class Trampoline : MonoBehaviour
                 BouncePlayer(player);
             }
         }
+  
+    }
+    private void Update()
+    {
+        if (trampGrabCollider.enabled)
+        {
+            Debug.Log("TrampGrabCollider was Enabled");
+        }
     }
     private void BouncePlayer(Player player)
     {
         player.OverrideJump(trampolineBounceForce);
+        StartCoroutine(TrampGrab());
+    }
+    private IEnumerator TrampGrab()
+    {
+        trampGrab = true;
+        trampGrabCollider.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        trampGrab = false;
+        trampGrabCollider.enabled = false;
     }
 }

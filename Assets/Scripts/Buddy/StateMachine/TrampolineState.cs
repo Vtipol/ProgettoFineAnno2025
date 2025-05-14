@@ -15,6 +15,10 @@ public class TrampolineState : BuddyState, IInputHandler
         {
             TeleportToPlayer();
         }
+        if (!controller.capsuleCollider.enabled)
+        {
+            controller.capsuleCollider.enabled = true;
+        }
     }
     public void OnInput(string input)
     {
