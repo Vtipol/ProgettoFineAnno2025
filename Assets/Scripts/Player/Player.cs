@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     private Rigidbody2D _rb;
+    private Gum buddyGum;
 
     //movement vars
     private Vector2 _moveVelocity;
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         Damage = GetComponent<Damageble>();
+        buddyGum = FindAnyObjectByType<Gum>();
         //Attacking = GetComponent<Attacking>();
 
         Damage.damagebleHit.AddListener(OnHit);
@@ -101,15 +103,17 @@ public class Player : MonoBehaviour
             }            
             return;
         }
-        
 
-        if (_isGrounded)
+        if (!buddyGum.IsGumJumping)
         {
-            Move(Stats.GroundAcceleration, Stats.GroundDeceleration, InputManager.Movement);
-        }
-        else
-        {
-            Move(Stats.AirAcceleration, Stats.AirDeceleration, InputManager.Movement);
+            if (_isGrounded)
+            {
+                Move(Stats.GroundAcceleration, Stats.GroundDeceleration, InputManager.Movement);
+            }
+            else
+            {
+                Move(Stats.AirAcceleration, Stats.AirDeceleration, InputManager.Movement);
+            }
         }
     }
 
@@ -121,9 +125,11 @@ public class Player : MonoBehaviour
         
             if (moveInput != Vector2.zero)
             {
-                //check if he needs to turn
+            if (!buddyGum.IsStuck)
+            {
+                //check if he needs to turn if Gum is not stuck
                 TurnCheck(moveInput);
-
+            }
                 Vector2 targetVelocity = Vector2.zero;
                 if (InputManager.RunIsHeld)
                 {
@@ -367,6 +373,17 @@ public class Player : MonoBehaviour
        // _numberOfJumpsUsed = 1;
         VerticalVelocity = force;
     }
+    public void GumJump(Vector2 force)
+    {
+        Debug.Log("is gum jumping is true");
+        _isJumping = true;
+        _isFastFalling = false;
+        _isFalling = false;
+        _isPastApexThreshold = false;
+        buddyGum.IsGumJumping = true;
+        VerticalVelocity = force.y;
+        _rb.linearVelocity = new Vector2(force.x, force.y);
+    }
 
     #endregion
 
@@ -410,6 +427,8 @@ public class Player : MonoBehaviour
         if (_groundHit.collider != null)
         {
             _isGrounded = true;
+            buddyGum.IsGumJumping = false;
+            buddyGum.numberOfGumJumps = 0;
         }
         else { _isGrounded = false; }
 

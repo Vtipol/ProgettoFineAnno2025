@@ -28,3 +28,5 @@ MonoBehaviour:
   fallingSpeed: 13
   runSpeedBonus: 6
   decelDistance: 3.5
+  gumJumpXForce: 15
+  gumJumpYForce: 15

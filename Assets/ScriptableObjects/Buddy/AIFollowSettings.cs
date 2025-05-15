@@ -15,4 +15,6 @@ public class AIFollowSettings : ScriptableObject
     public float fallingSpeed = 2f;
     public float runSpeedBonus = 8f;
     public float decelDistance = 3f;
+    public float gumJumpXForce = 10f;
+    public float gumJumpYForce = 20f;
 }

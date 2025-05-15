@@ -125,6 +125,8 @@ MonoBehaviour:
   pickedUp: {fileID: 7639820405145412246}
   _animator: {fileID: 1080481773219173685}
   soap: {fileID: 2498239786501170359}
+  gum: {fileID: 0}
+  tramp: {fileID: 0}
   circleCollider: {fileID: 2986740559170639401}
   boxCollider: {fileID: 5203781075069336490}
   capsuleCollider: {fileID: 612355088285040826}
@@ -532,7 +534,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.55
+  m_Radius: 0.5
 --- !u!114 &8997338818904406161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b49b5f1af704f5caf6191677bba03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
 --- !u!1 &2541835796001408121
 GameObject:
   m_ObjectHideFlags: 0

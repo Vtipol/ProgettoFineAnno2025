@@ -10,7 +10,8 @@ public class BuddyStateController : MonoBehaviour
     public PickedUp pickedUp;
     public Animator _animator;
     public Soap soap;
-
+    public Gum gum;
+    public Trampoline tramp;
     private BuddyStateMachine stateMachine;
 
     [SerializeField] public CircleCollider2D circleCollider;
@@ -33,6 +34,9 @@ public class BuddyStateController : MonoBehaviour
     private void Awake()
     {
         stateMachine = new BuddyStateMachine();
+        soap = GetComponentInChildren<Soap>();
+        gum = GetComponentInChildren<Gum>();
+        tramp = GetComponentInChildren<Trampoline>();
         //circleCollider = GetComponent<CircleCollider2D>();
         //boxCollider = GetComponent<BoxCollider2D>();
         //capsuleCollider = GetComponent<CapsuleCollider2D>();

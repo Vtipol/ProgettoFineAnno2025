@@ -7,6 +7,7 @@ public class PickThrow : MonoBehaviour
     private PickedUp PickedUp;
     private Player Player;
     public SoapState Soap;
+    //private Gum gum;
     [SerializeField] private GameObject _pickUpPosition;
     [SerializeField] private Collider2D _pickTrigger;
     [SerializeField] private Animator _animator;
@@ -29,6 +30,7 @@ public class PickThrow : MonoBehaviour
     }
     private void Awake()
     {
+       // gum = FindAnyObjectByType<Gum>();
         _animator = GetComponent<Animator>();
         _targetRB = _pickTarget.GetComponent<Rigidbody2D>();            
         PickedUp = _pickTarget.GetComponent<PickedUp>();
@@ -37,7 +39,7 @@ public class PickThrow : MonoBehaviour
     private void Start()
     {
         Player = GetComponent<Player>();
-     //   soapCollider = _soapMode.GetComponent<Collider2D>();
+    //   soapCollider = _soapMode.GetComponent<Collider2D>();
         buddyWall = _pickTarget.GetComponentInChildren<AvoidWallIssuesBuddy>();
         buddyTrampoline = _pickTarget.GetComponentInChildren<Trampoline>();
     }
