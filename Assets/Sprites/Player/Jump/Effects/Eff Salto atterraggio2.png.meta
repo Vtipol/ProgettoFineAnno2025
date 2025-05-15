@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Eff Salto atterraggio2_0: 7527532683363473582
+      Eff Salto atterraggio2_1: 930592044188028339
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

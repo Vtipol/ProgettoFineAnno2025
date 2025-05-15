@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Passing pose4 (inizo idle)_0: 156006519981529026
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

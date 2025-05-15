@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Passing pose0 (posa della camminata)_0: 874379701345429104
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
