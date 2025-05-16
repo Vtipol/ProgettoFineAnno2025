@@ -44,7 +44,7 @@ public class Trampoline : MonoBehaviour
     private IEnumerator TrampGrab()
     {
         trampGrabCollider.enabled = true;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.3f);
         trampGrabCollider.enabled = false;
     }
 }

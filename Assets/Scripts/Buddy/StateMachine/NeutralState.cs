@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NeutralState : BuddyState, IInputHandler
@@ -15,6 +16,7 @@ public class NeutralState : BuddyState, IInputHandler
         {
             TeleportToPlayer();
         }
+       //controller.EnableOnlyCollider(null);
     }
     public void OnInput(string input)
     {

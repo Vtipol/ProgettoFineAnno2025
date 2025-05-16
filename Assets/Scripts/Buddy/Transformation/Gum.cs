@@ -43,7 +43,7 @@ public class Gum : MonoBehaviour
     }
     public void PlayerGumJump()
     {
-        if (isStuck && InputManager.JumpWasPressed)
+        if (isStuck && InputManager.JumpWasPressed && pickedUp.IsPickedUp)
         {
             numberOfGumJumps++;
             Debug.Log("number of Gumjumps " + numberOfGumJumps);
@@ -58,6 +58,11 @@ public class Gum : MonoBehaviour
             playerScript.GumJump(jumpForce);
             StartCoroutine(JumpLockOut());
         }
+        else if (!pickedUp.IsPickedUp)
+        {
+            IsStuck = false;
+            isGumJumping = false;
+        }
     }
     private void GumPlayerCheck()
     {
@@ -69,6 +74,7 @@ public class Gum : MonoBehaviour
         {
             rightDirection = true;
         }
+
         //if (numberOfGumJumps >= 3)
         //{
         //    isGumJumping = false;
@@ -77,7 +83,7 @@ public class Gum : MonoBehaviour
     }
     public void GumStuck()
     {
-        if (isStuck)
+        if (isStuck && pickedUp.IsPickedUp)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
             rbPlayer.constraints = RigidbodyConstraints2D.FreezeAll;

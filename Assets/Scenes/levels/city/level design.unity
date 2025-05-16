@@ -379,6 +379,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 1863380301}
+    - target: {fileID: 8158402545455511560, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 8997338818904406161, guid: 1499db747f0834c5889be5dbf28453fb, type: 3}
       propertyPath: Stats
       value: 
@@ -47899,6 +47903,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5304828267378380790, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
+      propertyPath: PickedUp
+      value: 
+      objectReference: {fileID: 1863380302}
     - target: {fileID: 5496041247568164205, guid: b6309d2fbcf20a547954d0789317ce00, type: 3}
       propertyPath: m_Enabled
       value: 0
