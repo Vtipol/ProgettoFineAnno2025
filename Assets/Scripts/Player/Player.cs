@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private Gum buddyGum;
 
-    [Header("Var")]
     //movement vars
     private Vector2 _moveVelocity;
     public bool _isFacingRight;

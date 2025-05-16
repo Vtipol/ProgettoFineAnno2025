@@ -17,6 +17,8 @@ public class InputManager : MonoBehaviour
     public static bool TransformRightWasPressed;
     public static bool InteractWasPressed;
 
+    public static bool DownisHeld;
+
 
     private InputAction _moveAction;
     private InputAction _jumpAction;
@@ -57,5 +59,7 @@ public class InputManager : MonoBehaviour
         TransformLeftWasPressed = _transformLeftAction.WasPerformedThisFrame();
         TransformRightWasPressed = _transformRightAction.WasPerformedThisFrame();
         InteractWasPressed = _interactAction.WasPressedThisFrame();
+
+        DownisHeld = _downInputAction.IsPressed();
     }
 }
