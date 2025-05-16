@@ -26,7 +26,7 @@ public class PickThrow : MonoBehaviour
     private Rigidbody2D _targetRB;
     // private Collider2D soapCollider;
     [Header("Var")]
-    private bool isPickUpBlocked = false;
+    [SerializeField]private bool isPickUpBlocked = false;
     [SerializeField] private float pickUpBlockDuration = 1f;
 
     public bool isPickThrow = false;

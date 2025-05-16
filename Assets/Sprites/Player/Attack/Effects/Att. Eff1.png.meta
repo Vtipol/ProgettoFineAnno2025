@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: a16d25f58d25adf459dadfca89c529d9
+guid: 8ac036443bc4b9244a0c541a24ac0e93
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3199113274841878008
-    second: Eff Attacco Salto2_0
-  - first:
-      213: 3639018466017687012
-    second: Eff Attacco Salto2_1
-  - first:
-      213: -1720352938678087897
-    second: Eff Attacco Salto2_2
+      213: -9186350537216938784
+    second: Att. Eff1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,11 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.3388718, y: 0.41734877}
   spritePixelsToUnits: 450
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -106,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eff Attacco Salto2_0
+      name: Att. Eff1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 83
-        width: 44
-        height: 48
+        x: 41
+        y: 13
+        width: 214
+        height: 227
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80230d81d677a93d0800000000000000
-      internalID: -3199113274841878008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eff Attacco Salto2_1
-      rect:
-        serializedVersion: 2
-        x: 146
-        y: 83
-        width: 99
-        height: 77
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4e53216b304608230800000000000000
-      internalID: 3639018466017687012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eff Attacco Salto2_2
-      rect:
-        serializedVersion: 2
-        x: 158
-        y: 63
-        width: 86
-        height: 1
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 72f0bc9fd141028e0800000000000000
-      internalID: -1720352938678087897
+      spriteID: 0ec27f69bd6838080800000000000000
+      internalID: -9186350537216938784
       vertices: []
       indices: 
       edges: []
@@ -176,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Eff Attacco Salto2_0: -3199113274841878008
-      Eff Attacco Salto2_1: 3639018466017687012
-      Eff Attacco Salto2_2: -1720352938678087897
+      Att. Eff1_0: -9186350537216938784
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
