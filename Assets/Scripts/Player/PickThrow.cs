@@ -1,4 +1,10 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class PickThrow : MonoBehaviour
 {
@@ -8,6 +14,7 @@ public class PickThrow : MonoBehaviour
     private Player Player;
     public SoapState Soap;
     //private Gum gum;
+    [Header("Object")]
     [SerializeField] private GameObject _pickUpPosition;
     [SerializeField] private Collider2D _pickTrigger;
     [SerializeField] private Animator _animator;
@@ -17,7 +24,11 @@ public class PickThrow : MonoBehaviour
     private AvoidWallIssuesBuddy buddyWall;
     private Trampoline buddyTrampoline;
     private Rigidbody2D _targetRB;
-   // private Collider2D soapCollider;
+    // private Collider2D soapCollider;
+    [Header("Var")]
+    private bool isPickUpBlocked = false;
+    [SerializeField] private float pickUpBlockDuration = 1f;
+
     public bool isPickThrow = false;
     public bool IsPickThrow
     {
@@ -85,8 +96,9 @@ public class PickThrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _pickTrigger)
     {
-        if (InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
-        { Debug.Log("Was grabbed thanks to OnTriggerEnter");
+        if (!isPickUpBlocked && InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
+        {
+            Debug.Log("Was grabbed thanks to OnTriggerEnter");
             if (!Soap.IsSoapy)
             {
                 // Set state
@@ -111,8 +123,9 @@ public class PickThrow : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D _pickTrigger)
     {
-        if (InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
-        { Debug.Log("Was grabbed thanks to OnTriggerStay");
+        if (!isPickUpBlocked && InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
+        {
+            Debug.Log("Was grabbed thanks to OnTriggerStay");
             if (!Soap.IsSoapy)
             {
                 // Set state
@@ -184,6 +197,8 @@ public class PickThrow : MonoBehaviour
     */
         _animator.SetTrigger("Throw");
         Debug.Log($"[THROW] Threw object at direction {throwDir}, force {Stats.ThrowForce}");
+
+        StartCoroutine(PickUpBlock());
     }
 
     private void ReleaseObject()
@@ -205,8 +220,21 @@ public class PickThrow : MonoBehaviour
             objCollider.enabled = true;
 
         Debug.Log("[RELEASE] Object gently released without throwing.");
+
+        StartCoroutine(PickUpBlock());
     }
 
+
+    #endregion
+
+    #region Timer
+
+    private IEnumerator PickUpBlock()
+    {
+        isPickUpBlocked = true;
+        yield return new WaitForSeconds(pickUpBlockDuration);
+        isPickUpBlocked = false;
+    }
 
     #endregion
 
