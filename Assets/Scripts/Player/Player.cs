@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
     [Header("References")]
     public PlayerStats Stats;
     public Damageble Damage;
+    public PickedUp PickedUp;
     //public Attacking Attacking;
+
+    [Header("Objects")]
     [SerializeField] private Collider2D _feetColl;
     [SerializeField] private Collider2D _bodyColl;
     [SerializeField] private Collider2D _attackColl;
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private Gum buddyGum;
 
+    [Header("Var")]
     //movement vars
     private Vector2 _moveVelocity;
     public bool _isFacingRight;
@@ -66,7 +70,10 @@ public class Player : MonoBehaviour
 
     // attack vars
     private bool _isAttacking;
-    private bool _lockMovement;
+    private bool _lockMovement;    
+    private bool _blockAttack = false;
+    
+    private bool _wasPickedUpLastFrame = false;
 
     private void Awake()
     {
@@ -84,6 +91,7 @@ public class Player : MonoBehaviour
     {
         CountTimer();
         JumpChecks();
+        PickedUpCheck();
         Attack();
         AttackCheck();
         Die();
@@ -391,8 +399,8 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (_isAttacking) return;
-        
+        if (_blockAttack || _isAttacking) return;
+
         if (InputManager.AttackDownExecuted && !_isGrounded)
         {
             _isAttacking = true;
@@ -474,6 +482,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void PickedUpCheck()
+    {
+        // Detect transition: TRUE → FALSE
+        if (_wasPickedUpLastFrame && !PickedUp.IsPickedUp)
+        {
+            StartCoroutine(BlockAttackPickUp(1f)); // Block for 1 seconds
+        }
+
+        _wasPickedUpLastFrame = PickedUp.IsPickedUp;
+    }
+
     #endregion
 
     #region Timers
@@ -495,6 +514,13 @@ public class Player : MonoBehaviour
         _isAttacking = false;
         _lockMovement = false;
         
+    }
+
+    private IEnumerator BlockAttackPickUp(float duration)
+    {
+        _blockAttack = true;
+        yield return new WaitForSeconds(duration);
+        _blockAttack = false;
     }
 
     #endregion
