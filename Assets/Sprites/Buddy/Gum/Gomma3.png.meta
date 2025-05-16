@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1b4a50d06bd616249b22fcfa6ef10a81
+guid: b8c55a718137c644e96eae9683d0ca15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2852679349923010090
-    second: Passing pose2_0
+      213: 5119986572410923225
+    second: Gomma3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 450
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Passing pose2_0
+      name: Gomma3_0
       rect:
         serializedVersion: 2
-        x: 61
-        y: 11
-        width: 159
-        height: 187
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 85
+        y: 33
+        width: 83
+        height: 104
+      alignment: 9
+      pivot: {x: 0.4728012, y: 0.59225357}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a26d04e21c0c69720800000000000000
-      internalID: 2852679349923010090
+      spriteID: 9d8a25729a8dd0740800000000000000
+      internalID: 5119986572410923225
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2afc97ffb9703a843a5b2bcffaa7d146
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Passing pose2_0: 2852679349923010090
+      Gomma3_0: 5119986572410923225
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

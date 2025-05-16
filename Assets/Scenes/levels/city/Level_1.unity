@@ -119,44 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &31842884 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8118223892911477927, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
-  m_PrefabInstance: {fileID: 1600587422753164814}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &31842886 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6771947267474754525, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
-  m_PrefabInstance: {fileID: 1600587422753164814}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31842884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &31842889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31842884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcba11f1ae7489f42b3f6040a932312e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 896078746}
-  feetCollider: {fileID: 462136678}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  cinemachineCamera: {fileID: 31842886}
-  forwardOffset: 1
-  downwardCheckDistance: 2
-  ledgeLookDownOffset: -1
-  smoothSpeed: 2
 --- !u!1 &84408503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2283,6 +2245,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3111296458727679980, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 896078746}
+    - target: {fileID: 3111296458727679980, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
+      propertyPath: feetCollider
+      value: 
+      objectReference: {fileID: 462136678}
     - target: {fileID: 6771947267474754525, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
       propertyPath: Target.TrackingTarget
       value: 
@@ -2342,10 +2312,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8118223892911477927, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 31842889}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0c4749383b0fe4f836308729a8a8c4, type: 3}
 --- !u!1001 &2046848768794704231
 PrefabInstance:
