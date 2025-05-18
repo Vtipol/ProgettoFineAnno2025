@@ -29,12 +29,16 @@ public class MascellaAttack : MonoBehaviour
             return;
 
         attackCollider.enabled = true;
-
         rb.linearVelocity = Vector2.zero;
-
         rb.gravityScale = mascellaStats.lungeGravityScale;
 
-        Vector2 lungeDirection = (target.position - transform.position).normalized;
+        float directionX = Mathf.Sign(target.position.x - transform.position.x);
+        Vector2 lungeDirection = new Vector2(directionX, 1f).normalized;
+
+        if (directionX > 0 && transform.parent.localScale.x < 0)
+            transform.parent.localScale = new Vector3(1, 1, 1);
+        else if (directionX < 0 && transform.parent.localScale.x > 0)
+            transform.parent.localScale = new Vector3(-1, 1, 1);
 
         Vector2 lungeForce = new Vector2(
             lungeDirection.x * mascellaStats.mascellaLungeHorizontalForce,
@@ -42,11 +46,12 @@ public class MascellaAttack : MonoBehaviour
         );
 
         rb.AddForce(lungeForce, ForceMode2D.Impulse);
-        
+
         StartCoroutine(HandlePostLunge());
     }
 
-    
+
+
     public void ResetAttackFlags()
     {
         HasMissed = false;
@@ -55,7 +60,6 @@ public class MascellaAttack : MonoBehaviour
     private IEnumerator HandlePostLunge()
     {
         yield return new WaitForSeconds(0.1f);
-        attackCollider.enabled = false;
         HasMissed = true;
         mascellaStats.isCrashed = true;
     }

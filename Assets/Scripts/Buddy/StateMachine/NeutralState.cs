@@ -6,7 +6,6 @@ public class NeutralState : BuddyState, IInputHandler
     public override void OnEnter()
     {
         followPlayer.IsTrasformed = false;
-        controller.EnableOnlyCollider(null);
         Debug.Log("Neutral Mode");
         _animator.SetTrigger("Neutral");
     }
@@ -16,7 +15,7 @@ public class NeutralState : BuddyState, IInputHandler
         {
             TeleportToPlayer();
         }
-       //controller.EnableOnlyCollider(null);
+        if (controller.capsuleCollider.enabled || controller.boxCollider.enabled || controller.circleCollider.enabled) controller.EnableOnlyCollider(null);
     }
     public void OnInput(string input)
     {

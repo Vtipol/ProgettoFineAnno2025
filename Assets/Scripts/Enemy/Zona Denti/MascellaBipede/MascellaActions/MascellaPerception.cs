@@ -18,7 +18,7 @@ public class MascellaPerception : MonoBehaviour
     }
     public bool CanSeePlayer()
     {
-        Vector2 direction = new Vector2(rootTransform.localScale.x, 0f).normalized;
+        Vector2 direction = new Vector2(rootTransform.localScale.x , 0f).normalized;
         RaycastHit2D playerSearch = Physics2D.Raycast(transform.position, direction, mascellaStats.sightRange, playerLayer);
         Debug.DrawRay(transform.position, direction * mascellaStats.sightRange, Color.red);
 

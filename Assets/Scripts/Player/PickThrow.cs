@@ -88,12 +88,22 @@ public class PickThrow : MonoBehaviour
             }
 
         }
-
         UpdateAnimation();
     }
 
     #region PickUp
+    public void TryAutoPickBuddy()
+    {
+        if (!isPickUpBlocked && InputManager.RunIsHeld && !PickedUp.IsPickedUp && !Soap.IsSoapy && buddyTrampoline.trampGrabCollider.enabled)
+        {
+            Debug.Log("Auto-grabbing buddy during TrampGrab!");
 
+            PickedUp.IsPickedUp = true;
+            _targetRB.bodyType = RigidbodyType2D.Kinematic;
+            _targetRB.linearVelocity = Vector2.zero;
+            _pickTarget.transform.position = _pickUpPosition.transform.position;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D _pickTrigger)
     {
         if (!isPickUpBlocked && InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)

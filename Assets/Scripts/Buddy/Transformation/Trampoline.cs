@@ -4,11 +4,16 @@ using System.Collections;
 public class Trampoline : MonoBehaviour
 {
     [SerializeField] private CapsuleCollider2D trampolineCollider;
-    [SerializeField] private Player player;
+    private Player player;
+    private PickThrow pickThrow;
     [SerializeField] private float trampolineBounceForce = 25f;
-    [SerializeField] private BoxCollider2D trampGrabCollider;
+    [SerializeField] public BoxCollider2D trampGrabCollider;
     public PickedUp pickedUp;
-   
+    private void Awake()
+    {
+        player = FindAnyObjectByType<Player>();
+        pickThrow = FindAnyObjectByType<PickThrow>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !pickedUp.IsPickedUp)
@@ -29,13 +34,6 @@ public class Trampoline : MonoBehaviour
         }
   
     }
-    private void Update()
-    {
-        if (trampGrabCollider.enabled)
-        {
-            Debug.Log("TrampGrabCollider was Enabled");
-        }
-    }
     private void BouncePlayer(Player player)
     {
         player.OverrideJump(trampolineBounceForce);
@@ -44,7 +42,16 @@ public class Trampoline : MonoBehaviour
     private IEnumerator TrampGrab()
     {
         trampGrabCollider.enabled = true;
-        yield return new WaitForSeconds(0.3f);
+        float duration = 0.3f;
+        float elapsed = 0f;
+
+        while (elapsed < duration) // while loop è ammissibile in una couroutine
+        {
+            pickThrow.TryAutoPickBuddy();
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
         trampGrabCollider.enabled = false;
     }
 }
