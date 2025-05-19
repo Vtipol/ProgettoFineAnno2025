@@ -77,7 +77,7 @@ public class MascellaChaseState : MascellaState
     private IEnumerator SpottedPlayer()
     {
         mascellaController.Spotted = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         mascellaController.Spotted = false;
 
     }
