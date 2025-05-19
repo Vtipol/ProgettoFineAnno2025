@@ -4,6 +4,7 @@ public class OutOfBound : MonoBehaviour
 {
     public GameObject startPoint;
     public GameObject player;
+    public GameObject buddy;
 
     private Transform currentRespawnPoint;
 
@@ -14,6 +15,8 @@ public class OutOfBound : MonoBehaviour
 
         if (player != null && currentRespawnPoint != null)
             player.transform.position = currentRespawnPoint.position;
+        if (buddy != null && currentRespawnPoint != null)
+            buddy.transform.position = currentRespawnPoint.position;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -21,6 +24,7 @@ public class OutOfBound : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             player.transform.position = currentRespawnPoint.position;
+            buddy.transform.position = currentRespawnPoint.position;
         }
     }
 
@@ -33,5 +37,7 @@ public class OutOfBound : MonoBehaviour
     {
         if (player != null && currentRespawnPoint != null)
             player.transform.position = currentRespawnPoint.position;
+        if(buddy != null && currentRespawnPoint != null)
+            buddy.transform.position = currentRespawnPoint.position;
     }
 }
