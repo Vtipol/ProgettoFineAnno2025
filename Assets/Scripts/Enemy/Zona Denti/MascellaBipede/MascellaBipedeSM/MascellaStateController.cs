@@ -4,6 +4,7 @@ public class MascellaStateController : MonoBehaviour
 { 
     private MascellaStateMachine mascellaMachine;
     public bool isMascellaWalking;
+    public bool Spotted;
     public bool isMascellaChasing;
     public bool isMascellaAttacking;
     public bool isMascellaCrashed;
@@ -59,6 +60,7 @@ public class MascellaStateController : MonoBehaviour
     private void UpdateAnimation()
     {
         mascellaAnimator.SetBool("isWalking", isMascellaWalking);
+        mascellaAnimator.SetBool("Spotted", Spotted);
         mascellaAnimator.SetBool("isChasing", isMascellaChasing);
         mascellaAnimator.SetBool("isAttacking", isMascellaAttacking);
         mascellaAnimator.SetBool("isCrashed", isMascellaCrashed);

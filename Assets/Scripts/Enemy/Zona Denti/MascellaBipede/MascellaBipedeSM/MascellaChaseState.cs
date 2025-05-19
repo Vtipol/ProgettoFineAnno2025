@@ -1,5 +1,7 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MascellaChaseState : MascellaState
 {
@@ -10,12 +12,14 @@ public class MascellaChaseState : MascellaState
     public override void OnEnter()
     {
         Debug.Log("Mascella is chasing");
+        StartCoroutine(SpottedPlayer());
         mascellaController.isMascellaChasing = true;
 
     }
 
     public override void OnUpdate()
     {
+        if (mascellaController.Spotted) return;
         if (mascellaChase.PlayerInRange)
         {
             mascellaChase.StopChasing();
@@ -70,7 +74,13 @@ public class MascellaChaseState : MascellaState
             mascellaChase.ChasePlayer();
         }
     }
+    private IEnumerator SpottedPlayer()
+    {
+        mascellaController.Spotted = true;
+        yield return new WaitForSeconds(0.2f);
+        mascellaController.Spotted = false;
 
+    }
     public override void OnExit()
     {
         mascellaController.isMascellaChasing = false;
