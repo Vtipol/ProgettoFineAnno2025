@@ -9,7 +9,7 @@ public class MascellaIdle : MonoBehaviour
     [SerializeField] private GroundChecker groundChecker;
     private Rigidbody2D rb;
     private float flipCooldownTimer = 0f;
-    private const float flipCooldownDuration = 0.5f;
+    private const float flipCooldownDuration = 3f;
     private RaycastHit2D playerSearch;
     private float lastSeenTime = -Mathf.Infinity;
     private bool playerSighted = false;
@@ -43,7 +43,7 @@ public class MascellaIdle : MonoBehaviour
             {
                 mascellaStats.isPaused = false;
                 mascellaStats.wanderDirection = Random.Range(0, 2) == 0 ? -1 : 1;
-                mascellaStats.currentWanderDuration = Random.Range(1f, 5f);
+                mascellaStats.currentWanderDuration = Random.Range(4f, 6f);
                 mascellaStats.wanderTimer = 0f;
             }
             rb.linearVelocity = Vector2.zero; 

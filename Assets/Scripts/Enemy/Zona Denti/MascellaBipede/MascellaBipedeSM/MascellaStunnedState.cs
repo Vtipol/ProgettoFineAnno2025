@@ -7,8 +7,8 @@ public class MascellaStunnedState : MascellaState
     public override void OnEnter()
     {
         Debug.Log("Mascella is stunned");
-        mascellaController.isMascellaStunned = true;
         mascellaController.isMascellaCrashed = false;
+        mascellaController.isMascellaStunned = true;
         Body = GetComponentInParent<CapsuleCollider2D>();
         Body.enabled = false;
         Precausion.enabled = true;
