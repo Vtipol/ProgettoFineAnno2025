@@ -73,7 +73,9 @@ public class Player : MonoBehaviour
     private bool _isAttacking;
     private bool _lockMovement;    
     private bool _blockAttack = false;
-    
+
+
+
     private bool _wasPickedUpLastFrame = false;
 
     private void Awake()
@@ -406,17 +408,18 @@ public class Player : MonoBehaviour
         {
             _isAttacking = true;
             _animator.SetTrigger("Attack");
-                                   
-            StartCoroutine(EndAttackCooldown());           
+
+            StartCoroutine(EndAttackCooldown());
         }
         else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
         {
             _isAttacking = true;
             _animator.SetTrigger("Attack");
-                                    
-            StartCoroutine(EndAttackCooldown());            
+
+            StartCoroutine(EndAttackCooldown());
         }
     }
+
 
     public void OnHit(int damage, Vector2 knokback)
     {
@@ -468,7 +471,7 @@ public class Player : MonoBehaviour
     {
         IsGrounded();
         BumpedHead();
-        CheckWall();//<-new
+        CheckWall();
     }
 
     private void AttackCheck()
@@ -523,6 +526,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(duration);
         _blockAttack = false;
     }
+
+    
 
     #endregion
 

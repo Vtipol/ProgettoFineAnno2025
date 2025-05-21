@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public static bool AttackDownExecuted;
     public static bool TransformLeftWasPressed;
     public static bool TransformRightWasPressed;
+    public static bool TeleportWasPressed;
     public static bool InteractWasPressed;
 
     public static bool DownisHeld;
@@ -27,8 +28,9 @@ public class InputManager : MonoBehaviour
     private InputAction _downInputAction;
     private InputAction _transformLeftAction;
     private InputAction _transformRightAction;
+    private InputAction _teleportAction;
     private InputAction _interactAction;
-
+    
     private void Awake()
     {
         PlayerInput = GetComponent<PlayerInput>();
@@ -41,6 +43,8 @@ public class InputManager : MonoBehaviour
 
         _transformLeftAction = PlayerInput.actions["TransformLeft"];
         _transformRightAction = PlayerInput.actions["TransformRight"];
+        _teleportAction = PlayerInput.actions["Teleport"];
+
         _interactAction = PlayerInput.actions["Interact"];
     }
 
@@ -58,6 +62,8 @@ public class InputManager : MonoBehaviour
 
         TransformLeftWasPressed = _transformLeftAction.WasPerformedThisFrame();
         TransformRightWasPressed = _transformRightAction.WasPerformedThisFrame();
+        TeleportWasPressed = _teleportAction.WasReleasedThisFrame();
+
         InteractWasPressed = _interactAction.WasPressedThisFrame();
 
         DownisHeld = _downInputAction.IsPressed();
