@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 1306045852544746617}
   - component: {fileID: 924137033724249044}
   m_Layer: 0
-  m_Name: Spice
+  m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
     private RaycastHit2D _wallHit;
 
     // attack vars
-    private bool _isAttacking;
+    public bool _isAttacking;
     private bool _lockMovement;    
     private bool _blockAttack = false;
 
@@ -514,10 +514,18 @@ public class Player : MonoBehaviour
 
     private IEnumerator EndAttackCooldown()
     {
-        yield return new WaitForSeconds(1f);
-        _isAttacking = false;
-        _lockMovement = false;
-        
+        if (_isGrounded)
+        {
+            yield return new WaitForSeconds(1f);
+            _isAttacking = false;
+            _lockMovement = false;
+        }
+        else if (!_isGrounded)
+        {
+            yield return new WaitForSeconds(5f);
+            _isAttacking = false;
+            _lockMovement = false;
+        }
     }
 
     private IEnumerator BlockAttackPickUp(float duration)
@@ -526,8 +534,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(duration);
         _blockAttack = false;
     }
-
-    
 
     #endregion
 
