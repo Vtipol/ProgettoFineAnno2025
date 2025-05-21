@@ -43,7 +43,7 @@ public class Gum : MonoBehaviour
     }
     public void PlayerGumJump()
     {
-        if (isStuck && InputManager.JumpWasPressed && pickedUp.IsPickedUp)
+        if (isStuck && InputManager.JumpWasPressed && pickedUp.IsPickedUp && !playerScript._isGrounded)
         {
             numberOfGumJumps++;
             Debug.Log("number of Gumjumps " + numberOfGumJumps);

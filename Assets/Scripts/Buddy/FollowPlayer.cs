@@ -9,6 +9,7 @@ public class FollowPlayer : MonoBehaviour
     public PickedUp pickedUp;
     [SerializeField] private Transform buddyWallcheck;
     [SerializeField] private Animator _animator;
+    private BuddyStateController controller;
     private PickThrow pickThrow;
     private AvoidWallIssuesBuddy wallFailSafe;
     private Rigidbody2D rb;
@@ -35,6 +36,7 @@ public class FollowPlayer : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        controller = GetComponent<BuddyStateController>();
         _animator = GetComponent<Animator>();
         pickThrow = FindAnyObjectByType<PickThrow>();
         wallFailSafe = GetComponentInChildren<AvoidWallIssuesBuddy>();
@@ -48,6 +50,7 @@ public class FollowPlayer : MonoBehaviour
         UpdateAnimation();
         UpdateMovementState();
         CheckGroundStatus();
+        TeleportInput();
     }
     
 
@@ -102,6 +105,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
     }
+  /*
     void SetLayerRecursively(GameObject obj, int newLayer)
     {
         if (obj == null) return;
@@ -116,7 +120,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
     }
-
+    */
     void HandleMovementLogic()
     {
         if (!target || !targetInView) return;
@@ -151,6 +155,24 @@ public class FollowPlayer : MonoBehaviour
         }
     }
 
+    private void TeleportInput()
+    {
+        if (InputManager.TeleportWasPressed)
+        {
+            Vector3 offset = new Vector3(0f, 0f, 0f);
+            controller.transform.position = target.position + offset;
+            controller.SwitchState(controller.neutralState); 
+            controller.EnableOnlyCollider(null);
+            Rigidbody2D rb = controller.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+
+            _animator.SetTrigger("Teleport");
+        }
+    }
     void HandleJumping()
     {
         if (isGrounded && needJump && !isTrasformed)
