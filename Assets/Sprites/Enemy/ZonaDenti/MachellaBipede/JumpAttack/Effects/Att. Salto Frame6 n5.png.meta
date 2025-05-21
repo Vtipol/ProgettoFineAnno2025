@@ -1,0 +1,767 @@
+fileFormatVersion: 2
+guid: a4cf5c14a7174244185bcbf438e7863e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -104440846806426847
+    second: Att. Salto Frame6 n5_0
+  - first:
+      213: 3389880685560008654
+    second: Att. Salto Frame6 n5_1
+  - first:
+      213: 3087032199925684220
+    second: Att. Salto Frame6 n5_2
+  - first:
+      213: -7399469713742293514
+    second: Att. Salto Frame6 n5_3
+  - first:
+      213: -9004681666515465357
+    second: Att. Salto Frame6 n5_4
+  - first:
+      213: -7739739401815399657
+    second: Att. Salto Frame6 n5_5
+  - first:
+      213: 4922103624452643271
+    second: Att. Salto Frame6 n5_6
+  - first:
+      213: 9074638105095106382
+    second: Att. Salto Frame6 n5_7
+  - first:
+      213: 3712031227314320759
+    second: Att. Salto Frame6 n5_8
+  - first:
+      213: 3852690073044172915
+    second: Att. Salto Frame6 n5_9
+  - first:
+      213: 5110728612105273569
+    second: Att. Salto Frame6 n5_10
+  - first:
+      213: 692103744503031018
+    second: Att. Salto Frame6 n5_11
+  - first:
+      213: -5578641070869234273
+    second: Att. Salto Frame6 n5_12
+  - first:
+      213: 8965818265123103288
+    second: Att. Salto Frame6 n5_13
+  - first:
+      213: 7135733646916215139
+    second: Att. Salto Frame6 n5_14
+  - first:
+      213: 134079749636589536
+    second: Att. Salto Frame6 n5_15
+  - first:
+      213: 8862252788887706328
+    second: Att. Salto Frame6 n5_16
+  - first:
+      213: -3020347242770764041
+    second: Att. Salto Frame6 n5_17
+  - first:
+      213: 3335716688652114002
+    second: Att. Salto Frame6 n5_18
+  - first:
+      213: -6155244375440108001
+    second: Att. Salto Frame6 n5_19
+  - first:
+      213: 6899248002582594797
+    second: Att. Salto Frame6 n5_20
+  - first:
+      213: 1520501336498718974
+    second: Att. Salto Frame6 n5_21
+  - first:
+      213: 1359607531180518697
+    second: Att. Salto Frame6 n5_22
+  - first:
+      213: 6621876155076479571
+    second: Att. Salto Frame6 n5_23
+  - first:
+      213: -1903988634874025240
+    second: Att. Salto Frame6 n5_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.48062018, y: 0.41602072}
+  spritePixelsToUnits: 120
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 157
+        width: 29
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12bdf0a6a93fc8ef0800000000000000
+      internalID: -104440846806426847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 142
+        width: 100
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecf03cde5864b0f20800000000000000
+      internalID: 3389880685560008654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 174
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf753c61e6757da20800000000000000
+      internalID: 3087032199925684220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_3
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 37
+        width: 258
+        height: 173
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f5112adf7dcf4990800000000000000
+      internalID: -7399469713742293514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_4
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 174
+        width: 31
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37b8fdfabb1f80380800000000000000
+      internalID: -9004681666515465357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_5
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 142
+        width: 100
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 713e2bc550ce69490800000000000000
+      internalID: -7739739401815399657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_6
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 157
+        width: 29
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c999230b23de4440800000000000000
+      internalID: 4922103624452643271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 133
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4fea6fe6479fed70800000000000000
+      internalID: 9074638105095106382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_8
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 113
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7753a3bebb8c38330800000000000000
+      internalID: 3712031227314320759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_9
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 120
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370c8718531877530800000000000000
+      internalID: 3852690073044172915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_10
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 101
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0c5fb4894fce640800000000000000
+      internalID: 5110728612105273569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_11
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 101
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae422de40b8da9900800000000000000
+      internalID: 692103744503031018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_12
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 120
+        width: 35
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9d3f61c08fa492b0800000000000000
+      internalID: -5578641070869234273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_13
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 113
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8322f5d853cfc6c70800000000000000
+      internalID: 8965818265123103288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_14
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 133
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3616e34f1f7370360800000000000000
+      internalID: 7135733646916215139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_15
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 46
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e789a862d85cd100800000000000000
+      internalID: 134079749636589536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_16
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 64
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dadd5f05fb0dfa70800000000000000
+      internalID: 8862252788887706328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_17
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 70
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe61586f229516d0800000000000000
+      internalID: -3020347242770764041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_18
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 74
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258937aa7a8da4e20800000000000000
+      internalID: 3335716688652114002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_19
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 55
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f16db283add249aa0800000000000000
+      internalID: -6155244375440108001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_20
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 55
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4424b218d0fbf50800000000000000
+      internalID: 6899248002582594797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_21
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 74
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef8438ad8e7e91510800000000000000
+      internalID: 1520501336498718974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_22
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 70
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92de5f998db4ed210800000000000000
+      internalID: 1359607531180518697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_23
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 64
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35a86f16741a5eb50800000000000000
+      internalID: 6621876155076479571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Att. Salto Frame6 n5_24
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 46
+        width: 36
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eae3f1ac6ca395e0800000000000000
+      internalID: -1903988634874025240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Att. Salto Frame6 n5_0: -104440846806426847
+      Att. Salto Frame6 n5_1: 3389880685560008654
+      Att. Salto Frame6 n5_10: 5110728612105273569
+      Att. Salto Frame6 n5_11: 692103744503031018
+      Att. Salto Frame6 n5_12: -5578641070869234273
+      Att. Salto Frame6 n5_13: 8965818265123103288
+      Att. Salto Frame6 n5_14: 7135733646916215139
+      Att. Salto Frame6 n5_15: 134079749636589536
+      Att. Salto Frame6 n5_16: 8862252788887706328
+      Att. Salto Frame6 n5_17: -3020347242770764041
+      Att. Salto Frame6 n5_18: 3335716688652114002
+      Att. Salto Frame6 n5_19: -6155244375440108001
+      Att. Salto Frame6 n5_2: 3087032199925684220
+      Att. Salto Frame6 n5_20: 6899248002582594797
+      Att. Salto Frame6 n5_21: 1520501336498718974
+      Att. Salto Frame6 n5_22: 1359607531180518697
+      Att. Salto Frame6 n5_23: 6621876155076479571
+      Att. Salto Frame6 n5_24: -1903988634874025240
+      Att. Salto Frame6 n5_3: -7399469713742293514
+      Att. Salto Frame6 n5_4: -9004681666515465357
+      Att. Salto Frame6 n5_5: -7739739401815399657
+      Att. Salto Frame6 n5_6: 4922103624452643271
+      Att. Salto Frame6 n5_7: 9074638105095106382
+      Att. Salto Frame6 n5_8: 3712031227314320759
+      Att. Salto Frame6 n5_9: 3852690073044172915
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
