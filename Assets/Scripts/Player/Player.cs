@@ -115,9 +115,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Move(Stats.GroundAcceleration, Stats.GroundDeceleration, InputManager.Movement);
-
-       /* if (!buddyGum.IsGumJumping)
+        if (!buddyGum.IsGumJumping)
         {
             if (_isGrounded)
             {
@@ -127,7 +125,7 @@ public class Player : MonoBehaviour
             {
                 Move(Stats.AirAcceleration, Stats.AirDeceleration, InputManager.Movement);
             }
-        }*/
+        }
     }
 
     #region Movement
