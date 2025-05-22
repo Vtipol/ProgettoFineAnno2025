@@ -107,7 +107,7 @@ public class Gum : MonoBehaviour
     private IEnumerator JumpLockOut()
     {
         gumLockOutWindow = true;
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         gumLockOutWindow = false;
     }
 
