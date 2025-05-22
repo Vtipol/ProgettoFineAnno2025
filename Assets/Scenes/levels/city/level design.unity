@@ -314,10 +314,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3976414653847916070, guid: 4361cfcf9b88d644382708dcfaff61e4, type: 3}
       propertyPath: lines.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3976414653847916070, guid: 4361cfcf9b88d644382708dcfaff61e4, type: 3}
       propertyPath: 'lines.Array.data[0]'
+      value: 'for Jumping press [Space]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976414653847916070, guid: 4361cfcf9b88d644382708dcfaff61e4, type: 3}
+      propertyPath: 'lines.Array.data[1]'
+      value: sdvfbsxfdg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976414653847916070, guid: 4361cfcf9b88d644382708dcfaff61e4, type: 3}
+      propertyPath: 'lines.Array.data[2]'
       value: 'for Jumping press [Space]'
       objectReference: {fileID: 0}
     - target: {fileID: 5389547500937373218, guid: 4361cfcf9b88d644382708dcfaff61e4, type: 3}
