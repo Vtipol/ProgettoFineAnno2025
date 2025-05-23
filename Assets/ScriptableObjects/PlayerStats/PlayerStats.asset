@@ -17,7 +17,7 @@ MonoBehaviour:
   GroundDeceleration: 20
   AirAcceleration: 5
   AirDeceleration: 20
-  MaxRunSpeed: 15
+  MaxRunSpeed: 12
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -34,7 +34,7 @@ MonoBehaviour:
   TimeForUpwardsCancel: 0.02
   MinJumpTimeBeforeCut: 0
   JumpLockoutTime: 0.05
-  JumpLockoutTimer: -0.0025852954
+  JumpLockoutTimer: -0.00015810248
   ApexThreshold: 1
   ApexHangTime: 0.01
   JumpBufferTime: 0.125
