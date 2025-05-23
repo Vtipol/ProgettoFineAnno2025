@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
 
     // attack vars
     public bool _isAttacking;
+    public bool _isJumpAttacking;
     private bool _lockMovement;    
     private bool _blockAttack = false;
 
@@ -404,14 +405,16 @@ public class Player : MonoBehaviour
     {
         if (_blockAttack || _isAttacking) return;
 
-        if (InputManager.AttackDownExecuted && !_isGrounded)
+        if (InputManager.AttackDownExecuted)
         {
-            _isAttacking = true;
+            if (_isJumpAttacking) return;
+
+            _isJumpAttacking = true;
             _animator.SetTrigger("Attack");
 
             StartCoroutine(EndAttackCooldown());
         }
-        else if (InputManager.AttackDownExecuted || InputManager.AttackIsPressed)
+        else if (InputManager.AttackIsPressed)
         {
             _isAttacking = true;
             _animator.SetTrigger("Attack");
@@ -518,13 +521,11 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             _isAttacking = false;
-            _lockMovement = false;
         }
         else if (!_isGrounded)
         {
-            yield return new WaitForSeconds(5f);
-            _isAttacking = false;
-            _lockMovement = false;
+            yield return new WaitForSeconds(2f);
+            _isJumpAttacking = false;
         }
     }
 
