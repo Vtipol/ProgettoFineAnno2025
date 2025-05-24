@@ -96,7 +96,6 @@ public class PickThrow : MonoBehaviour
     {
         if (!isPickUpBlocked && InputManager.RunIsHeld && !PickedUp.IsPickedUp && !Soap.IsSoapy && buddyTrampoline.trampGrabCollider.enabled)
         {
-            Debug.Log("Auto-grabbing buddy during TrampGrab!");
 
             PickedUp.IsPickedUp = true;
             _targetRB.bodyType = RigidbodyType2D.Kinematic;
@@ -107,8 +106,7 @@ public class PickThrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D _pickTrigger)
     {
         if (!isPickUpBlocked && InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
-        {
-            Debug.Log("Was grabbed thanks to OnTriggerEnter");
+        {;
             if (!Soap.IsSoapy)
             {
                 // Set state
@@ -135,7 +133,6 @@ public class PickThrow : MonoBehaviour
     {
         if (!isPickUpBlocked && InputManager.RunIsHeld && _pickTrigger.gameObject == _pickTarget && PickedUp.IsPickedUp == false)
         {
-            Debug.Log("Was grabbed thanks to OnTriggerStay");
             if (!Soap.IsSoapy)
             {
                 // Set state

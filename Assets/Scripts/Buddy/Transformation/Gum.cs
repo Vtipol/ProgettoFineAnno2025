@@ -96,7 +96,7 @@ public class Gum : MonoBehaviour
     }
     public void CheckStuck()
     {
-        if (!pickedUp.IsPickedUp || !gumCollider.enabled || gumLockOutWindow || numberOfGumJumps >= 4) return;
+        if (!pickedUp.IsPickedUp || !gumCollider.enabled || gumLockOutWindow || numberOfGumJumps >= 4 || playerScript._isGrounded) return;
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, gumCollider.radius * 1.1f, groundLayer);
         if (hits.Length > 0 )

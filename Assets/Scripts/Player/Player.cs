@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-       // if (!buddyGum.IsGumJumping)
+        if (!buddyGum.IsGumJumping)
         {
             if (_isGrounded)
             {

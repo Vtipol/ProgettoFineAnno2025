@@ -12,13 +12,14 @@ public abstract class MascellaState : MonoBehaviour
     protected GroundChecker groundChecker;
     protected MascellaPerception mascellaPerception;
     protected Animator mascellaAnimator;
+    protected Player player;
     
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
     public virtual void OnExit() { }
 
     public void Initialize(MascellaStateMachine mascellaMachine, MascellaStateController mascellaController, MascellaIdle mascellaIdle,MascellaChase mascellaChase,
-        GroundChecker groundChecker, MascellaPerception mascellaPerception, MascellaBipedeScriptable mascellaStats, MascellaAttack mascellaAttack, MascellaVulnerable mascellaVulnerable, Animator mascellaAnimator)
+        GroundChecker groundChecker, MascellaPerception mascellaPerception, MascellaBipedeScriptable mascellaStats, MascellaAttack mascellaAttack, MascellaVulnerable mascellaVulnerable, Animator mascellaAnimator, Player player)
     {
         this.mascellaMachine = mascellaMachine;
         this.mascellaController = mascellaController;
@@ -30,5 +31,6 @@ public abstract class MascellaState : MonoBehaviour
         this.mascellaAttack = mascellaAttack;
         this.mascellaVulnerable = mascellaVulnerable;
         this.mascellaAnimator = mascellaAnimator;
+        this.player = player;
     }
 }
