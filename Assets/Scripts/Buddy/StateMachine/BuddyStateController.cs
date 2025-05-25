@@ -12,8 +12,10 @@ public class BuddyStateController : MonoBehaviour
     public Soap soap;
     public Gum gum;
     public Trampoline tramp;
+    public AudioSource audioSource;
+    public AudioClip trampClip;
+    public AudioClip miaoClip;
     private BuddyStateMachine stateMachine;
-
     [SerializeField] public CircleCollider2D circleCollider;
     [SerializeField] public BoxCollider2D boxCollider;
     [SerializeField] public CapsuleCollider2D capsuleCollider;

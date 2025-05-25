@@ -128,6 +128,9 @@ MonoBehaviour:
   soap: {fileID: 2498239786501170359}
   gum: {fileID: 0}
   tramp: {fileID: 0}
+  audioSource: {fileID: 0}
+  trampClip: {fileID: 0}
+  miaoClip: {fileID: 0}
   circleCollider: {fileID: 2986740559170639401}
   boxCollider: {fileID: 5203781075069336490}
   capsuleCollider: {fileID: 612355088285040826}
@@ -352,6 +355,9 @@ MonoBehaviour:
   trampolineBounceForce: 25
   trampGrabCollider: {fileID: 8063806043129661527}
   pickedUp: {fileID: 7639820405145412246}
+  audioSource: {fileID: 4118392399102247680}
+  trampClip: {fileID: 8300000, guid: b515dfa1e78cdbc4db1f46a864137543, type: 3}
+  miaoClip: {fileID: 0}
 --- !u!1 &695257149465167763
 GameObject:
   m_ObjectHideFlags: 0

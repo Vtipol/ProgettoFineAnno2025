@@ -9,6 +9,9 @@ public class Trampoline : MonoBehaviour
     [SerializeField] private float trampolineBounceForce = 25f;
     [SerializeField] public BoxCollider2D trampGrabCollider;
     public PickedUp pickedUp;
+    public AudioSource audioSource;
+    public AudioClip trampClip;
+    public AudioClip miaoClip;
     private void Awake()
     {
         player = FindAnyObjectByType<Player>();
@@ -36,6 +39,7 @@ public class Trampoline : MonoBehaviour
     }
     private void BouncePlayer(Player player)
     {
+        audioSource.PlayOneShot(trampClip);
         player.OverrideJump(trampolineBounceForce);
         StartCoroutine(TrampGrab());
     }
