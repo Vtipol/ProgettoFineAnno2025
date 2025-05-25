@@ -61,7 +61,7 @@ public class Gum : MonoBehaviour
         else if (!pickedUp.IsPickedUp)
         {
             IsStuck = false;
-            isGumJumping = false;
+            //isGumJumping = false;
         }
     }
     private void GumPlayerCheck()

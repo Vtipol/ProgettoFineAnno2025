@@ -36,7 +36,6 @@ public class GumState : BuddyState, IInputHandler
     public override void OnExit()
     {
         controller.gum.IsStuck = false;
-        controller.gum.IsGumJumping = false;
         controller.gum.GumStuck();
         controller.EnableOnlyCollider(null);
     }
