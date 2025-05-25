@@ -524,7 +524,7 @@ public class Player : MonoBehaviour
         }
         else if (!_isGrounded)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             _isJumpAttacking = false;
         }
     }
