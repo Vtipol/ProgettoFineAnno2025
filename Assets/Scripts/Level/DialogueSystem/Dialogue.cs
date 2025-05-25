@@ -7,20 +7,25 @@ public class Dialogue : MonoBehaviour
     [Header("Text")]
     public TextMeshProUGUI textConponent;
     public string[] lines;
-    public float textSpeed;
+    public float textSpeed = 0.05f;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip[] typewriterClips;
 
     private int index;
+    private Coroutine typingCoroutine;
 
     private void OnEnable()
     {
         textConponent.text = string.Empty;
-        Time.timeScale = 0f; 
+        Time.timeScale = 0f;
         StartDialogue();
     }
 
     private void OnDisable()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
     }
 
     private void Update()
@@ -33,8 +38,13 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                StopAllCoroutines();
+                if (typingCoroutine != null)
+                {
+                    StopCoroutine(typingCoroutine);
+                }
+
                 textConponent.text = lines[index];
+                PlayTypingSound(); // Play one final sound
             }
         }
     }
@@ -42,7 +52,7 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     void NextLine()
@@ -51,24 +61,36 @@ public class Dialogue : MonoBehaviour
         {
             index++;
             textConponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            typingCoroutine = StartCoroutine(TypeLine());
         }
         else
         {
-            gameObject.SetActive(false); 
+            gameObject.SetActive(false);
         }
     }
-
-    #region Timers
 
     IEnumerator TypeLine()
     {
         foreach (char c in lines[index].ToCharArray())
         {
             textConponent.text += c;
-            yield return new WaitForSecondsRealtime(textSpeed); 
+
+            if (!char.IsWhiteSpace(c)) // Skip sound for spaces, tabs, etc.
+            {
+                PlayTypingSound();
+            }
+
+            yield return new WaitForSecondsRealtime(textSpeed);
         }
     }
 
-    #endregion
+    void PlayTypingSound()
+    {
+        if (typewriterClips.Length > 0 && audioSource != null)
+        {
+            AudioClip clip = typewriterClips[Random.Range(0, typewriterClips.Length)];
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(clip);
+        }
+    }
 }

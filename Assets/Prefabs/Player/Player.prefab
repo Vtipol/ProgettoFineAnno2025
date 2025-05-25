@@ -168,6 +168,7 @@ MonoBehaviour:
   _isJumping: 0
   _numberOfJumpsUsed: 0
   _isAttacking: 0
+  _isJumpAttacking: 0
 --- !u!114 &8669920481694177177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +276,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1167416938382584530}
-  footstepClip: {fileID: 0}
-  attackClip: {fileID: 0}
+  footstepClips:
+  - {fileID: 8300000, guid: 8107eecf4e11fa0499ea698b41284ad7, type: 3}
+  - {fileID: 8300000, guid: 854743f16fe9a2646b809a42d98484a8, type: 3}
+  - {fileID: 8300000, guid: c7d20cba7e2f1b8419bf41f33335c774, type: 3}
+  - {fileID: 8300000, guid: 4d9290293dc8fb640ac2c00d19091f8e, type: 3}
+  - {fileID: 8300000, guid: 66016149879a20540a839a31f00cb1fb, type: 3}
+  jumpClip: {fileID: 8300000, guid: f41c80f03d7bb4d4490243776584fb88, type: 3}
+  landingClips:
+  - {fileID: 8300000, guid: 3e7f5114eff448f488a39483bed8ee00, type: 3}
+  - {fileID: 8300000, guid: dcf2e892f85bf484b90eafa50891b80d, type: 3}
+  - {fileID: 8300000, guid: 4832c92d53b6d3644b838a70f592dc51, type: 3}
+  - {fileID: 8300000, guid: 0f6ebe04574f6a547ad1a17295e194ff, type: 3}
+  attackClip: {fileID: 8300000, guid: e5776a2f1ddf48749bbd06e512a4226a, type: 3}
 --- !u!212 &4128824098916803876
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -319,7 +331,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1009977133
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -3781910019033479378, guid: 74de3b0c5dedcd24aad425107244a70c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

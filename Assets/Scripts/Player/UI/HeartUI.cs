@@ -3,9 +3,15 @@ using UnityEngine.UI;
 
 public class HeartUI : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip accartocio;
+    [Header("Scripts")]
     [SerializeField] private Damageble damageble;
+    [Header("Images")]
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite emptyHeart;
+    [Header("Heart Quantity")]
     [SerializeField] private Image[] hearts;
 
     private void Start()
@@ -28,6 +34,7 @@ public class HeartUI : MonoBehaviour
     private void OnDamageTaken(int damage, Vector2 knockback)
     {
         UpdateHearts(damageble.Health);
+        audioSource.PlayOneShot(accartocio);
     }
 
     private void UpdateHearts(int currentHealth)
