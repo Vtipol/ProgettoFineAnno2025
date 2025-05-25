@@ -5,7 +5,9 @@ public class MascellaChase : MonoBehaviour
 {
     [SerializeField] private MascellaBipedeScriptable mascellaStats;
     [SerializeField] private CapsuleCollider2D biteTrigger;
+    private MascellaStateController mascellaController;
     private Transform player;
+    private Player playerScript;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GroundChecker groundChecker;
     public bool isMascellaBackingAway = false;
@@ -33,6 +35,8 @@ public class MascellaChase : MonoBehaviour
                 Debug.LogWarning("MascellaChase could not find a GameObject tagged 'Player' in Awake.");
             }
         }
+        playerScript = FindAnyObjectByType<Player>();
+        mascellaController = GetComponentInParent<MascellaStateController>();
     }
     public void ChasePlayer()
     {
@@ -54,6 +58,7 @@ public class MascellaChase : MonoBehaviour
     groundChecker.IsWallAhead((int)Mathf.Sign(player.position.x - transform.position.x)))
         {
             StopChasing();
+            mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
             return;
         }
 
@@ -89,6 +94,18 @@ public class MascellaChase : MonoBehaviour
         scale.x *= -1;
         transform.parent.localScale = scale;
     }
+    public bool CheckTargetElevation()
+    {
+        float elevationDifference = player.position.y - transform.position.y;
+
+        if ((playerScript._isGrounded && (elevationDifference > 1f || elevationDifference < -1f)) ||
+            (!playerScript._isGrounded && groundChecker.IsWallAhead((int)Mathf.Sign(player.position.x - transform.position.x))))
+        {
+            StopChasing();
+            return true;
+        }
+        return false;
+    }
     public bool IsPlayerTooFar()
     {
         return Vector2.Distance(transform.position, player.position) > mascellaStats.chaseRange;
@@ -100,7 +117,6 @@ public class MascellaChase : MonoBehaviour
             PlayerInRange = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))

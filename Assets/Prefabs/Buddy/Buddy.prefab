@@ -348,7 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trampolineCollider: {fileID: 612355088285040826}
-  player: {fileID: 0}
   trampolineBounceForce: 25
   trampGrabCollider: {fileID: 8063806043129661527}
   pickedUp: {fileID: 7639820405145412246}

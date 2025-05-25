@@ -7,7 +7,7 @@ public class MascellaAttack : MonoBehaviour
     [SerializeField] public Rigidbody2D rb;
     private Transform target;
     [SerializeField] private PolygonCollider2D attackCollider;
-    public bool HasMissed { get; private set; } = false;
+    public bool HasMissed { get;  set; } = false;
     private void Awake()
     {
         if (target == null)
@@ -59,8 +59,8 @@ public class MascellaAttack : MonoBehaviour
     }
     private IEnumerator HandlePostLunge()
     {
-        yield return new WaitForSeconds(0.1f);
-        HasMissed = true;
+        yield return new WaitForSeconds(0.4f);
         mascellaStats.isCrashed = true;
+        HasMissed = true;
     }
 }

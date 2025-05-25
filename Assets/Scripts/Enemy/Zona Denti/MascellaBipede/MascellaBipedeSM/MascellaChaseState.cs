@@ -68,6 +68,8 @@ public class MascellaChaseState : MascellaState
         {
             lostPlayerTimer = 0f;
         }
+        mascellaChase.CheckTargetElevation();
+        if (mascellaChase.CheckTargetElevation()) mascellaController.MascellaSwitchState(mascellaController.mascellaIdleState);
 
         if (!mascellaChase.isMascellaBackingAway)
         {

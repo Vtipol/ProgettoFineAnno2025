@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
 {
     //Static For Easy Ref.
     public static PlayerInput PlayerInput;
+    public Player Player;
 
     public static Vector2 Movement;
     public static bool JumpWasPressed;
@@ -58,7 +59,7 @@ public class InputManager : MonoBehaviour
         JumpWasRelesed = _jumpAction.WasReleasedThisFrame();
 
         AttackIsPressed = _attackAction.WasPressedThisFrame();
-        AttackDownExecuted = _attackAction.WasPressedThisFrame() && _downInputAction.IsPressed();
+        AttackDownExecuted = _attackAction.WasPressedThisFrame() && !Player._isGrounded;
 
         TransformLeftWasPressed = _transformLeftAction.WasPerformedThisFrame();
         TransformRightWasPressed = _transformRightAction.WasPerformedThisFrame();
