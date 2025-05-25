@@ -25,6 +25,9 @@ public class MascellaStateController : MonoBehaviour
     public MascellaPerception mascellaPerception;
     public GroundChecker groundChecker;
     public Animator mascellaAnimator;
+    public AudioSource mascellaAudioSource;
+    public AudioClip mascellaDeath;
+    public Damageble mascellaDamageble;
 
     private void Start()
     {

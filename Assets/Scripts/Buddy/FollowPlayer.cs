@@ -14,6 +14,9 @@ public class FollowPlayer : MonoBehaviour
     private AvoidWallIssuesBuddy wallFailSafe;
     private Rigidbody2D rb;
     public bool targetInView;
+    public AudioSource audioSource;
+    public AudioClip trampClip;
+    public AudioClip miaoClip;
     private bool isGrounded;
     private bool needJump;
     private bool isTrasformed;
@@ -212,7 +215,13 @@ public class FollowPlayer : MonoBehaviour
         }
 
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
+
+        if (Random.Range(0, 500) == 0 && miaoClip != null && !audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(miaoClip);
+        }
     }
+
 
     public bool IsWallAhead(int direction)
     {
