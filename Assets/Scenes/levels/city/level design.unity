@@ -602,6 +602,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: 39605a299ba90294e8f0eb7871d287a6, type: 3}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaDamageble
+      value: 
+      objectReference: {fileID: 146326532}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaAudioSource
+      value: 
+      objectReference: {fileID: 146326531}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.72277
@@ -651,6 +663,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+--- !u!82 &146326531 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 146326530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &146326532 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9087102460066230352, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 146326530}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc5a44960eccc34884db99f47ac97bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &184392844
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,6 +2050,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: 39605a299ba90294e8f0eb7871d287a6, type: 3}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaDamageble
+      value: 
+      objectReference: {fileID: 1214897069}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaAudioSource
+      value: 
+      objectReference: {fileID: 146326531}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.66
@@ -2071,6 +2111,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+--- !u!114 &1214897069 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9087102460066230352, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 1214897068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc5a44960eccc34884db99f47ac97bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1221176708 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1842486510344284019, guid: dae8bc4ab6d939849a12339ca2f5c535, type: 3}
@@ -2145,6 +2196,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: 39605a299ba90294e8f0eb7871d287a6, type: 3}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaDamageble
+      value: 
+      objectReference: {fileID: 1396170902}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaAudioSource
+      value: 
+      objectReference: {fileID: 1396170903}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.72277
@@ -2194,6 +2257,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+--- !u!114 &1396170902 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9087102460066230352, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 1396170901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cc5a44960eccc34884db99f47ac97bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1396170903 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+  m_PrefabInstance: {fileID: 1396170901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397519631
 GameObject:
   m_ObjectHideFlags: 0
@@ -122903,19 +122982,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 997.61743
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.45608667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.45608667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.45608667
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalPosition.x
@@ -122947,11 +123026,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 474
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.5
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 7689331928944146455, guid: 0e8df136032f4c84aa7c44e27355e506, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
