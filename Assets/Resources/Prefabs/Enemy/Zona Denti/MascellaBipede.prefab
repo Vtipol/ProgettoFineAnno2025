@@ -733,6 +733,9 @@ MonoBehaviour:
   mascellaPerception: {fileID: 6043078783991960176}
   groundChecker: {fileID: 7660000048991480098}
   mascellaAnimator: {fileID: 1365357187006289687}
+  mascellaAudioSource: {fileID: 8740136032018716763}
+  mascellaDeath: {fileID: 8300000, guid: 39605a299ba90294e8f0eb7871d287a6, type: 3}
+  mascellaDamageble: {fileID: 9087102460066230352}
 --- !u!114 &7660000048991480098
 MonoBehaviour:
   m_ObjectHideFlags: 0
