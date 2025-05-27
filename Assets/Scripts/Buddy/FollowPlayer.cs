@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class FollowPlayer : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class FollowPlayer : MonoBehaviour
     private PickThrow pickThrow;
     private AvoidWallIssuesBuddy wallFailSafe;
     private Rigidbody2D rb;
+    private bool startFollow = false;
     public bool targetInView;
     public AudioSource audioSource;
     public AudioClip trampClip;
@@ -68,6 +70,7 @@ public class FollowPlayer : MonoBehaviour
         {
             MoveTowardsTarget();
         }
+        else startFollow = false;
         //int targetLayer = (pickedUp != null && pickedUp.IsPickedUp) ? pickedUpLayer : originalLayer;
 
         //if (currentLayer != targetLayer)
@@ -178,7 +181,8 @@ public class FollowPlayer : MonoBehaviour
     }
     void HandleJumping()
     {
-        if (isGrounded && needJump && !isTrasformed)
+        float distance = Vector2.Distance(transform.position, target.position);
+        if (isGrounded && needJump && !isTrasformed && distance > aiSettings.stopDistance)
         {
 
             bool wallAhead = IsWallAhead(directionToTarget);
@@ -201,6 +205,7 @@ public class FollowPlayer : MonoBehaviour
 
     void MoveTowardsTarget()
     {
+        if (!startFollow) StartCoroutine(AwaitFollow());
         float distance = Vector2.Distance(transform.position, target.position);
         if (distance < aiSettings.stopDistance) return;
 
@@ -237,7 +242,11 @@ public class FollowPlayer : MonoBehaviour
         }
         return hit.collider != null;
     }
-
+    private IEnumerator AwaitFollow()
+    {
+        yield return new WaitForSeconds(0.1f);
+        startFollow = true;
+    }
     #region Animation
 
     void UpdateAnimation()
