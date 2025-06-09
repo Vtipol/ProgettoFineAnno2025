@@ -26,10 +26,10 @@ public class GumState : BuddyState, IInputHandler
             switch (input)
             {
                 case "E":
-                    controller.SwitchState(controller.neutralState);
-                    break;
-                case "Q":
                     controller.SwitchState(controller.trampolineState);
+                    break;
+                case "R":
+                    controller.SwitchState(controller.neutralState);
                     break;
             }
     }

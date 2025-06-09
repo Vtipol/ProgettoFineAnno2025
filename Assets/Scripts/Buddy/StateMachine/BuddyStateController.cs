@@ -85,6 +85,11 @@ public class BuddyStateController : MonoBehaviour
             {
                 stateMachine.HandleInput("Q");
             }
+
+            if(InputManager.TransformNullWasPressed)
+            {
+                stateMachine.HandleInput("R");
+            }
         }
     }
 }
