@@ -173,6 +173,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""TransformNull"",
+                    ""type"": ""Button"",
+                    ""id"": ""08741a28-80dc-4903-81ad-da706793ae48"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Teleport"",
                     ""type"": ""Button"",
                     ""id"": ""6ce0802e-a5bb-45bd-b0da-697e6d82fbfd"",
@@ -554,6 +563,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""Teleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36dc401f-49a7-46d0-b149-97acee5ee6d1"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TransformNull"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc52e76b-d7aa-4b67-b45d-842677d0340c"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TransformNull"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eba7095d-b049-4b93-957e-1c823c8bc67b"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TransformNull"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1150,6 +1192,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_TransformRight = m_Player.FindAction("TransformRight", throwIfNotFound: true);
         m_Player_TransformLeft = m_Player.FindAction("TransformLeft", throwIfNotFound: true);
+        m_Player_TransformNull = m_Player.FindAction("TransformNull", throwIfNotFound: true);
         m_Player_Teleport = m_Player.FindAction("Teleport", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1253,6 +1296,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_TransformRight;
     private readonly InputAction m_Player_TransformLeft;
+    private readonly InputAction m_Player_TransformNull;
     private readonly InputAction m_Player_Teleport;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
@@ -1301,6 +1345,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/TransformLeft".
         /// </summary>
         public InputAction @TransformLeft => m_Wrapper.m_Player_TransformLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/TransformNull".
+        /// </summary>
+        public InputAction @TransformNull => m_Wrapper.m_Player_TransformNull;
         /// <summary>
         /// Provides access to the underlying input action "Player/Teleport".
         /// </summary>
@@ -1358,6 +1406,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TransformLeft.started += instance.OnTransformLeft;
             @TransformLeft.performed += instance.OnTransformLeft;
             @TransformLeft.canceled += instance.OnTransformLeft;
+            @TransformNull.started += instance.OnTransformNull;
+            @TransformNull.performed += instance.OnTransformNull;
+            @TransformNull.canceled += instance.OnTransformNull;
             @Teleport.started += instance.OnTeleport;
             @Teleport.performed += instance.OnTeleport;
             @Teleport.canceled += instance.OnTeleport;
@@ -1399,6 +1450,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @TransformLeft.started -= instance.OnTransformLeft;
             @TransformLeft.performed -= instance.OnTransformLeft;
             @TransformLeft.canceled -= instance.OnTransformLeft;
+            @TransformNull.started -= instance.OnTransformNull;
+            @TransformNull.performed -= instance.OnTransformNull;
+            @TransformNull.canceled -= instance.OnTransformNull;
             @Teleport.started -= instance.OnTeleport;
             @Teleport.performed -= instance.OnTeleport;
             @Teleport.canceled -= instance.OnTeleport;
@@ -1765,6 +1819,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTransformLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TransformNull" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTransformNull(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Teleport" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

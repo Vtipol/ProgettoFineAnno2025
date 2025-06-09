@@ -87,6 +87,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "TransformNull",
+                    "type": "Button",
+                    "id": "08741a28-80dc-4903-81ad-da706793ae48",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Teleport",
                     "type": "Button",
                     "id": "6ce0802e-a5bb-45bd-b0da-697e6d82fbfd",
@@ -468,6 +477,39 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Teleport",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "36dc401f-49a7-46d0-b149-97acee5ee6d1",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TransformNull",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc52e76b-d7aa-4b67-b45d-842677d0340c",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TransformNull",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eba7095d-b049-4b93-957e-1c823c8bc67b",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TransformNull",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
