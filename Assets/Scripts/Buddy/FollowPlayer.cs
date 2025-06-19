@@ -14,7 +14,7 @@ public class FollowPlayer : MonoBehaviour
     private PickThrow pickThrow;
     private AvoidWallIssuesBuddy wallFailSafe;
     private Rigidbody2D rb;
-    private bool startFollow = false;
+    public bool startFollow = false;
     public bool targetInView;
     public AudioSource audioSource;
     public AudioClip trampClip;
@@ -28,9 +28,9 @@ public class FollowPlayer : MonoBehaviour
     //private int currentLayer;
 
     // Animation flags
-    private bool _isWalking;
-    private bool _isJumping;
-    private bool _isFalling;
+    public bool _isWalking;
+    public bool _isJumping;
+    public bool _isFalling;
 
     public bool IsTrasformed
     {
@@ -208,7 +208,6 @@ public class FollowPlayer : MonoBehaviour
         if (!startFollow) StartCoroutine(AwaitFollow());
         float distance = Vector2.Distance(transform.position, target.position);
         if (distance < aiSettings.stopDistance) return;
-
         Vector2 direction = (target.position - transform.position).normalized;
         float runBonus = InputManager.RunIsHeld ? aiSettings.runSpeedBonus : 0f;
         float moveSpeed = aiSettings.speed + runBonus;
@@ -221,12 +220,12 @@ public class FollowPlayer : MonoBehaviour
 
         rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y - aiSettings.fallingSpeed * Time.deltaTime);
 
-        if (Random.Range(0, 500) == 0 && miaoClip != null && !audioSource.isPlaying)
+        if (Random.Range(0, 600) == 1 && miaoClip != null && !audioSource.isPlaying)
         {
             audioSource.PlayOneShot(miaoClip);
         }
     }
-
+    
 
     public bool IsWallAhead(int direction)
     {
@@ -292,7 +291,7 @@ public class FollowPlayer : MonoBehaviour
         }
         if (!pickThrow.isPickThrow)
         {
-            if (direction > 0)
+            if (direction > 0 && !isTrasformed)
             {
                 // Ruota il buddy verso destra
                 transform.localRotation = Quaternion.Euler(0f, 0f, 0f);

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9032496640084319590}
   - component: {fileID: 7639820405145412246}
   - component: {fileID: 1080481773219173685}
+  - component: {fileID: 1132820718069797660}
   - component: {fileID: 3149251663737690534}
   m_Layer: 7
   m_Name: Buddy
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638d2bdac0c21985ba6e92251ca7c4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiSettings: {fileID: 11400000, guid: 5794f27bbedee40a8861b301043a25af, type: 2}
+  aiSettings: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
   target: {fileID: 0}
   groundCheck: {fileID: 8749724908321769867}
   groundLayer:
@@ -216,6 +217,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1132820718069797660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491391430774262798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cef1eea2c78148f19f2126ef76d0335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: bc11e5e575425ca03bcdb2b2526c0c2b, type: 2}
+  velocityThreshold: 0.01
+  controller: {fileID: 2165941650435933838}
+  target: {fileID: 0}
+  _animator: {fileID: 1080481773219173685}
+  isStill: 0
 --- !u!212 &3149251663737690534
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -312,7 +331,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610448499012103397}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -339,7 +358,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.4}
+  m_Offset: {x: 0, y: 0.5}
   m_Size: {x: 2, y: 0.75}
   m_Direction: 1
 --- !u!114 &5080082805061552308

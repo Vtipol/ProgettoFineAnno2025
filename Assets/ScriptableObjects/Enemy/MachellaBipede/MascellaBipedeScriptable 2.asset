@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8572e019c4510cab9577902b2ba03d0, type: 3}
-  m_Name: MascellaBipedeScriptable
+  m_Name: MascellaBipedeScriptable 2
   m_EditorClassIdentifier: 
   sightRange: 10
   chaseRange: 25

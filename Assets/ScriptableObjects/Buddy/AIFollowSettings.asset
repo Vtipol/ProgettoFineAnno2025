@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3520819e820d449638a560d3fa1d0ecb, type: 3}
   m_Name: AIFollowSettings
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 6
-  wallJumpForce: 10
+  speed: 9
+  jumpForce: 25
+  wallJumpForce: 25
   fastFallSpeed: 5
   stopDistance: 2
-  fieldOfViewRadius: 20
+  fieldOfViewRadius: 12
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -25,8 +25,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheckRadius: 0.1
-  fallingSpeed: 18
-  runSpeedBonus: 8
-  decelDistance: 4
+  fallingSpeed: 13
+  runSpeedBonus: 6
+  decelDistance: 3.5
   gumJumpXForce: 5
   gumJumpYForce: 20
