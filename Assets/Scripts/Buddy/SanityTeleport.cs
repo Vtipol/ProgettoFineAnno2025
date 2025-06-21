@@ -26,7 +26,7 @@ public class SanityTeleport : MonoBehaviour
     {
         isStill = rb.linearVelocity.magnitude < velocityThreshold;
         float distance = Vector2.Distance(transform.position, target.position);
-        if (isStill && follow.startFollow && distance > stats.stopDistance + 1f)
+        if (isStill && follow.startFollow && distance > stats.stopDistance + 1.15f)
         {
             StartCoroutine(AwaitTele());
             if (!isStill || !follow.startFollow || distance < stats.stopDistance) return;
