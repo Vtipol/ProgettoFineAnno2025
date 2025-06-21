@@ -12,7 +12,8 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange && InputManager.InteractWasPressed)
         {
             dialogueUI.SetActive(true);
-            dialogueScript.enabled = true; // This will trigger Start() in Dialogue
+            dialogueScript.enabled = true;
+            dialogueScript.RestartDialogue();
         }
     }
 

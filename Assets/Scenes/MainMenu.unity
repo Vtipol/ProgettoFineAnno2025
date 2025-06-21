@@ -637,9 +637,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5577751690913398749, guid: 011135a9360a9a7499baf1f48f204a23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6337598711131976742, guid: 011135a9360a9a7499baf1f48f204a23, type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8705690023792334742, guid: 011135a9360a9a7499baf1f48f204a23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873406539007349006, guid: 011135a9360a9a7499baf1f48f204a23, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873406539007349006, guid: 011135a9360a9a7499baf1f48f204a23, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -966,6 +982,10 @@ PrefabInstance:
     - target: {fileID: 7956222053474180794, guid: 54e11b2c3820d984a806fe7857becd8a, type: 3}
       propertyPath: m_Name
       value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7956222053474180794, guid: 54e11b2c3820d984a806fe7857becd8a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8418464438454352546, guid: 54e11b2c3820d984a806fe7857becd8a, type: 3}
       propertyPath: m_SizeDelta.x

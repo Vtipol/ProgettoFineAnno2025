@@ -466,7 +466,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.59, y: -2.01, z: 11.033875}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6506062724418515071}
@@ -562,7 +562,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!114 &1643313301567674192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,8 +576,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endLevelCanvas: {fileID: 6851130190156899258}
-  returnToMenuButton: {fileID: 5200016489813136393}
   endText: {fileID: 2190263111754447211}
+  returnToMenuButton: {fileID: 5200016489813136393}
   endLines:
-  - Congratulation you ended the level, good job!!
+  - "<b><size=130%>\u201COde al fanciullo\u201D</size></b>\r\n<i>Lasciatemi</i>\\nnon
+    \xE8 successo nulla a nessuno,\\nsono <b>ovunque</b> ma anche da <b>nessuna parte</b>,\\nsuccede
+    solo quando <color=#FFD700>gioisco</color>\\nfino all\u2019ultimo profondo strappo.\r\n\r\n<i>lasciatemi
+    sulla tua bocca</i>,\\nperch\xE9 s\xEC, perch\xE9 respiro\\nperch\xE9 tocco il
+    tuo ginocchio\\ned \xE8 come se arrivassi alla tua <color=#A1EAFB>freschezza</color>.\r\n\r\n<i>con
+    o senza tutti.</i>\r\n"
   textSpeed: 0.05

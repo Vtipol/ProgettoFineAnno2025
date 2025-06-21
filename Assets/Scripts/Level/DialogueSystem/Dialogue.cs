@@ -15,24 +15,37 @@ public class Dialogue : MonoBehaviour
 
     private int index;
     private Coroutine typingCoroutine;
+    private bool isLineFullyTyped;
 
     private void OnEnable()
     {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        index = 0;
         textConponent.text = string.Empty;
         Time.timeScale = 0f;
-        StartDialogue();
+        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     private void OnDisable()
     {
         Time.timeScale = 1f;
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (textConponent.text == lines[index])
+            if (isLineFullyTyped)
             {
                 NextLine();
             }
@@ -41,18 +54,13 @@ public class Dialogue : MonoBehaviour
                 if (typingCoroutine != null)
                 {
                     StopCoroutine(typingCoroutine);
+                    typingCoroutine = null;
                 }
 
                 textConponent.text = lines[index];
-                PlayTypingSound(); // Play one final sound
+                isLineFullyTyped = true;
             }
         }
-    }
-
-    void StartDialogue()
-    {
-        index = 0;
-        typingCoroutine = StartCoroutine(TypeLine());
     }
 
     void NextLine()
@@ -61,6 +69,12 @@ public class Dialogue : MonoBehaviour
         {
             index++;
             textConponent.text = string.Empty;
+
+            if (typingCoroutine != null)
+            {
+                StopCoroutine(typingCoroutine);
+            }
+
             typingCoroutine = StartCoroutine(TypeLine());
         }
         else
@@ -69,19 +83,37 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    public void RestartDialogue()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        index = 0;
+        textConponent.text = string.Empty;
+        typingCoroutine = StartCoroutine(TypeLine());
+        gameObject.SetActive(true);
+    }
+
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        isLineFullyTyped = false;
+        typingCoroutine = null;
+
+        foreach (char c in lines[index])
         {
             textConponent.text += c;
 
-            if (!char.IsWhiteSpace(c)) // Skip sound for spaces, tabs, etc.
+            if (!char.IsWhiteSpace(c))
             {
                 PlayTypingSound();
             }
 
             yield return new WaitForSecondsRealtime(textSpeed);
         }
+
+        isLineFullyTyped = true;
     }
 
     void PlayTypingSound()
