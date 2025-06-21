@@ -42,7 +42,6 @@ public class FollowPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         controller = GetComponent<BuddyStateController>();
-        _animator = GetComponent<Animator>();
         pickThrow = FindAnyObjectByType<PickThrow>();
         wallFailSafe = GetComponentInChildren<AvoidWallIssuesBuddy>();
         //pickedUpLayer = LayerMask.NameToLayer("PickUp");
