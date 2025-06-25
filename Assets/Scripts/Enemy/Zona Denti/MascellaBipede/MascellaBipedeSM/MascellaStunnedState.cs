@@ -17,17 +17,17 @@ public class MascellaStunnedState : MascellaState
     public override void OnUpdate()
     {
         if (mascellaController.mascellaDamageble.Health <= 0)
-        PlayClipAtPosition(mascellaController.mascellaDeath, transform.position, 20f); 
+        PlayClipAtPosition(mascellaController.mascellaDeath, transform.position, 20000f); 
 
     }
-    public static void PlayClipAtPosition(AudioClip clip, Vector3 position, float volume = 10f)
+    public static void PlayClipAtPosition(AudioClip clip, Vector3 position, float volume)
     {
         GameObject tempGO = new GameObject("TempAudio");
         tempGO.transform.position = position;
         AudioSource aSource = tempGO.AddComponent<AudioSource>();
         aSource.clip = clip;
         aSource.volume = volume;
-        aSource.spatialBlend = 10f; // 3D sound
+        aSource.spatialBlend = 1000f; 
         aSource.Play();
         UnityEngine.Object.Destroy(tempGO, clip.length);
     }

@@ -198,8 +198,9 @@ public class FollowPlayer : MonoBehaviour
                 rb.AddForce(Vector2.up * aiSettings.jumpForce, ForceMode2D.Impulse);
             }
             needJump = false;
-            _isJumping = true;
+            
         }
+        _isJumping = true;
     }
 
     void MoveTowardsTarget()
@@ -251,7 +252,7 @@ public class FollowPlayer : MonoBehaviour
     {
         _animator.SetBool("IsWalking", _isWalking && isGrounded);
         _animator.SetBool("IsRunning", _isWalking && InputManager.RunIsHeld && isGrounded);
-        _animator.SetBool("IsJumping", _isJumping);
+        _animator.SetBool("IsJumping", _isJumping && !isGrounded);
         _animator.SetBool("IsFalling", _isFalling);
     }
 
@@ -310,7 +311,7 @@ public class FollowPlayer : MonoBehaviour
     {
         _isWalking = Mathf.Abs(rb.linearVelocity.x) > 0.01f && isGrounded;
 
-        if (rb.linearVelocity.y < -0.1f && !isGrounded)
+        if (rb.linearVelocity.y < -0.01f && !isGrounded)
         {
             _isFalling = true;
             _isJumping = false;

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Trampolino Fixed4_0: 7625342880044742770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

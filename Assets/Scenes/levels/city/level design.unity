@@ -675,6 +675,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MascellaBipede
       objectReference: {fileID: 0}
+    - target: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: DopplerLevel
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2206,10 +2218,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 448842208053253790, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 964fe968cd84d429eb4ccf71d7446fe1, type: 2}
     - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: mascellaDeath
       value: 
       objectReference: {fileID: 8300000, guid: 39605a299ba90294e8f0eb7871d287a6, type: 3}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 964fe968cd84d429eb4ccf71d7446fe1, type: 2}
     - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: mascellaDamageble
       value: 
@@ -2218,6 +2238,10 @@ PrefabInstance:
       propertyPath: mascellaAudioSource
       value: 
       objectReference: {fileID: 146326531}
+    - target: {fileID: 4247173658301119563, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 964fe968cd84d429eb4ccf71d7446fe1, type: 2}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.66
@@ -2258,10 +2282,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043078783991960176, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 964fe968cd84d429eb4ccf71d7446fe1, type: 2}
     - target: {fileID: 7899356897481942568, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_Name
       value: MascellaBipede (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740136032018716763, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019159853897575288, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 964fe968cd84d429eb4ccf71d7446fe1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2353,10 +2393,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 448842208053253790, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: ca45db29ff9ab4f788cf3218ee4fe95e, type: 2}
     - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: mascellaDeath
       value: 
       objectReference: {fileID: 8300000, guid: 39605a299ba90294e8f0eb7871d287a6, type: 3}
+    - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: ca45db29ff9ab4f788cf3218ee4fe95e, type: 2}
     - target: {fileID: 3960034913981231757, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: mascellaDamageble
       value: 
@@ -2365,6 +2413,10 @@ PrefabInstance:
       propertyPath: mascellaAudioSource
       value: 
       objectReference: {fileID: 1396170903}
+    - target: {fileID: 4247173658301119563, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: ca45db29ff9ab4f788cf3218ee4fe95e, type: 2}
     - target: {fileID: 4333900067616570677, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.72277
@@ -2405,10 +2457,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6043078783991960176, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: ca45db29ff9ab4f788cf3218ee4fe95e, type: 2}
     - target: {fileID: 7899356897481942568, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
       propertyPath: m_Name
       value: MascellaBipede (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9019159853897575288, guid: 7c25329cbe6cc478fa8303b48f2bce73, type: 3}
+      propertyPath: mascellaStats
+      value: 
+      objectReference: {fileID: 11400000, guid: ca45db29ff9ab4f788cf3218ee4fe95e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
